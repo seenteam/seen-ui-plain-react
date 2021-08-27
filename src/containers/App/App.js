@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import Feed from '../../components/Feed/Feed.js'
-import SearchBar from '../../components/SearchBar/SearchBar.js'
-import SearchResults from '../../components/SearchResults/SearchResults.js'
-import NavBar from '../../components/NavBar/NavBar.js'
-import Header from '../../components/Header/Header.js'
+// import Feed from '../../components/Feed/Feed.js'
+// import SearchBar from '../../components/SearchBar/SearchBar.js'
+// import SearchResults from '../../components/SearchResults/SearchResults.js'
+// import NavBar from '../../components/NavBar/NavBar.js'
+// import Header from '../../components/Header/Header.js'
+import SplashPage from '../../components/SplashPage/SplashPage.js'
+import {Switch, Route} from 'react-router-dom'
 import { users, posts } from '../../utilities/mockData'
+
+
 
 import './App.css';
 
@@ -29,14 +33,17 @@ const App = () => {
   }
 
   return (
-    <main>
-      <Header />
-      <SearchBar query={query} set={setQuery} />
-      <SearchResults results={!query ? null : queryResults(query)} />
-      <Feed />
-      <button onClick={login}>Login</button>
-      <NavBar />
-    </main>
+    <Switch>
+      <Route exact path="/" render={() => {
+          return <SplashPage
+                  query={query}
+                  setQuery={setQuery}
+                  queryResults={queryResults}
+                  login={login}
+                  />
+              }}
+      />
+    </Switch>
   );
 }
 
