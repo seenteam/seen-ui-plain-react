@@ -1,0 +1,11 @@
+.make-post {
+  position: absolute;
+  bottom: 0;
+  transition: .2s ease all;
+  height: 400px;
+  widht: 100%;
+}
+
+.hidden {
+  height: 0;
+}
