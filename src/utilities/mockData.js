@@ -6,7 +6,7 @@ const users = {
             "users": [
                 {
                 "id": 1,
-                "username": "exaplename",
+                "username": "test1",
                 "first_name": "firstname",
                 "last_name": "lastname",
                 "email": "example@example.com",
@@ -18,8 +18,8 @@ const users = {
                 {
                 "id": 2,
                 "username": "exaplename",
-                "first_name": "firstname",
-                "last_name": "lastname",
+                "first_name": "exampleperson",
+                "last_name": "examplelast",
                 "email": "example2@example.com",
                 "phone_number": "999-999-9999",
                 "birthday": "1-11-1990",
