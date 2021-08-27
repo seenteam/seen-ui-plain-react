@@ -11,6 +11,7 @@ import './App.css';
 const App = () => {
 
   const [userbase, setUsers] = useState([])
+  const [currentUser, setCurrentUser] = useState('')
   const [query, setQuery] = useState('')
 
   useEffect(() => {
@@ -23,12 +24,17 @@ const App = () => {
     return userbase.filter(user => (user.username.includes(query)) || (user.first_name.includes(query)) || (user.last_name.includes(query)))
   }
 
+  const login = () => {
+    setCurrentUser(userbase[0])
+  }
+
   return (
     <main>
       <Header />
       <SearchBar query={query} set={setQuery} />
-      <SearchResults results={!query ? null : queryResults(query)}/>
+      <SearchResults results={!query ? null : queryResults(query)} />
       <Feed />
+      <button onClick={login}>Login</button>
       <NavBar />
     </main>
   );
