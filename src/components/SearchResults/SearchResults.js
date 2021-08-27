@@ -2,7 +2,7 @@ import './SearchResults.css'
 const SearchResults = ({results}) => {
   let parsed;
   if (results) {
-    parsed = results.map(result => <article>{result.first_name} {result.last_name}</article>)
+    parsed = results.map(result => <article key={result.id}>{result.first_name} {result.last_name}</article>)
   }
 
   return (
