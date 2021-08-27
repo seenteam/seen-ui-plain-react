@@ -1,9 +1,10 @@
+import Feed from '../../components/Feed/Feed.js'
 import './App.css';
 
-function App() {
+const App = () => {
   return (
     <main>
-      Hello world!
+      <Feed />
     </main>
   );
 }
