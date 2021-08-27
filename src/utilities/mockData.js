@@ -6,7 +6,7 @@ export const users = {
             "users": [
                 {
                 "id": 1,
-                "username": "test1",
+                "username": "awesomeuser1",
                 "first_name": "firstname",
                 "last_name": "lastname",
                 "email": "example@example.com",
@@ -17,7 +17,7 @@ export const users = {
                 },
                 {
                 "id": 2,
-                "username": "exaplename",
+                "username": "bestuser2",
                 "first_name": "exampleperson",
                 "last_name": "examplelast",
                 "email": "example2@example.com",

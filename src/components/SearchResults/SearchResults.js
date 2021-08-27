@@ -1,3 +1,4 @@
+import './SearchResults.css'
 const SearchResults = ({results}) => {
   let parsed;
   if (results) {
@@ -5,7 +6,7 @@ const SearchResults = ({results}) => {
   }
 
   return (
-    <section>
+    <section className="results">
       {!results ? null : parsed}
     </section>
   )

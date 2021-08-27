@@ -1,0 +1,3 @@
+.results article:nth-of-type(even) {
+  background: lightgray;
+}

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react'
 import Feed from '../../components/Feed/Feed.js'
 import SearchBar from '../../components/SearchBar/SearchBar.js'
@@ -16,18 +15,13 @@ const App = () => {
 
   useEffect(() => {
     let mounted = true;
-    if (mounted) setUsers(users.data.attributes)
+    if (mounted) setUsers(users.data.attributes.users)
     return () => mounted = false;
   }, [])
 
-
   const queryResults = (data) => {
-    return userbase.users.filter(user => (user.username.includes(query)) || (user.first_name.includes(query)) || (user.last_name.includes(query)))
+    return userbase.filter(user => (user.username.includes(query)) || (user.first_name.includes(query)) || (user.last_name.includes(query)))
   }
-  // const queryUsers = (query) => {
-  //   let results = userbase.filter(user => (user.username.includes(query)) || (user.first_name.includes(query)) || (user.last_name.includes(query)))
-  //   return (results) ? results : "No matches for query - please try another"
-  // }
 
   return (
     <main>
