@@ -31,4 +31,31 @@ const users = {
     }
 }
 
-const posts;
+const posts = [
+  {
+    "data": {
+        "id": "1",
+        "type": "post",
+        "attributes": {
+            "id": 1,
+            "user_first_name": "first",
+            "user_last_name": "last",
+            "user_id": "1",
+            "content": "This is my post!"
+        }
+    }
+  },
+  {
+    "data": {
+        "id": "2",
+        "type": "post",
+        "attributes": {
+            "id": 2,
+            "user_first_name": "first",
+            "user_last_name": "last",
+            "user_id": "2",
+            "content": "Test number two!"
+        }
+    }
+  }
+];
