@@ -4,8 +4,8 @@ describe("Main page spec", () => {
         cy.visit('http://localhost:3000/');
     })
 
-    it('Should contain the string "Hello World!"',  () => {
-        cy.get('main').should('contain', 'Hello world!')
+    it('Should contain the string "Seen"',  () => {
+        cy.get('main').should('contain', 'Seen')
 
     })
 
