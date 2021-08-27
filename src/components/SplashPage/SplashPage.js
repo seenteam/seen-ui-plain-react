@@ -1,7 +1,6 @@
 import Feed from '../Feed/Feed.js'
 import SearchBar from '../SearchBar/SearchBar.js'
 import SearchResults from '../SearchResults/SearchResults.js'
-import NavBar from '../NavBar/NavBar.js'
 import Header from '../Header/Header.js'
 
 const SplashPage = ({query, setQuery, queryResults, login}) => {
@@ -12,7 +11,6 @@ const SplashPage = ({query, setQuery, queryResults, login}) => {
       <SearchResults results={!query ? null : queryResults(query)} />
       <Feed />
       <button onClick={login}>Login</button>
-      <NavBar />
     </main>
   )
 }
