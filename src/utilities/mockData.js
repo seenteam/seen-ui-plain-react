@@ -1,4 +1,4 @@
-const users = {
+export const users = {
     "data": {
         "id": null,
         "type": "users",
@@ -31,7 +31,7 @@ const users = {
     }
 }
 
-const posts = [
+export const posts = [
   {
     "data": {
         "id": "1",

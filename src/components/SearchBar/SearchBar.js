@@ -1,6 +1,8 @@
+import React, { useState } from 'react'
 import './SearchBar.css'
 
-const SearchBar = () => {
+const SearchBar = ({ query, set }) => {
+
   return (
     <form onSubmit={e => {
       e.preventDefault()
@@ -8,7 +10,8 @@ const SearchBar = () => {
       <input
         type="text"
         placeholder="Search for users"
-        value=""
+        value={query}
+        onChange={(e) => set(e.target.value)}
       />
     </form>
   )
