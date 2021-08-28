@@ -37,9 +37,6 @@ const App = () => {
       <Switch>
         <Route exact path="/" render={() => {
           return <SplashPage
-                  query={query}
-                  setQuery={setQuery}
-                  queryResults={queryResults}
                   login={login}
                   />
                 }}
