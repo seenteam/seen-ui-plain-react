@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 import './NewPost.css'
 
-const NewPost = ({visible, setVisibility}) => {
+const NewPost = ({visible, setVisibility, posts, setPosts}) => {
 
   const [postData, setPostData] = useState('')
-  const [posts, setPosts] = useState([])
+  // const [posts, setPosts] = useState([])
 
   const submitForm = e => {
     e.preventDefault()

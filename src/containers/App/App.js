@@ -13,6 +13,7 @@ const App = () => {
   const [userbase, setUsers] = useState([])
   const [current, setCurrent] = useState('')
   const [newPost, setNewPost] = useState(false)
+  const [posts, setPosts] = useState([])
   const [query, setQuery] = useState('')
 
   useEffect(() => {
@@ -45,6 +46,7 @@ const App = () => {
             <Route exact path="/profile" render={() => {
                 return <Profile
                         user={!current ? null : current}
+                        posts={posts}
                       />
               }}
             />
@@ -52,8 +54,11 @@ const App = () => {
       <NewPost
         visible={newPost}
         setVisibility={setNewPost}
+        posts={posts}
+        setPosts={setPosts}
       />
       <NavBar
+        newPost={newPost}
         setNewPost={setNewPost}
       />
     </div>

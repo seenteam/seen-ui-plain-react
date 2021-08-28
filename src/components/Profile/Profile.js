@@ -1,6 +1,6 @@
 // Query Posts from DB that correspond to current User
 
-const Profile = ({user}) => {
+const Profile = ({user, posts}) => {
 
   const userProfile = () => {
     return (
@@ -10,6 +10,9 @@ const Profile = ({user}) => {
         <h4>Joined {user.created_at}</h4>
         <section>
           <h2>My Posts</h2>
+          <div>
+            {posts.map((post, index) => <p key={index}>{post}</p>)}
+          </div>
         </section>
       </div>
       )
