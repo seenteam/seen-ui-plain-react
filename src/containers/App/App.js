@@ -38,6 +38,7 @@ const App = () => {
         <Route exact path="/" render={() => {
           return <SplashPage
                   login={login}
+                  setNewPost={setNewPost}
                   />
                 }}
               />
@@ -45,6 +46,7 @@ const App = () => {
                 return <Profile
                         user={!current ? null : current}
                         posts={posts}
+                        setNewPost={setNewPost}
                       />
               }}
             />
@@ -53,6 +55,7 @@ const App = () => {
                 query={query}
                 setQuery={setQuery}
                 queryResults={queryResults}
+                setNewPost={setNewPost}
               />
             </Route>
       </Switch>
