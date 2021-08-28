@@ -8,8 +8,6 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  useQuery,
-  gql
 } from "@apollo/client";
 
 const client = new ApolloClient({
@@ -17,16 +15,15 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-
 ReactDOM.render(
-  <ApolloProvider>
     <React.StrictMode>
+    <ApolloProvider client={client}>
       <Router>
         <App />
       </Router>
+    </ApolloProvider>
     </React.StrictMode>,
     document.getElementById('root')
-  </ApolloProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
