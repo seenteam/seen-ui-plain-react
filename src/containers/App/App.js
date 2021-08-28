@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import NavBar from '../../components/NavBar/NavBar.js'
 import NewPost from '../../components/NewPost/NewPost.js'
+import SearchPage from '../../components/SearchPage/SearchPage.js'
 import SplashPage from '../../components/SplashPage/SplashPage.js'
 import Profile from '../../components/Profile/Profile.js'
 import {Switch, Route} from 'react-router-dom'
@@ -50,6 +51,9 @@ const App = () => {
                       />
               }}
             />
+            <Route exact path="/search-page">
+              <SearchPage/>
+            </Route>
       </Switch>
       <NewPost
         visible={newPost}
