@@ -8,7 +8,6 @@ const SplashPage = ({query, setQuery, queryResults, login}) => {
     <main>
       <Header />
       <Feed />
-      {/* <button onClick={login}>Login</button> */}
     </main>
   )
 }
