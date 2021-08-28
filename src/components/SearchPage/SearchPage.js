@@ -1,8 +1,20 @@
+import SearchBar from '../SearchBar/SearchBar';
+import SearchResults from '../SearchResults/SearchResults';
 import './SearchPage.css'
 
-const SearchPage = () => {
+const SearchPage = ({query, setQuery, queryResults}) => {
+
+
+
     return (
-        <h1>Search the Seen</h1>
+        <section className="Searchpage">
+            <h1>Search the Seen</h1>
+            <SearchBar 
+                query={query}
+                set={setQuery} 
+            />
+            <SearchResults results={!query ? null : queryResults(query)} />
+        </section>
     )
 }
 
