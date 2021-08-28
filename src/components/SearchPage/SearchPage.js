@@ -7,7 +7,7 @@ const SearchPage = ({query, setQuery, queryResults}) => {
 
 
     return (
-        <section className="Searchpage">
+        <section className="search-page-container">
             <h1>Search the Seen</h1>
             <SearchBar 
                 query={query}
