@@ -4,6 +4,7 @@ import NewPost from '../../components/NewPost/NewPost.js'
 import SearchPage from '../../components/SearchPage/SearchPage.js'
 import SplashPage from '../../components/SplashPage/SplashPage.js'
 import Profile from '../../components/Profile/Profile.js'
+import WavesLayer from '../../components/WavesLayer/WavesLayer.js'
 import {Switch, Route} from 'react-router-dom'
 import { users, posts } from '../../utilities/mockData'
 
@@ -59,6 +60,7 @@ const App = () => {
               />
             </Route>
       </Switch>
+      <WavesLayer />
       <NewPost
         visible={newPost}
         setVisibility={setNewPost}

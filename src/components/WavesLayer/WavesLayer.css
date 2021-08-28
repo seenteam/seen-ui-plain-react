@@ -1,0 +1,14 @@
+.waves-bg {
+    width: 100%;
+    height: 960px;
+    position: absolute;
+    z-index: -4;
+    bottom: 0;
+    background: url('../../assets/svgs/waves.svg') no-repeat;
+    background-size: cover;
+}
+svg {
+  height: 960px;
+}
+
+/* svg { position:fixed; top:0; bottom: 206px;; left:0; right:0 } */
