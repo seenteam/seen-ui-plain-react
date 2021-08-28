@@ -1,6 +1,12 @@
+import React, { useEffect } from 'react';
+
 // Query Posts from DB that correspond to current User
 
-const Profile = ({user, posts}) => {
+const Profile = ({user, posts, setNewPost}) => {
+
+  useEffect(() => {
+    setNewPost(false);
+  }, [])
 
   const userProfile = () => {
     return (
