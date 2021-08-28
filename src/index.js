@@ -4,14 +4,29 @@ import './index.css';
 import App from './containers/App/App.js';
 import { BrowserRouter as Router } from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  gql
+} from "@apollo/client";
+
+const client = new ApolloClient({
+  uri: 'https://48p1r2roz4.sse.codesandbox.io', // add a legit URI to our graphQL server
+  cache: new InMemoryCache()
+});
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
-  </React.StrictMode>,
-  document.getElementById('root')
+  <ApolloProvider>
+    <React.StrictMode>
+      <Router>
+        <App />
+      </Router>
+    </React.StrictMode>,
+    document.getElementById('root')
+  </ApolloProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
