@@ -52,7 +52,11 @@ const App = () => {
               }}
             />
             <Route exact path="/search-page">
-              <SearchPage/>
+              <SearchPage
+                query={query}
+                setQuery={setQuery}
+                queryResults={queryResults}
+              />
             </Route>
       </Switch>
       <NewPost
