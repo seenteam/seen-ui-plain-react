@@ -10,7 +10,7 @@ const SplashPage = ({query, setQuery, queryResults, login}) => {
       <SearchBar query={query} set={setQuery} />
       <SearchResults results={!query ? null : queryResults(query)} />
       <Feed />
-      <button onClick={login}>Login</button>
+      {/* <button onClick={login}>Login</button> */}
     </main>
   )
 }
