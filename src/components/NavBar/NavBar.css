@@ -13,3 +13,7 @@ footer ul {
   padding: 0;
   justify-content: space-around;
 }
+
+.new-post {
+  cursor: pointer;
+}

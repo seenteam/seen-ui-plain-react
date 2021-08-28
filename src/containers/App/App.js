@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import NavBar from '../../components/NavBar/NavBar.js'
+import NewPost from '../../components/NewPost/NewPost.js'
 import SplashPage from '../../components/SplashPage/SplashPage.js'
 import Profile from '../../components/Profile/Profile.js'
 import {Switch, Route} from 'react-router-dom'
@@ -11,6 +12,7 @@ const App = () => {
 
   const [userbase, setUsers] = useState([])
   const [current, setCurrent] = useState('')
+  const [newPost, setNewPost] = useState(false)
   const [query, setQuery] = useState('')
 
   useEffect(() => {
@@ -47,7 +49,13 @@ const App = () => {
               }}
             />
       </Switch>
-      <NavBar />
+      <NewPost
+        visible={newPost}
+        setVisibility={setNewPost}
+      />
+      <NavBar
+        setNewPost={setNewPost}
+      />
     </div>
   );
 }
