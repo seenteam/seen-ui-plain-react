@@ -1,9 +1,7 @@
 import Feed from '../Feed/Feed.js'
-import SearchBar from '../SearchBar/SearchBar.js'
-import SearchResults from '../SearchResults/SearchResults.js'
 import Header from '../Header/Header.js'
 
-const SplashPage = ({query, setQuery, queryResults, login}) => {
+const SplashPage = ({login}) => {
   return (
     <main>
       <Header />
