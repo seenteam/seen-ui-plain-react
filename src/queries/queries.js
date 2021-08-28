@@ -28,10 +28,14 @@ export const GET_POSTS_FROM_FRIENDS = (id) => gql`
 query GetPostsFromFriends {
   user_id(id: ${id}) {
     fixed_followers {
-      posts 
+      posts (limit: 10) {
+        content
+     }
     }
     flux_followers {
-      posts 
+      posts (limit: 10) {
+        content
+     }
     }
   }
 }
