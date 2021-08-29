@@ -1,20 +1,20 @@
 import { useQuery} from "@apollo/client";
-import { EXCHANGE_RATES } from '../../queries/queries';
+import { GET_ALL_USERS } from '../../queries/queries';
 
- const ExchangeRates = () => {
-    const { loading, error, data } = useQuery(EXCHANGE_RATES);
-  
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error :(</p>;
-  
-    return data.rates.map(({ currency, rate }) => (
-      <div key={currency}>
-        <p>
-          {currency}: {rate}
-        </p>
-      </div>
-    ));
-  };
+const ExchangeRates = () => {
+   const { loading, error, data } = useQuery(GET_ALL_USERS);
+
+   if (loading) return <p>Loading...</p>;
+   if (error) return <p>Error :(</p>;
+
+   return data.users.map(({ firstName, lastName }) => (
+     <div key={firstName}>
+       <p>
+         {firstName} {lastName}
+       </p>
+     </div>
+   ));
+ };
 
 export default ExchangeRates;
   

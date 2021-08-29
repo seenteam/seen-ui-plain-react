@@ -18,7 +18,7 @@ const SearchPage = ({query, setQuery, queryResults, setNewPost}) => {
                 set={setQuery} 
             />
             <SearchResults results={!query ? null : queryResults(query)} />
-            {/* <ExchangeRates /> */}
+            <ExchangeRates />
         </section>
     )
 }
