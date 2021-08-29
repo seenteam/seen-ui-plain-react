@@ -1,0 +1,17 @@
+main {
+    animation: soft-rainbow 25s infinite; 
+}
+
+@keyframes soft-rainbow {
+  0%{box-shadow: 6px 12px 4px #fefeff;}	
+  10%{box-shadow: 6px 12px 4px #fffbff;}	
+  20%{box-shadow: 6px 12px 4px #ebd8d0}
+  30%{box-shadow: 6px 12px 4px #EAC9C1;}
+  40%{box-shadow: 6px 12px 4px #d3ab9e}
+  50%{box-shadow: 6px 12px 4px pink;}
+  60%{box-shadow: 6px 12px 4px #d3ab9e}
+  70%{box-shadow: 6px 12px 4px #EAC9C1;}
+  80%{box-shadow: 6px 12px 4px #ebd8d0}
+  90%{box-shadow: 6px 12px 4px #fffbff;}
+  100%{box-shadow: 6px 12px 4px #fefeff;}
+}
