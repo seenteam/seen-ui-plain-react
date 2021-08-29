@@ -12,8 +12,8 @@ const NavBar = ({newPost, setNewPost}) => {
       <ul>
         <Link to="/"><li>Feed</li></Link>
         <Link to="/search-page"><li>Search</li></Link>
-        <li className="new-post" onClick={togglePost}>Post</li>
-        <li>Flux</li>
+        <li className={(!newPost) ? 'new-post' : 'yellow'} onClick={togglePost}>Post</li>
+        <li>Followers</li>
         <Link to="/profile"><li>Profile</li></Link>
       </ul>
     </footer>
