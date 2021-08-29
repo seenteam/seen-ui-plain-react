@@ -11,7 +11,7 @@ import {
 } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: 'https://48p1r2roz4.sse.codesandbox.io', // add a legit URI to our graphQL server
+  uri: 'https://intense-ocean-61260.herokuapp.com/graphql', // add a legit URI to our graphQL server
   cache: new InMemoryCache()
 });
 
