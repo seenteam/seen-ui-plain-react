@@ -1,7 +1,7 @@
 import { useQuery} from "@apollo/client";
 import { GET_ALL_USERS } from '../../queries/queries';
 
-const ExchangeRates = () => {
+const DisplayUserData = () => {
    const { loading, error, data } = useQuery(GET_ALL_USERS);
 
    if (loading) return <p>Loading...</p>;
@@ -16,5 +16,5 @@ const ExchangeRates = () => {
    ));
  };
 
-export default ExchangeRates;
+export default DisplayUserData;
   

@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import './SearchPage.css'
-import ExchangeRates from '../ExchangeRates/ExchangeRates';
+import ExchangeRates from '../DisplayUserData/DisplayUserData';
+import DisplayUserData from '../DisplayUserData/DisplayUserData';
 
 const SearchPage = ({query, setQuery, queryResults, setNewPost}) => {
 
@@ -18,7 +19,7 @@ const SearchPage = ({query, setQuery, queryResults, setNewPost}) => {
                 set={setQuery} 
             />
             <SearchResults results={!query ? null : queryResults(query)} />
-            <ExchangeRates />
+            <DisplayUserData />
         </section>
     )
 }
