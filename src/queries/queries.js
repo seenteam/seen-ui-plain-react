@@ -13,11 +13,11 @@ export const EXCHANGE_RATES = gql`
  
 export const GET_USER_INFO = (id) => gql`
 query GetUserInfo {
-  user_id(id: ${id}) {
+  userId(id: ${id}) {
     name
     posts
-    fixed_followers
-    flux_followers
+    fixedFollowers
+    fluxFollowers
   }
 }
 `;
@@ -26,13 +26,13 @@ query GetUserInfo {
 // 
 export const GET_POSTS_FROM_FRIENDS = (id) => gql`
 query GetPostsFromFriends {
-  user_id(id: ${id}) {
-    fixed_followers {
+  userId(id: ${id}) {
+    fixedFollowers {
       posts (limit: 10) {
         content
      }
     }
-    flux_followers {
+    fluxFollowers {
       posts (limit: 10) {
         content
      }
@@ -41,5 +41,13 @@ query GetPostsFromFriends {
 }
 `;
 
+export const GET_ALL_USERS = gql`
+query {
+  users {
+    firstName
+    lastName
+  }
+}
+`
 
 //Add more queries below!
