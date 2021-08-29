@@ -5,7 +5,7 @@ footer {
 }
 
 footer ul li {
-  color: white;
+  color: grey;
   list-style: none;
 }
 
@@ -14,7 +14,7 @@ footer ul a {
 }
 
 footer ul a:visited {
-  color: white;
+  color: grey;
 }
 
 footer ul {
@@ -24,5 +24,10 @@ footer ul {
 }
 
 .new-post {
+  cursor: pointer;
+}
+
+.yellow {
+  background-color: yellow;
   cursor: pointer;
 }
