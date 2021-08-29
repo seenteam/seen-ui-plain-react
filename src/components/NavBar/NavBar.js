@@ -10,11 +10,11 @@ const NavBar = ({newPost, setNewPost}) => {
   return (
     <footer>
       <ul>
-        <Link to="/"><li>Feed</li></Link>
-        <Link to="/search-page"><li>Search</li></Link>
-        <li className={(!newPost) ? 'new-post' : 'yellow'} onClick={togglePost}>Post</li>
-        <li>Followers</li>
-        <Link to="/profile"><li>Profile</li></Link>
+        <Link to="/"><li><img src="https://img.icons8.com/wired/64/000000/activity-feed-2.png"/></li></Link>
+        <Link to="/search-page"><li><img src="https://img.icons8.com/pastel-glyph/64/000000/search--v2.png"/></li></Link>
+        <li className={(!newPost) ? 'new-post' : 'yellow'} onClick={togglePost}><img src="https://img.icons8.com/wired/64/000000/plus.png"/></li>
+        <li><img src="https://img.icons8.com/dotty/80/000000/sine.png"/></li>
+        <Link to="/profile"><li><img src="https://img.icons8.com/wired/64/000000/circled-user.png"/></li></Link>
       </ul>
     </footer>
   )
