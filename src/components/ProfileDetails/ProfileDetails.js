@@ -17,7 +17,7 @@ users {
 
 */
 
-const DisplayUserData = () => {
+const ProfileDetails = () => {
    const { loading, error, data } = useQuery(GET_ALL_USER_INFO);
 
    if (loading) return <p>Loading...</p>;
@@ -51,7 +51,7 @@ const DisplayUserData = () => {
        <p>
         email: {email}
        </p>
-       
+
        <p>
         Phone Number : {phoneNumber}
        </p>
@@ -60,12 +60,9 @@ const DisplayUserData = () => {
         Birthday: {birthday}
        </p>
 
-        {/* <p>
-         posts:  {posts.map(post => post.content)}
-        </p> */}
      </div>
    ));
  };
 
-export default DisplayUserData;
+export default ProfileDetails;
   
