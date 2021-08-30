@@ -10,7 +10,7 @@ import {
 //     }
 //   }
 // `;
- 
+
 
 //Probably not going to work, first attempt at queries
 export const GET_USER_INFO = (id) => gql`
@@ -20,6 +20,16 @@ query GetUserInfo {
     posts
     fixedFollowers
     fluxFollowers
+  }
+}
+`;
+
+export const GET_USER_POSTS = (id) => gql`
+query {
+  user(id:${id}) {
+    posts {
+      content
+    }
   }
 }
 `;
@@ -60,7 +70,7 @@ query {
     id
     userName
     firstName
-    lastName 
+    lastName
     email
     phoneNumber
     birthday
