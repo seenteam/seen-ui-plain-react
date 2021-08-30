@@ -1,7 +1,10 @@
+import UserPosts from '../UserPosts/UserPosts'
 import './Feed.css'
 const Feed = () => {
   return (
-    <h1>User Feed</h1>
+    <div>
+      <UserPosts />
+    </div>
   )
 }
 
