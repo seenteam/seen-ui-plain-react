@@ -1,5 +1,5 @@
 main {
-    animation: soft-rainbow 25s infinite; 
+    animation: soft-rainbow 20s infinite; 
 }
 
 @keyframes soft-rainbow {
