@@ -38,6 +38,7 @@ const ProfileDetails = () => {
      birthday,
      posts 
      }) => (
+         
      <div key={id}>
 
        <p>
