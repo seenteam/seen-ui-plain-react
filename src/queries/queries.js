@@ -99,3 +99,17 @@ mutation {
   }
 }
 `
+
+export const CREATE_POST = ({ content, id }) => gql`
+mutation {
+  createPost(input: {
+    content: ${content}
+    userId: ${id}
+  }) {
+    post {
+      content
+      id
+    }
+  }
+}
+`
