@@ -8,7 +8,9 @@ import ProfileDetails from '../ProfileDetails/ProfileDetails';
 const Profile = ({user, posts, setNewPost}) => {
 
   useEffect(() => {
-    setNewPost(false);
+    let mounted = true;
+    if (mounted) setNewPost(false)
+    return () => mounted = false;
   }, [])
 
   const userProfile = () => {
