@@ -70,3 +70,22 @@ query {
   }
 }
 `
+
+// Start mutation queries here
+
+export const CREATE_NEW_USER = gql`
+mutation {
+  createUser(input: {
+    userName: "reginacasias",
+    firstName: "Regina",
+    lastName: "Casias",
+    phoneNumber: "123-123-1234",
+    email: "reg@e.com",
+    birthday: "2013-07-16"
+  }) {
+    user {
+      id
+    }
+  }
+}
+`
