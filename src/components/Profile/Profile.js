@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import './Profile.css'
 import ProfileDetails from '../ProfileDetails/ProfileDetails';
 
 
@@ -27,7 +28,7 @@ const Profile = ({user, posts, setNewPost}) => {
   }
 
   return (
-    <div>
+    <div className="user-profile">
       {!user ? <h2>Please log in</h2> : userProfile()}
       <ProfileDetails />
       <button onClick > Update Profile </button>
