@@ -1,15 +1,21 @@
-import React, {useState} from 'react'
-import { useQuery} from "@apollo/client";
-import { GET_USER_POSTS } from '../../queries/queries';
+import React, {useState, useEffect} from 'react'
+import { useMutation } from "@apollo/client";
+import * as gql from '../../queries/queries';
 
-const UserPosts = () => {
+const UserPosts = ({data, loading, error, userID}) => {
   const [query, setQuery] = useState(1)
-  const { loading, error, data } = useQuery(GET_USER_POSTS(query));
+  // const { loading, error, data } = useQuery(GET_USER_POSTS(query));
+  const [deletePost] = useMutation(gql.DELETE_POST, {
+    refetchQueries: [{ query: gql.GET_USER_POSTS(userID) }],
+  });
+  // useEffect(() => {
+  //   setQuery(1)
+  // }, [updated])
 
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
-
+  //
   const check = () => {
     console.log(data)
   }
@@ -18,6 +24,17 @@ const UserPosts = () => {
     e.preventDefault()
     setQuery(e.target.value || 1)
     return query
+  }
+
+  const removePost = (e, postId) => {
+    e.target.setAttribute('disabled', true)
+    e.target.innerText = 'Deleting...'
+    console.log(postId, 'ID TYPE:', typeof(postId))
+    deletePost({
+      variables: {
+        'postId': postId
+      },
+    })
   }
 
    return  (
@@ -29,7 +46,10 @@ const UserPosts = () => {
       onChange={handleSubmit}
      />
      </form>
-        {data.user.posts.map(post => <p>{post.content}</p>)}
+        {!!data && data.user.posts.map(post => <div>
+          <p>{post.content}</p>
+          <button onClick={e => removePost(e, post.id)}>Delete Post {post.id}</button>
+        </div>)}
      </div>
    )
  };
