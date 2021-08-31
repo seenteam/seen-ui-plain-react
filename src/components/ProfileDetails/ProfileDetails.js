@@ -1,4 +1,6 @@
 import { useQuery} from "@apollo/client";
+import React, { useEffect } from 'react';
+import './ProfileDetails.css'
 import { GET_ALL_USERS, GET_ALL_USER_INFO } from '../../queries/queries';
 
 /*
