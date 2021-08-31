@@ -1,6 +1,6 @@
-import waves from '../assets/svgs/waves.svg';
+//import waves from '../assets/svgs/waves.svg';
 
 //Shayan's waves
-//import waves from '../assets/svgs/wave-shayan.svg';
+import waves from '../assets/svgs/purp-wave.svg';
 
 export const svgs = [waves]
