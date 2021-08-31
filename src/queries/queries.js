@@ -25,9 +25,10 @@ query GetUserInfo {
 `;
 
 export const GET_USER_POSTS = (id) => gql`
-query {
+query GET_USER_POSTS {
   user(id:${id}) {
     posts {
+      id
       content
     }
   }
@@ -100,16 +101,38 @@ mutation {
 }
 `
 
-export const CREATE_POST = ({ content, id }) => gql`
-mutation {
+export const CREATE_POST = gql`
+mutation createPost($content: String!, $userId: ID!){
   createPost(input: {
-    content: ${content}
-    userId: ${id}
+    content: $content
+    userId: $userId
   }) {
     post {
       content
       id
     }
+    user {
+      posts {
+        content
+      }
+		}
+  }
+}
+`
+
+export const DELETE_POST = gql`
+mutation deletePost($postId: ID!){
+  deletePost(input: {postId: $postId}) {
+    message
+    user {
+      id
+      userName
+      firstName
+      lastName
+      email
+      phoneNumber
+      birthday
+		}
   }
 }
 `
