@@ -5,8 +5,11 @@ import SearchPage from '../../components/SearchPage/SearchPage.js'
 import SplashPage from '../../components/SplashPage/SplashPage.js'
 import Profile from '../../components/Profile/Profile.js'
 import WavesLayer from '../../components/WavesLayer/WavesLayer.js'
+import UserPosts from '../../components/UserPosts/UserPosts'
 import {Switch, Route} from 'react-router-dom'
-import { users, posts } from '../../utilities/mockData'
+import { useQuery} from "@apollo/client";
+import { GET_USER_POSTS } from '../../queries/queries';
+// import { users, posts } from '../../utilities/mockData'
 
 import './App.css';
 
@@ -17,10 +20,13 @@ const App = () => {
   const [newPost, setNewPost] = useState(false)
   const [posts, setPosts] = useState([])
   const [query, setQuery] = useState('')
+  const [userID, setUserID] = useState(2)
+  const { loading, error, data } = useQuery(GET_USER_POSTS(userID));
+  // const [updated, setUpdated] = useState(false)
 
   useEffect(() => {
     let mounted = true;
-    if (mounted) setUsers(users.data.attributes.users)
+    if (mounted) setPosts(data)
     return () => mounted = false;
   }, [])
 
@@ -33,14 +39,27 @@ const App = () => {
     return () => console.log(current)
   }
 
+  // const updatePosts = () => {
+  //   setUpdated(true)
+  // }
+
+
   return (
     <div>
       <Switch>
         <Route exact path="/" render={() => {
-          return <SplashPage
-                  login={login}
-                  setNewPost={setNewPost}
+          return <section>
+                    <SplashPage
+                    login={login}
+                    setNewPost={setNewPost}
+                    />
+                  <UserPosts
+                    data={!posts ? data : posts}
+                    loading={loading}
+                    error={error}
+                    userID={userID}
                   />
+                  </section>
                 }}
               />
             <Route exact path="/profile" render={() => {
@@ -64,8 +83,9 @@ const App = () => {
       <NewPost
         visible={newPost}
         setVisibility={setNewPost}
-        posts={posts}
+        data={!posts ? data : posts}
         setPosts={setPosts}
+        userID={userID}
       />
       <NavBar
         newPost={newPost}
