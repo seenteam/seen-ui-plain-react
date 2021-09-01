@@ -1,0 +1,6 @@
+.posts-container {
+  height: 600px;
+  overflow-y: scroll;
+  border-bottom: 4px solid gray;
+  z-index: 5;
+}
