@@ -34,14 +34,14 @@ const Followers = ({id}) => {
   }
 
   const addFriend = (e) => {
-    // let idToAdd = 4
-    // if (idToAdd === id) return e.target.innerText = 'Cant add yourself!'
+    let idToAdd = 1
+    if (idToAdd === id || data.user.followers.find(follower => follower.friendId === idToAdd)) return e.target.innerText = 'Cant add!'
     e.target.setAttribute('disabled', true)
     check()
     createFollower({
       variables: {
         'userId': id,
-        'friendId': 1
+        'friendId': idToAdd
       },
     })
   }
