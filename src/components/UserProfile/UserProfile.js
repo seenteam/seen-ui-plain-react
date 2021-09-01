@@ -51,6 +51,7 @@ const UserProfile = ({user}) => {
           {renderFollowers(data.user.followers)}
         </div>
       </section>
+      <h2>Posts</h2>
       {renderPosts(data.user.posts)}
     </div>
   }
