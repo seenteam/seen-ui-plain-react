@@ -1,0 +1,12 @@
+.user-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-card * {
+  margin: 0;
+}
+
+.user-card h5 {
+  margin-left: 5%;
+}
