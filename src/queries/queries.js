@@ -16,13 +16,24 @@ import {
 export const GET_USER_INFO = (id) => gql`
 query GetUserInfo {
   userId(id: ${id}) {
-    name
-    posts
-    fixedFollowers
-    fluxFollowers
+    id
+    userName
+    firstName
+    lastName
+    email
+    phoneNumber
+    birthday
+    posts{
+      id
+      content
+    }
+    followers{
+      friendId
+    }
   }
 }
 `;
+
 
 export const GET_USER_POSTS = (id) => gql`
 query GET_USER_POSTS {
