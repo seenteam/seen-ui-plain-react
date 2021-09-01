@@ -2,8 +2,15 @@
   position: absolute;
   bottom: 0;
   transition: .2s ease all;
-  height: 400px;
+  height: 100%;
+  background: rgba(255,255,255,0.85);
   width: 100%;
+}
+
+textarea {
+  max-width: 320px;
+  width: 60%;
+  height: 90px;
 }
 
 .hidden {
