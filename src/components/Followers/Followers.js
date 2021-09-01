@@ -51,7 +51,7 @@ const Followers = ({id}) => {
     <h2>Fixed Followers</h2>
       <p>Current user: ID{id}</p>
       {!!data && renderFollowers()}
-      {<button onClick={e => addFriend(e)}>Add friend 4</button>}
+      {<button onClick={e => addFriend(e)}>Add friend 1 (first last)</button>}
     </div>
   )
 }
