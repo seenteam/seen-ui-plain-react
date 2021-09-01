@@ -5,6 +5,7 @@ import SearchPage from '../../components/SearchPage/SearchPage.js'
 import SplashPage from '../../components/SplashPage/SplashPage.js'
 import Profile from '../../components/Profile/Profile.js'
 import WavesLayer from '../../components/WavesLayer/WavesLayer.js'
+import Followers from '../../components/Followers/Followers.js'
 import UserPosts from '../../components/UserPosts/UserPosts'
 import {Switch, Route} from 'react-router-dom'
 import { useQuery} from "@apollo/client";
@@ -77,6 +78,7 @@ const App = () => {
                 setNewPost={setNewPost}
               />
             </Route>
+            <Route exact path="/followers" component={Followers} />
       </Switch>
       <WavesLayer />
       <NewPost
