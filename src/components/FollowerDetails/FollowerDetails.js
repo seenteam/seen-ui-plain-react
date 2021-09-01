@@ -2,8 +2,9 @@ import { useQuery, useMutation } from "@apollo/client";
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom'
 import * as gql from '../../queries/queries'
+import './FollowerDetails.css'
 
-const FollowerDetails = ({id}) => {
+const FollowerDetails = ({id, followersVisible}) => {
   const { loading, error, data } = useQuery(gql.GET_USER_INFO(id))
 
 
@@ -15,10 +16,14 @@ const FollowerDetails = ({id}) => {
     </article>
   }
 
+  const setVisible = () => {
+    if (followersVisible) followersVisible(false)
+  }
+
   return (
-    <div>
+    <div className="user-card">
       {!!data && renderDetails()}
-      <Link to={`/users/${id}`}><button>View Profile</button></Link>
+      <Link to={`/users/${id}`}><button onClick={setVisible}>View Profile</button></Link>
     </div>
   )
 }
