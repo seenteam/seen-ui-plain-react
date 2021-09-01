@@ -28,6 +28,7 @@ const NewPost = ({visible, setVisibility, data, setPosts, userID }) => {
   const submitForm = e => {
     e.preventDefault()
     // setPosts([...posts, postData])
+    if (!postData) return
     setVisibility(false)
     let newPost = {
       content: postData,
@@ -51,7 +52,7 @@ const NewPost = ({visible, setVisibility, data, setPosts, userID }) => {
       <form onSubmit={submitForm}>
         <textarea
         type="text"
-        placeholder="Make a new post"
+        placeholder="Up to 420 characters"
         value={postData}
         onChange={e => setPostData(e.target.value)}
         />
