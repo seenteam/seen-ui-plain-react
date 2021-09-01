@@ -15,7 +15,7 @@ import {
 //Probably not going to work, first attempt at queries
 export const GET_USER_INFO = (id) => gql`
 query GetUserInfo {
-  userId(id: ${id}) {
+  user(id: ${id}) {
     id
     userName
     firstName
@@ -30,6 +30,16 @@ query GetUserInfo {
     followers{
       friendId
     }
+  }
+}
+`;
+
+export const GET_USER_NAME = (id) => gql`
+query GetUserInfo {
+  user(id: ${id}) {
+    userName
+    firstName
+    lastName
   }
 }
 `;
