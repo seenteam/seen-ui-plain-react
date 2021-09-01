@@ -34,6 +34,16 @@ query GetUserInfo {
 }
 `;
 
+export const GET_FOLLOWER_INFO = (id) => gql`
+query GetFollowerInfo {
+  usersFollowers(id: ${id}) {
+    userName
+    firstName
+    lastName
+	}
+}
+`;
+
 
 export const GET_USER_POSTS = (id) => gql`
 query GET_USER_POSTS {
