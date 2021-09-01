@@ -30,7 +30,7 @@ const UserProfile = ({user}) => {
     return (
       <div className={!followersVisible ? "followers-list inactive" : "followers-list"}>
         <button onClick={() => setFollowersVisible(false)}>Close</button>
-        {followers.map(follower => <FollowerDetails id={follower.friendId}/>)}
+        {followers.map(follower => <FollowerDetails id={follower.friendId} followersVisible={setFollowersVisible}/>)}
       </div>
     )
   }
@@ -44,10 +44,10 @@ const UserProfile = ({user}) => {
       <section className="profile-header">
         <div>
         <h2>{data.user.firstName} {data.user.lastName}</h2>
-        <h3>{data.user.userName}</h3>
+        <h3>Username: {data.user.userName}</h3>
         </div>
         <div className="followers-info">
-          <h4 onClick={revealFollowers}>{data.user.followers.length} Followers</h4>
+          <h4 onClick={revealFollowers}>{`${data.user.followers.length} Followers (click)`}</h4>
           {renderFollowers(data.user.followers)}
         </div>
       </section>
