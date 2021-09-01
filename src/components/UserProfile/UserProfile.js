@@ -3,7 +3,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import FollowerDetails from '../FollowerDetails/FollowerDetails'
 import * as gql from '../../queries/queries'
 
-const FollowerProfile = ({user}) => {
+const UserProfile = ({user}) => {
   const { loading, error, data } = useQuery(gql.GET_USER_INFO(user));
   const [profile, setProfile] = useState('')
   useEffect(() => {
@@ -53,4 +53,4 @@ const FollowerProfile = ({user}) => {
 
 }
 
-export default FollowerProfile
+export default UserProfile
