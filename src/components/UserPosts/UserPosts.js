@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from 'react'
-import { useMutation } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
+import Followers from '../Followers/Followers.js'
 import * as gql from '../../queries/queries';
 
-const UserPosts = ({data, loading, error, userID}) => {
+const UserPosts = ({userID}) => {
   const [query, setQuery] = useState(1)
   const [clicked, setClicked] = useState(false)
+  const { loading, error, data } = useQuery(gql.GET_USER_POSTS(userID));
   const [deletePost] = useMutation(gql.DELETE_POST, {
     refetchQueries: [{ query: gql.GET_USER_POSTS(userID) }],
   });
+
 
   useEffect(() => {
     setClicked(false)
@@ -50,6 +53,7 @@ const UserPosts = ({data, loading, error, userID}) => {
             disabled={clicked}
             onClick={() => removePost(post.id)}>Delete Post</button>
         </div>)}
+        <Followers id={4}/>
      </div>
    )
  };
