@@ -3,16 +3,39 @@
   bottom: 0;
   transition: .2s ease all;
   height: 100%;
-  background: rgba(255,255,255,0.85);
+  background: rgba(128,128,128,1);
   width: 100%;
+  color: white;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 textarea {
-  max-width: 320px;
-  width: 60%;
+  max-width: 60vw;
+  width: 60vw;
   height: 90px;
 }
 
 .hidden {
   height: 0;
+}
+
+.make-post button {
+  margin-top: 5%;
+  background: none;
+  color: white;
+  border: 1px solid white;
+  padding: 10px 30px;
+  cursor: pointer;
+  transition: .15s ease all;
+}
+
+.make-post button:hover {
+  background: white;
+  color: black;
+  border: 1px solid white;
+  /* padding: 10px; */
+  cursor: pointer;
 }
