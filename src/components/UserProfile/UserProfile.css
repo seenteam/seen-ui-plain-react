@@ -1,0 +1,20 @@
+.followers-list {
+  position: absolute;
+  z-index: 10;
+  background: lightgray;
+  padding: 0 10%;
+}
+
+.inactive {
+  display: none;
+  top: 0;
+}
+
+.followers-info {
+  display: flex;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-around;
+}
