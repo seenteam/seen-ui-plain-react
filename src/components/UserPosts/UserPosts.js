@@ -2,6 +2,9 @@ import React, {useState, useEffect} from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import Followers from '../Followers/Followers.js'
 import * as gql from '../../queries/queries';
+const dayjs = require('dayjs')
+const LocalizedFormat = require('dayjs/plugin/localizedFormat')
+dayjs.extend(LocalizedFormat)
 
 const UserPosts = ({userID}) => {
   const [query, setQuery] = useState(1)
@@ -43,6 +46,7 @@ const UserPosts = ({userID}) => {
        <h2>Feed</h2>
         {!!data && [...data.user.posts].sort((a, b) => parseInt(b.id) - parseInt(a.id)).map((post, index) => <div key={index}>
           <p>{post.content}</p>
+          <p>Created at {dayjs(post.createdAt).format('LLL')}</p>
           <button
             disabled={clicked}
             onClick={() => removePost(post.id)}>Delete Post</button>
