@@ -16,7 +16,7 @@ const UserPosts = ({data, loading, error, userID}) => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
   //
-  const check = () => {
+  const check = (data) => {
     console.log(data)
   }
 
@@ -44,7 +44,7 @@ const UserPosts = ({data, loading, error, userID}) => {
       onChange={handleSubmit}
      />
      </form>
-        {!!data && data.user.posts.map(post => <div>
+        {!!data && [...data.user.posts].sort((a, b) => parseInt(b.id) - parseInt(a.id)).map((post, index) => <div key={index}>
           <p>{post.content}</p>
           <button
             disabled={clicked}
