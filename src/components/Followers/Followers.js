@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useQuery, useMutation } from "@apollo/client";
 import { useState, useEffect } from "react";
 import FollowerDetails from '../FollowerDetails/FollowerDetails'
+import './Followers.css'
 
 import * as gql from '../../queries/queries'
 
@@ -25,8 +26,8 @@ const Followers = ({id}) => {
   }
 
   const renderFollowers = () => {
-    if (data) return data.user.followers.map(follower => {
-      return <div>
+    if (data) return data.user.followers.map((follower, index) => {
+      return <div key={index}>
         <FollowerDetails id={follower.friendId} />
       </div>
     })
