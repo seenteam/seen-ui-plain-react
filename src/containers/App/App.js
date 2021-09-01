@@ -20,7 +20,7 @@ import './App.css';
 const App = () => {
 
   const getRandomUser = () => {
-    let ids = [1, 2, 3, 4]
+    let ids = [1, 2, 3, 4, 5]
     return Math.floor(Math.random() * ids.length) + 1
   }
 
