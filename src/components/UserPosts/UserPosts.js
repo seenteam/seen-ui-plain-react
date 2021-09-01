@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import Followers from '../Followers/Followers.js'
 import * as gql from '../../queries/queries';
+import './UserPosts.css'
 const dayjs = require('dayjs')
 const LocalizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(LocalizedFormat)
@@ -42,7 +43,7 @@ const UserPosts = ({userID}) => {
   }
 
    return  (
-     <div>
+     <section className="posts-container">
        <h2>Feed</h2>
         {!!data && [...data.user.posts].sort((a, b) => parseInt(b.id) - parseInt(a.id)).map((post, index) => <div key={index}>
           <p>{post.content}</p>
@@ -51,7 +52,7 @@ const UserPosts = ({userID}) => {
             disabled={clicked}
             onClick={() => removePost(post.id)}>Delete Post</button>
         </div>)}
-     </div>
+     </section>
    )
  };
 
