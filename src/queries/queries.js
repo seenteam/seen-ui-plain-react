@@ -26,6 +26,7 @@ query GetUserInfo {
     posts{
       id
       content
+      createdAt
     }
     followers{
       friendId
@@ -75,6 +76,7 @@ query GET_USER_POSTS {
     posts {
       id
       content
+      createdAt
     }
   }
 }
