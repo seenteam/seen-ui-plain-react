@@ -8,7 +8,9 @@ import WavesLayer from '../../components/WavesLayer/WavesLayer.js'
 import UserPosts from '../../components/UserPosts/UserPosts'
 import {Switch, Route} from 'react-router-dom'
 import { useQuery} from "@apollo/client";
-import { GET_USER_POSTS } from '../../queries/queries';
+import * as gql from '../../queries/queries'
+
+// import { GET_USER_POSTS } from '../../queries/queries';
 // import { users, posts } from '../../utilities/mockData'
 
 import './App.css';
@@ -21,14 +23,14 @@ const App = () => {
   const [posts, setPosts] = useState([])
   const [query, setQuery] = useState('')
   const [userID, setUserID] = useState(2)
-  const { loading, error, data } = useQuery(GET_USER_POSTS(userID));
+  // const { loading, error, data } = useQuery(gql.GET_USER_POSTS(userID));
   // const [updated, setUpdated] = useState(false)
 
-  useEffect(() => {
-    let mounted = true;
-    if (mounted) setPosts(data)
-    return () => mounted = false;
-  }, [])
+  // useEffect(() => {
+  //   let mounted = true;
+  //   if (mounted) setPosts(data)
+  //   return () => mounted = false;
+  // }, [])
 
   const queryResults = (data) => {
     return userbase.filter(user => (user.username.includes(query)) || (user.first_name.includes(query)) || (user.last_name.includes(query)))
@@ -54,9 +56,6 @@ const App = () => {
                     setNewPost={setNewPost}
                     />
                   <UserPosts
-                    data={!posts ? data : posts}
-                    loading={loading}
-                    error={error}
                     userID={userID}
                   />
                   </section>
@@ -83,7 +82,6 @@ const App = () => {
       <NewPost
         visible={newPost}
         setVisibility={setNewPost}
-        data={!posts ? data : posts}
         setPosts={setPosts}
         userID={userID}
       />
