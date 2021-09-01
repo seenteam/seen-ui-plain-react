@@ -7,6 +7,7 @@ import Profile from '../../components/Profile/Profile.js'
 import WavesLayer from '../../components/WavesLayer/WavesLayer.js'
 import Followers from '../../components/Followers/Followers.js'
 import UserPosts from '../../components/UserPosts/UserPosts'
+import FollowerProfile from '../../components/FollowerProfile/FollowerProfile'
 import {Switch, Route} from 'react-router-dom'
 import { useQuery} from "@apollo/client";
 import * as gql from '../../queries/queries'
@@ -18,12 +19,17 @@ import './App.css';
 
 const App = () => {
 
+  const getRandomUser = () => {
+    let ids = [1, 2, 3, 4]
+    return Math.floor(Math.random() * ids.length) + 1
+  }
+
   const [userbase, setUsers] = useState([])
   const [current, setCurrent] = useState('')
   const [newPost, setNewPost] = useState(false)
   const [posts, setPosts] = useState([])
   const [query, setQuery] = useState('')
-  const [userID, setUserID] = useState(2)
+  const [userID, setUserID] = useState(getRandomUser())
   // const { loading, error, data } = useQuery(gql.GET_USER_POSTS(userID));
   // const [updated, setUpdated] = useState(false)
 
@@ -55,6 +61,7 @@ const App = () => {
                     <SplashPage
                     login={login}
                     setNewPost={setNewPost}
+                    id={userID}
                     />
                   <UserPosts
                     userID={userID}
@@ -78,7 +85,13 @@ const App = () => {
                 setNewPost={setNewPost}
               />
             </Route>
-            <Route exact path="/followers" component={Followers} />
+            <Route exact path="/followers" render={() => {
+                return <Followers id={userID} />
+              }}/>
+            <Route exact path="/users/:id" render={({match}) => {
+                  const { id } = match.params
+                  return <FollowerProfile user={id} />
+            }}/>
       </Switch>
       <WavesLayer />
       <NewPost
