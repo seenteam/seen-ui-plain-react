@@ -7,7 +7,7 @@ import Profile from '../../components/Profile/Profile.js'
 import WavesLayer from '../../components/WavesLayer/WavesLayer.js'
 import Followers from '../../components/Followers/Followers.js'
 import UserPosts from '../../components/UserPosts/UserPosts'
-import FollowerProfile from '../../components/FollowerProfile/FollowerProfile'
+import UserProfile from '../../components/UserProfile/UserProfile'
 import {Switch, Route} from 'react-router-dom'
 import { useQuery} from "@apollo/client";
 import * as gql from '../../queries/queries'
@@ -90,7 +90,7 @@ const App = () => {
               }}/>
             <Route exact path="/users/:id" render={({match}) => {
                   const { id } = match.params
-                  return <FollowerProfile user={id} />
+                  return <UserProfile user={id} />
             }}/>
       </Switch>
       <WavesLayer />
