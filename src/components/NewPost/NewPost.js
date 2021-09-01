@@ -46,9 +46,10 @@ const NewPost = ({visible, setVisibility, data, setPosts, userID }) => {
 
   return (
     <section className={!visible ? "make-post hidden" : "make-post"}>
+      <button onClick={() => setVisibility(false)}>Close</button>
       <h2>Make a new Post</h2>
       <form onSubmit={submitForm}>
-        <input
+        <textarea
         type="text"
         placeholder="Make a new post"
         value={postData}
