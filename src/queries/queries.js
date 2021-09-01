@@ -34,9 +34,21 @@ query GetUserInfo {
 }
 `;
 
+// Get Followers
 export const GET_FOLLOWER_INFO = (id) => gql`
 query GetFollowerInfo {
   usersFollowers(id: ${id}) {
+    userName
+    firstName
+    lastName
+	}
+}
+`;
+
+// Get Following
+export const GET_FOLLOWING_INFO = (id) => gql`
+query GetFollowingInfo {
+  following(id: ${id}) {
     userName
     firstName
     lastName
