@@ -1,6 +1,7 @@
 import { useQuery} from "@apollo/client";
 import React, { useEffect } from 'react';
 import './ProfileDetails.css'
+import * as gql from '../../queries/queries';
 import { GET_ALL_USERS, GET_ALL_USER_INFO } from '../../queries/queries';
 
 /*
@@ -20,7 +21,7 @@ users {
 */
 
 const ProfileDetails = () => {
-   const { loading, error, data } = useQuery(GET_ALL_USER_INFO);
+   const { loading, error, data } = useQuery(gql.GET_USER_INFO(1));
 
    if (loading) return <p>Loading...</p>;
    if (error) return <p>Error :(</p>;
