@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import './Profile.css'
 import ProfileDetails from '../ProfileDetails/ProfileDetails';
+import UpdateUserData from '../UpdateUserData/UpdateUserData';
 
 
 // Query Posts from DB that correspond to current User
@@ -34,6 +35,7 @@ const Profile = ({user, posts, setNewPost}) => {
       {!user ? <h2>Please log in</h2> : userProfile()}
       <ProfileDetails />
       <button onClick > Update Profile </button>
+      <UpdateUserData />
     </div>
   )
 }
