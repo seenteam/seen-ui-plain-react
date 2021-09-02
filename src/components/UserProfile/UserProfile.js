@@ -43,6 +43,7 @@ const UserProfile = ({user}) => {
     return <div>
       <section className="profile-header">
         <div>
+        {!!loading && <h4>Loading...</h4>}
         <h2>{data.user.firstName} {data.user.lastName}</h2>
         <h3>Username: {data.user.userName}</h3>
         </div>
