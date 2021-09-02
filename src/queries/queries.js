@@ -132,14 +132,14 @@ query {
 // Start mutation queries here
 
 export const CREATE_NEW_USER = gql`
-mutation {
+mutation createUser($userName: String!, $firstName: String!, $lastName: String!, $phoneNumber: String!, $email: String!, $birthday: String!) {
   createUser(input: {
-    userName: "reginacasias",
-    firstName: "Regina",
-    lastName: "Casias",
-    phoneNumber: "123-123-1234",
-    email: "reg@e.com",
-    birthday: "2013-07-16"
+    userName: $userName,
+    firstName: $firstName,
+    lastName: $lastName,
+    phoneNumber: $phoneNumber,
+    email: $email,
+    birthday: $birthday
   }) {
     user {
       id
