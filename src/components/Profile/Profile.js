@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './Profile.css'
-import ProfileDetails from '../ProfileDetails/ProfileDetails';
-import UpdateUserData from '../UpdateUserData/UpdateUserData';
+import ProfileDetails from './ProfileDetails/ProfileDetails';
+import UpdateUserData from './UpdateUserData/UpdateUserData';
 
 // Query Posts from DB that correspond to current User
 
