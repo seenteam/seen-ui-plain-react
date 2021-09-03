@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import SearchBar from '../SearchBar/SearchBar';
-import SearchResults from '../SearchResults/SearchResults';
-import DisplayUserData from '../DisplayUserData/DisplayUserData';
+import SearchBar from './SearchBar/SearchBar'
+import SearchResults from './SearchResults/SearchResults';
 import { useQuery } from '@apollo/client';
 import * as gql from '../../queries/queries'
 import './SearchPage.css'
