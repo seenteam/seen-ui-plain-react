@@ -3,10 +3,9 @@ import './Profile.css'
 import ProfileDetails from '../ProfileDetails/ProfileDetails';
 import UpdateUserData from '../UpdateUserData/UpdateUserData';
 
-
 // Query Posts from DB that correspond to current User
 
-const Profile = ({user, posts, setNewPost}) => {
+const Profile = ({user, posts, setNewPost, userID}) => {
 
   useEffect(() => {
     let mounted = true;
@@ -33,9 +32,9 @@ const Profile = ({user, posts, setNewPost}) => {
   return (
     <div className="user-profile">
       {!user ? <h2>Please log in</h2> : userProfile()}
-      <ProfileDetails />
+      <ProfileDetails userID={userID} />
       <button onClick > Update Profile </button>
-      <UpdateUserData />
+      <UpdateUserData userID={userID} />
     </div>
   )
 }
