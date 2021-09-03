@@ -14,6 +14,7 @@ const UpdateUserData = () => {
             console.log("Updating USER")
             e.preventDefault();
     
+            //PASS IN A DYNAMIC USER ID here!
             updateUser( 
                 {variables: {userId: 4, userName: userName.value, firstName:firstName.value, lastName: lastName.value,
                      phoneNumber: phoneNumber.value, email: email.value, birthday: birthday.value 
