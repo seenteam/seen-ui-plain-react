@@ -24,13 +24,8 @@ const App = () => {
   const [current, setCurrent] = useState('')
   const [newPost, setNewPost] = useState(false)
   const [posts, setPosts] = useState([])
-  //const [query, setQuery] = useState('')
   const [userID, setUserID] = useState(getRandomUser())
-
-  // const queryResults = (data) => {
-  //   return userbase.filter(user => (user.username.includes(query)) || (user.first_name.includes(query)) || (user.last_name.includes(query)))
-  // }
-
+  
   return (
     <div>
       <Switch>
