@@ -97,6 +97,8 @@ query GetPostsFromFriends {
 export const GET_ALL_USERS = gql`
 query {
   users {
+    id
+    userName
     firstName
     lastName
   }
