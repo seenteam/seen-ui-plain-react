@@ -2,7 +2,8 @@ import { useQuery} from "@apollo/client";
 import React, { useEffect } from 'react';
 import './ProfileDetails.css'
 import * as gql from '../../queries/queries';
-import { GET_ALL_USERS, GET_ALL_USER_INFO } from '../../queries/queries';
+
+//import { GET_ALL_USERS, GET_ALL_USER_INFO } from '../../queries/queries';
 
 /*
 users {
@@ -20,52 +21,51 @@ users {
 
 */
 
-const ProfileDetails = () => {
-   const { loading, error, data } = useQuery(gql.GET_USER_INFO(1));
+const ProfileDetails = ({userID}) => {
+   const { loading, error, data } = useQuery(gql.GET_USER_INFO(userID));
 
    if (loading) return <p>Loading...</p>;
    if (error) return <p>Error :(</p>;
 
     const check = () => {
-      console.log(data)
+      console.log({data})
     }
     check()
 
-   return data.users.map(({ 
-     firstName,
-     lastName,
-     id,
-     userName,
-     email,
-     phoneNumber,
-     birthday,
-     posts 
-     }) => (
-         
-     <div key={id}>
+    // firstName,
+    //  lastName,
+    //  id,
+    //  userName,
+    //  email,
+    //  phoneNumber,
+    //  birthday,
+    //  posts 
+
+   return (
+    <section>
 
        <p>
-         Username : {userName}
+         Username : {data.user.userName}
        </p>
 
        <p>
-         name : {firstName} {lastName}
+         name :  {data.user.firstName} {data.user.lastName}
+       </p>
+       
+       <p>
+        email: {data.user.email}
        </p>
 
        <p>
-        email: {email}
+        Phone Number : {data.user.phoneNumber}
        </p>
 
        <p>
-        Phone Number : {phoneNumber}
+        Birthday: {data.user.birthday}
        </p>
 
-       <p>
-        Birthday: {birthday}
-       </p>
-
-     </div>
-   ));
+     </section>
+   );
  };
 
 export default ProfileDetails;
