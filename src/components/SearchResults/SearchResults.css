@@ -1,3 +1,21 @@
 .results article:nth-of-type(even) {
   background: lightgray;
 }
+
+.results {
+  width: 100%;
+}
+
+/*
+FIX DEM A TAGS
+*/
+.user-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+
+.user-container a article *{
+  text-decoration: none;
+}
