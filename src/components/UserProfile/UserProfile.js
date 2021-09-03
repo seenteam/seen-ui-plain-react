@@ -63,8 +63,6 @@ const UserProfile = ({user}) => {
     </section>
   )
 
-
-
 }
 
 export default UserProfile
