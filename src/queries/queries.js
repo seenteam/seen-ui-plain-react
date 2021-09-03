@@ -2,15 +2,6 @@ import {
     gql
   } from "@apollo/client";
 
-// export const EXCHANGE_RATES = gql`
-//   query GetExchangeRates {
-//     rates(currency: "USD") {
-//       currency
-//       rate
-//     }
-//   }
-// `;
-
 
 //Probably not going to work, first attempt at queries
 export const GET_USER_INFO = (id) => gql`
@@ -130,7 +121,6 @@ query {
 `
 
 // Start mutation queries here
-
 export const CREATE_NEW_USER = gql`
 mutation createUser($userName: String!, $firstName: String!, $lastName: String!, $phoneNumber: String!, $email: String!, $birthday: String!) {
   createUser(input: {
@@ -145,6 +135,30 @@ mutation createUser($userName: String!, $firstName: String!, $lastName: String!,
       id
     }
   }
+}
+`
+
+export const UPDATE_USER = gql`
+mutation updateUser($userId: ID!, $userName: String!, $firstName: String!, $lastName: String!, $phoneNumber: String!, $email: String!, $birthday: String!) {
+  updateUser(input: {
+    userId: $userId,
+    userName: $userName,
+    firstName: $firstName,
+    lastName: $lastName,
+    phoneNumber: $phoneNumber,
+    email: $email,
+    birthday: $birthday
+  }) {
+    user {
+      id
+      userName 
+      firstName
+      lastName 
+      phoneNumber
+      email 
+      birthday
+	}
+ }
 }
 `
 
