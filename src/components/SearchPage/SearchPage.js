@@ -1,15 +1,37 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
-import './SearchPage.css'
-import ExchangeRates from '../DisplayUserData/DisplayUserData';
 import DisplayUserData from '../DisplayUserData/DisplayUserData';
+import { useQuery } from '@apollo/client';
+import * as gql from '../../queries/queries'
+import './SearchPage.css'
 
-const SearchPage = ({query, setQuery, queryResults, setNewPost}) => {
+const SearchPage = ({setNewPost}) => {
 
+    const [query, setQuery] = useState('')
     useEffect(() => {
         setNewPost(false);
       }, [])
+
+    const { loading, error, data } = useQuery(gql.GET_ALL_USERS);
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error :(</p>;
+
+        //(user.userName.includes(query)) || (user.firstName.includes(query)) || (user.lastName.includes(query))
+    const queryResults = () => {
+        if(data) {
+             return data.users.filter(user => {
+                let {firstName, lastName, userName} = user;
+                let lower = query.toLowerCase();
+
+                return ((userName.toLowerCase().includes(lower)) ||
+                (firstName.toLowerCase().includes(lower)) ||
+                (lastName.toLowerCase().includes(lower)) ||
+                (`${firstName} ${lastName}`.toLowerCase().includes(lower)));
+             })
+        }
+      }
 
     return (
         <section className="search-page-container">
@@ -18,8 +40,7 @@ const SearchPage = ({query, setQuery, queryResults, setNewPost}) => {
                 query={query}
                 set={setQuery} 
             />
-            <SearchResults results={!query ? null : queryResults(query)} />
-            <DisplayUserData />
+            <SearchResults results={!query ? null : queryResults()} />
         </section>
     )
 }
