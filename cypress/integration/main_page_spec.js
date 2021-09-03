@@ -5,7 +5,7 @@ describe("Main page spec", () => {
     })
 
     it('Should contain the string "Seen"',  () => {
-        cy.get('main').should('contain', 'Seen')
+        cy.contains('Seen')
 
     })
 
