@@ -5,7 +5,7 @@ import React from "react";
 
 
 
-const UpdateUserData = () => {
+const UpdateUserData = ({userID}) => {
     let userName, firstName, lastName, phoneNumber, email, birthday;
     //update create NEW USER
     const [updateUser] =  useMutation(gql.UPDATE_USER);
@@ -16,7 +16,7 @@ const UpdateUserData = () => {
     
             //PASS IN A DYNAMIC USER ID here!
             updateUser( 
-                {variables: {userId: 4, userName: userName.value, firstName:firstName.value, lastName: lastName.value,
+                {variables: {userId: userID, userName: userName.value, firstName:firstName.value, lastName: lastName.value,
                      phoneNumber: phoneNumber.value, email: email.value, birthday: birthday.value 
                 }})
     }
