@@ -1,7 +1,5 @@
-import { Link } from 'react-router-dom'
 import { useQuery, useMutation } from "@apollo/client";
-import { useState, useEffect } from "react";
-import FollowerDetails from '../FollowerDetails/FollowerDetails'
+import FollowerDetails from './FollowerDetails/FollowerDetails'
 import './Followers.css'
 
 import * as gql from '../../queries/queries'
@@ -12,14 +10,6 @@ const Followers = ({id}) => {
   const [createFollower] = useMutation(gql.CREATE_FOLLOWER, {
     refetchQueries: [{ query: gql.GET_USER_INFO(id) }],
   });
-
-  const [user, setUser] = useState('')
-
-  // useEffect(() => {
-  //   let mounted = true;
-  //   if (mounted && data) setUser({followers: data.usersFollowers, id})
-  //   return () => mounted = false;
-  // }, [])
 
   const check = () => {
     if (data) console.log(data)

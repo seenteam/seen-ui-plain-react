@@ -1,7 +1,6 @@
-import { useQuery, useMutation } from "@apollo/client";
-import { useState, useEffect } from "react";
+import { useQuery } from "@apollo/client";
 import { Link } from 'react-router-dom'
-import * as gql from '../../queries/queries'
+import * as gql from '../../../queries/queries'
 import './FollowerDetails.css'
 
 const FollowerDetails = ({id, followersVisible}) => {

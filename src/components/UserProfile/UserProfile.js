@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { useQuery, useMutation } from "@apollo/client";
-import FollowersList from '../FollowersList/FollowersList'
+import FollowersList from './FollowersList/FollowersList'
 import Post from '../Post/Post.js'
 import * as gql from '../../queries/queries'
 import './UserProfile.css'
