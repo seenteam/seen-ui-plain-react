@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import NavBar from '../../components/NavBar/NavBar.js'
 import NewPost from '../../components/NewPost/NewPost.js'
 import SearchPage from '../../components/SearchPage/SearchPage.js'
@@ -9,11 +9,7 @@ import Followers from '../../components/Followers/Followers.js'
 import UserPosts from '../../components/UserPosts/UserPosts'
 import UserProfile from '../../components/UserProfile/UserProfile'
 import {Switch, Route} from 'react-router-dom'
-import { useQuery} from "@apollo/client";
-import * as gql from '../../queries/queries'
 
-// import { GET_USER_POSTS } from '../../queries/queries';
-// import { users, posts } from '../../utilities/mockData'
 
 import './App.css';
 
@@ -28,30 +24,12 @@ const App = () => {
   const [current, setCurrent] = useState('')
   const [newPost, setNewPost] = useState(false)
   const [posts, setPosts] = useState([])
-  const [query, setQuery] = useState('')
+  //const [query, setQuery] = useState('')
   const [userID, setUserID] = useState(getRandomUser())
-  // const { loading, error, data } = useQuery(gql.GET_USER_POSTS(userID));
-  // const [updated, setUpdated] = useState(false)
 
-  // useEffect(() => {
-  //   let mounted = true;
-  //   if (mounted) setPosts(data)
-  //   return () => mounted = false;
-  // }, [])
-
-  const queryResults = (data) => {
-    return userbase.filter(user => (user.username.includes(query)) || (user.first_name.includes(query)) || (user.last_name.includes(query)))
-  }
-
-  const login = () => {
-    setCurrent(userbase[0])
-    return () => console.log(current)
-  }
-
-  // const updatePosts = () => {
-  //   setUpdated(true)
+  // const queryResults = (data) => {
+  //   return userbase.filter(user => (user.username.includes(query)) || (user.first_name.includes(query)) || (user.last_name.includes(query)))
   // }
-
 
   return (
     <div>
@@ -59,7 +37,6 @@ const App = () => {
         <Route exact path="/" render={() => {
           return <section>
                     <SplashPage
-                    login={login}
                     setNewPost={setNewPost}
                     id={userID}
                     />
@@ -80,9 +57,6 @@ const App = () => {
             />
             <Route exact path="/search-page">
               <SearchPage
-                query={query}
-                setQuery={setQuery}
-                queryResults={queryResults}
                 setNewPost={setNewPost}
               />
             </Route>

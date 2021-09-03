@@ -4,7 +4,7 @@ import Header from '../Header/Header.js'
 import { useQuery } from '@apollo/client'
 import * as gql from '../../queries/queries'
 
-const SplashPage = ({login, setNewPost, id}) => {
+const SplashPage = ({setNewPost, id}) => {
 
   const { data, error } = useQuery(gql.GET_USER_NAME(id))
   useEffect(() => {
