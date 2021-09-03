@@ -9,7 +9,7 @@ import Followers from '../../components/Followers/Followers.js'
 import UserPosts from '../../components/UserPosts/UserPosts'
 import UserProfile from '../../components/UserProfile/UserProfile'
 import {Switch, Route} from 'react-router-dom'
-
+import Header from '../../components/Header/Header.js'
 
 import './App.css';
 
@@ -25,16 +25,16 @@ const App = () => {
   const [newPost, setNewPost] = useState(false)
   const [posts, setPosts] = useState([])
   const [userID, setUserID] = useState(getRandomUser())
-  
+
   return (
     <div>
       <Switch>
         <Route exact path="/" render={() => {
           return <section>
-                    <SplashPage
-                    setNewPost={setNewPost}
-                    id={userID}
-                    />
+                  <Header 
+                  setNewPost={setNewPost}
+                  id={userID}
+                  />
                   <UserPosts
                     userID={userID}
                   />
