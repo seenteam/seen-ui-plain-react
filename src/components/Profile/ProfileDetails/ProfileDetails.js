@@ -1,7 +1,7 @@
 import { useQuery} from "@apollo/client";
 import React from 'react';
 import './ProfileDetails.css'
-import * as gql from '../../queries/queries';
+import * as gql from '../../../queries/queries';
 
 const ProfileDetails = ({userID}) => {
    const { loading, error, data } = useQuery(gql.GET_USER_INFO(userID));

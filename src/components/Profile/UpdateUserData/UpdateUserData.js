@@ -1,5 +1,5 @@
 import { useMutation, useSubscription } from "@apollo/client";
-import * as gql from '../../queries/queries';
+import * as gql from '../../../queries/queries';
 import React from "react";
 
 const UpdateUserData = ({userID}) => {
