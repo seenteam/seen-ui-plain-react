@@ -1,21 +1,21 @@
 import { useMutation, useSubscription } from "@apollo/client";
-import gql from "graphql-tag";
+import * as gql from '../../queries/queries';
 import React from "react";
-import { CREATE_NEW_USER } from "../../queries/queries";
+//import { CREATE_NEW_USER } from "../../queries/queries";
 
 
 
 const UpdateUserData = () => {
     let userName, firstName, lastName, phoneNumber, email, birthday;
     //update create NEW USER
-    const [updateUser] =  useMutation(gql.CREATE_NEW_USER);
+    const [updateUser] =  useMutation(gql.UPDATE_USER);
     
     const updatingUser = (e) => {
             console.log("Updating USER")
             e.preventDefault();
     
             updateUser( 
-                {variables: {userName: userName.value, firstName:firstName.value, lastName: lastName.value,
+                {variables: {userId: 4, userName: userName.value, firstName:firstName.value, lastName: lastName.value,
                      phoneNumber: phoneNumber.value, email: email.value, birthday: birthday.value 
                 }})
     }
