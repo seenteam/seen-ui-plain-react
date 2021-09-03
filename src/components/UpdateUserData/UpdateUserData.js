@@ -1,9 +1,6 @@
 import { useMutation, useSubscription } from "@apollo/client";
 import * as gql from '../../queries/queries';
 import React from "react";
-//import { CREATE_NEW_USER } from "../../queries/queries";
-
-
 
 const UpdateUserData = ({userID}) => {
     let userName, firstName, lastName, phoneNumber, email, birthday;
