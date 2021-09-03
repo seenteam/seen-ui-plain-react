@@ -72,6 +72,7 @@ const App = () => {
             <Route exact path="/profile" render={() => {
                 return <Profile
                         user={!current ? null : current}
+                        userID={userID}
                         posts={posts}
                         setNewPost={setNewPost}
                       />
