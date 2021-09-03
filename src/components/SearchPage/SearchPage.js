@@ -17,7 +17,6 @@ const SearchPage = ({setNewPost}) => {
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
 
-        //(user.userName.includes(query)) || (user.firstName.includes(query)) || (user.lastName.includes(query))
     const queryResults = () => {
         if(data) {
              return data.users.filter(user => {
