@@ -1,4 +1,4 @@
-import FollowerDetails from '../FollowerDetails/FollowerDetails'
+import FollowerDetails from '../../Followers/FollowerDetails/FollowerDetails'
 import './FollowersList.css'
 
 const FollowersList = ({ followers, visible, setVisible}) => {
