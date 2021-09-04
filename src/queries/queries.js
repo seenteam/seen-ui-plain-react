@@ -227,7 +227,7 @@ mutation deletePost($postId: ID!){
 
 export const CREATE_LIKE = gql`
 mutation createLike($userId: ID!, $postId: ID!){
-  createFollower(input: {
+  createLikeinput: {
     userId: $userId
     postId: $postId
   }) {
@@ -241,6 +241,15 @@ mutation createLike($userId: ID!, $postId: ID!){
       id
       content
     }
+  }
+}
+`
+
+
+export const DELETE_LIKE = gql`
+mutation deleteLike($likeId: ID!){
+  deleteLiket(input: {likeId: $likeId}) {
+    message
   }
 }
 `
