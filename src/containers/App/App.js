@@ -9,6 +9,7 @@ import UserPosts from '../../components/UserPosts/UserPosts'
 import UserProfile from '../../components/UserProfile/UserProfile'
 import {Switch, Route} from 'react-router-dom'
 import Header from '../../components/Header/Header.js'
+import UserContext from '../../components/UserProfile/UserContext.js'
 
 import './App.css';
 
@@ -26,54 +27,51 @@ const App = () => {
   const [userID, setUserID] = useState(getRandomUser())
 
   return (
-    <div>
-      <Switch>
-        <Route exact path="/" render={() => {
-          return <section>
-                  <Header 
-                  setNewPost={setNewPost}
-                  id={userID}
-                  />
-                  <UserPosts
-                    userID={userID}
-                  />
-                  </section>
+    <UserContext.Provider value={userID}>
+      <div>
+        <Switch>
+          <Route exact path="/" render={() => {
+            return <section>
+                    <Header 
+                      setNewPost={setNewPost}
+                    />
+                    <UserPosts/>
+                    </section>
+                  }}
+                />
+              <Route exact path="/profile" render={() => {
+                  return <Profile
+                          user={!current ? null : current}
+                          posts={posts}
+                          setNewPost={setNewPost}
+                        />
                 }}
               />
-            <Route exact path="/profile" render={() => {
-                return <Profile
-                        user={!current ? null : current}
-                        userID={userID}
-                        posts={posts}
-                        setNewPost={setNewPost}
-                      />
-              }}
-            />
-            <Route exact path="/search-page">
-              <SearchPage
-                setNewPost={setNewPost}
-              />
-            </Route>
-            <Route exact path="/followers" render={() => {
-                return <Followers id={userID} />
+              <Route exact path="/search-page">
+                <SearchPage
+                  setNewPost={setNewPost}
+                />
+              </Route>
+              <Route exact path="/followers" render={() => {
+                  return <Followers />
+                }}/>
+              <Route exact path="/users/:id" render={({match}) => {
+                    const { id } = match.params
+                    return <UserProfile user={id} />
               }}/>
-            <Route exact path="/users/:id" render={({match}) => {
-                  const { id } = match.params
-                  return <UserProfile user={id} />
-            }}/>
-      </Switch>
-      <WavesLayer />
-      <NewPost
-        visible={newPost}
-        setVisibility={setNewPost}
-        setPosts={setPosts}
-        userID={userID}
-      />
-      <NavBar
-        newPost={newPost}
-        setNewPost={setNewPost}
-      />
-    </div>
+        </Switch>
+        <WavesLayer />
+        <NewPost
+          visible={newPost}
+          setVisibility={setNewPost}
+          setPosts={setPosts}
+        />
+        <NavBar
+          newPost={newPost}
+          setNewPost={setNewPost}
+        />
+      </div>
+    </UserContext.Provider>
   );
 }
 
