@@ -1,10 +1,12 @@
 import { useMutation, useSubscription } from "@apollo/client";
 import * as gql from '../../../queries/queries';
-import React from "react";
+import React, {useContext} from "react";
+import UserContext from "../../UserProfile/UserContext";
 
-const UpdateUserData = ({userID}) => {
+const UpdateUserData = () => {
     let userName, firstName, lastName, phoneNumber, email, birthday;
     //update create NEW USER
+    const value = useContext(UserContext);
     const [updateUser] =  useMutation(gql.UPDATE_USER);
     
     const updatingUser = (e) => {
@@ -13,7 +15,7 @@ const UpdateUserData = ({userID}) => {
     
             //PASS IN A DYNAMIC USER ID here!
             updateUser( 
-                {variables: {userId: userID, userName: userName.value, firstName:firstName.value, lastName: lastName.value,
+                {variables: {userId: value, userName: userName.value, firstName:firstName.value, lastName: lastName.value,
                      phoneNumber: phoneNumber.value, email: email.value, birthday: birthday.value 
                 }})
     }
