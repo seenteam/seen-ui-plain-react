@@ -3,6 +3,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import FollowersList from './FollowersList/FollowersList'
 import Post from '../Post/Post.js'
 import UserContext from "../UserProfile/UserContext";
+import Loading from '../Loading/Loading.js'
 import * as gql from '../../queries/queries'
 import './UserProfile.css'
 
@@ -22,17 +23,17 @@ const UserProfile = ({user}) => {
   });
 
   if (GetFollowingInfo.loading) {
-    console.log('Loading following data...')
+    return <Loading loading={GetFollowingInfo.loading} />
   }
   else {
     console.log('Current user following data', GetFollowingInfo.data)
   }
 
-  useEffect(() => {
-    let mounted = true;
-    if (mounted && GetUserInfo.data) check()
-    return () => mounted = false;
-  })
+  // useEffect(() => {
+  //   let mounted = true;
+  //   if (mounted && GetUserInfo.data) check()
+  //   return () => mounted = false;
+  // })
 
   const check = () => {
     console.log(GetUserInfo.data)

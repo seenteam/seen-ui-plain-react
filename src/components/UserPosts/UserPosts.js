@@ -5,15 +5,16 @@ import Post from '../Post/Post.js'
 import * as gql from '../../queries/queries';
 import './UserPosts.css'
 import UserContext from '../UserProfile/UserContext.js';
+import Loading from '../Loading/Loading.js'
 
 // const dayjs = require('dayjs')
 // const LocalizedFormat = require('dayjs/plugin/localizedFormat')
 // dayjs.extend(LocalizedFormat)
 
 const UserPosts = () => {
-  
+
   const value = useContext(UserContext);
-  
+
   const [query, setQuery] = useState(1)
   const [clicked, setClicked] = useState(false)
   const { loading, error, data } = useQuery(gql.GET_USER_POSTS(value));
@@ -21,12 +22,11 @@ const UserPosts = () => {
     refetchQueries: [{ query: gql.GET_USER_POSTS(value) }],
   });
 
-
   useEffect(() => {
     setClicked(false)
   }, [data])
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading loading={loading} />;
   if (error) return <p>Error :(</p>;
   //
   const check = (data) => {
