@@ -219,3 +219,28 @@ mutation deletePost($postId: ID!){
   }
 }
 `
+
+
+
+
+
+
+export const CREATE_LIKE = gql`
+mutation createLike($userId: ID!, $postId: ID!){
+  createFollower(input: {
+    userId: $userId
+    postId: $postId
+  }) {
+    like {
+      id
+    }
+    user {
+      id
+    }
+    post {
+      id
+      content
+    }
+  }
+}
+`
