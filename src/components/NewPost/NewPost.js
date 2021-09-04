@@ -1,12 +1,14 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import { useMutation } from "@apollo/client";
 import * as gql from '../../queries/queries';
 
 import './NewPost.css'
+import UserContext from '../UserProfile/UserContext';
 
-const NewPost = ({visible, setVisibility, data, setPosts, userID }) => {
+const NewPost = ({visible, setVisibility, data, setPosts }) => {
 
   // const [fetched, setFetched] = useState('')
+  const value = useContext(UserContext);
   const [postData, setPostData] = useState('')
   const [answer, setAnswer] = useState('')
   const [isDisabled, setDisabled] = useState(true);
@@ -15,7 +17,7 @@ const NewPost = ({visible, setVisibility, data, setPosts, userID }) => {
   const [charsLeft, setCharsLeft] = useState(maxLength);
   // const [posts, setPosts] = useState([])
   const [createPost] = useMutation(gql.CREATE_POST, {
-    refetchQueries: [{ query: gql.GET_USER_POSTS(userID) }],
+    refetchQueries: [{ query: gql.GET_USER_POSTS(value) }],
   });
 
   useEffect(() => {
@@ -41,12 +43,12 @@ const NewPost = ({visible, setVisibility, data, setPosts, userID }) => {
     setVisibility(false)
     let newPost = {
       content: postData,
-      userId: userID
+      userId: value
     }
     createPost({
       variables: {
         content: postData,
-        userId: userID
+        userId: value
       },
     })
     // setPosts([...data, newPost])
