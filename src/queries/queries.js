@@ -231,35 +231,31 @@ mutation deletePost($postId: ID!){
 `
 
 
-
-
-
-
-export const CREATE_LIKE = gql`
-mutation createLike($userId: ID!, $postId: ID!){
-  createLikeinput: {
-    userId: $userId
-    postId: $postId
-  }) {
-    like {
-      id
-    }
-    user {
-      id
-    }
-    post {
-      id
-      content
-    }
-  }
-}
-`
-
-
-export const DELETE_LIKE = gql`
-mutation deleteLike($likeId: ID!){
-  deleteLiket(input: {likeId: $likeId}) {
-    message
-  }
-}
-`
+// export const CREATE_LIKE = gql`
+// mutation createLike($userId: ID!, $postId: ID!){
+//   createLike(input: {
+//     userId: $userId
+//     postId: $postId
+//   }) {
+//     like {
+//       id
+//     }
+//     user {
+//       id
+//     }
+//     post {
+//       id
+//       content
+//     }
+//   }
+// }
+// `
+//
+//
+// export const DELETE_LIKE = gql`
+// mutation deleteLike($likeId: ID!){
+//   deleteLike(input: {likeId: $likeId}) {
+//     message
+//   }
+// }
+// `
