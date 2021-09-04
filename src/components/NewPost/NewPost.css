@@ -39,3 +39,28 @@ textarea {
   /* padding: 10px; */
   cursor: pointer;
 }
+
+.submit-btn {
+  opacity: 1;
+  /* width: 70px;
+  height: 30px; */
+  place-self: flex-end;
+  /* margin: 10px 0px 10px 0px; */
+  transition: 1s;
+}
+
+.submit-btn:disabled {
+  cursor: auto;
+  opacity: 0;
+  transition: 900ms;
+  transform: scale(.5)
+}
+
+.make-post .submit-btn:hover {
+  background: rgb(188, 245, 188);
+}
+
+.char-counter {
+  display: flex;
+  justify-content: flex-end;
+}
