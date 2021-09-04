@@ -5,8 +5,8 @@ import UpdateUserData from './UpdateUserData/UpdateUserData';
 
 // Query Posts from DB that correspond to current User
 
-const Profile = ({user, posts, setNewPost, userID}) => {
-
+const Profile = ({user, posts, setNewPost}) => {
+  
   useEffect(() => {
     let mounted = true;
     if (mounted) setNewPost(false)
@@ -32,9 +32,9 @@ const Profile = ({user, posts, setNewPost, userID}) => {
   return (
     <div className="user-profile">
       {!user ? <h2>Please log in</h2> : userProfile()}
-      <ProfileDetails userID={userID} />
+      <ProfileDetails />
       <button onClick > Update Profile </button>
-      <UpdateUserData userID={userID} />
+      <UpdateUserData />
     </div>
   )
 }
