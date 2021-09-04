@@ -1,4 +1,11 @@
 import { Link } from 'react-router-dom'
+import {
+  faPlusCircle
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { library } from '@fortawesome/fontawesome-svg-core';
+// import { fab } from '@fortawesome/free-brands-svg-icons'
+// import { faBuromobelexperte } from '@fortawesome/free-solid-svg-icons'
 import './NavBar.css'
 
 const NavBar = ({newPost, setNewPost}) => {
@@ -14,11 +21,11 @@ const NavBar = ({newPost, setNewPost}) => {
   return (
     <footer>
       <ul>
-        <Link exact to="/"><li><img src="https://img.icons8.com/wired/64/000000/activity-feed-2.png"/></li></Link>
-        <Link exact to="/search-page"><li><img src="https://img.icons8.com/pastel-glyph/64/000000/search--v2.png"/></li></Link>
-        <li className={(!newPost) ? 'new-post' : 'yellow'}><button onClick={togglePost} onKeyPress={handleKeypress}><img src="https://img.icons8.com/wired/64/000000/plus.png"/></button></li>
+        <Link exact to="/"><li><FontAwesomeIcon icon="home" /></li></Link>
+        <Link exact to="/search-page"><li><FontAwesomeIcon icon="search" /></li></Link>
+        <li className={(!newPost) ? 'new-post' : 'yellow'}><button onClick={togglePost} onKeyPress={handleKeypress}><FontAwesomeIcon icon="plus" /></button></li>
         <Link exact to="/followers"><li><img src="https://img.icons8.com/dotty/80/000000/sine.png"/></li></Link>
-        <Link exact to="/profile"><li><img src="https://img.icons8.com/wired/64/000000/circled-user.png"/></li></Link>
+        <Link exact to="/profile"><li><FontAwesomeIcon icon={['far', 'user-circle']} /></li></Link>
       </ul>
     </footer>
   )
