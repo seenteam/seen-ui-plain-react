@@ -185,14 +185,15 @@ mutation createFollower($userId: ID!, $friendId: ID!){
 `
 
 export const DELETE_FOLLOWER = gql`
-mutation deleteFollower($connectionId: ID!){
-  deleteFollower(input: {connectionId: $connectionId}) {
+mutation deleteFollower($userId: ID!, $followerId: ID!){
+  deleteFollower(input: {
+    userId: $userId,
+    followerId: $followerId
+  }) {
     message
   }
 }
 `
-
-
 
 export const CREATE_POST = gql`
 mutation createPost($content: String!, $userId: ID!){
