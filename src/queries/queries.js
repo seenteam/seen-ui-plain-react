@@ -153,11 +153,11 @@ mutation updateUser($userId: ID!, $userName: String!, $firstName: String!, $last
   }) {
     user {
       id
-      userName 
+      userName
       firstName
-      lastName 
+      lastName
       phoneNumber
-      email 
+      email
       birthday
 	}
  }
@@ -178,6 +178,8 @@ mutation createFollower($userId: ID!, $friendId: ID!){
       id
       userName
     }
+    errors
+    followerId
   }
 }
 `
