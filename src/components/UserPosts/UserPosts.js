@@ -1,19 +1,24 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import Followers from '../Followers/Followers.js'
 import Post from '../Post/Post.js'
 import * as gql from '../../queries/queries';
 import './UserPosts.css'
+import UserContext from '../UserProfile/UserContext.js';
+
 // const dayjs = require('dayjs')
 // const LocalizedFormat = require('dayjs/plugin/localizedFormat')
 // dayjs.extend(LocalizedFormat)
 
-const UserPosts = ({userID}) => {
+const UserPosts = () => {
+  
+  const value = useContext(UserContext);
+  
   const [query, setQuery] = useState(1)
   const [clicked, setClicked] = useState(false)
-  const { loading, error, data } = useQuery(gql.GET_USER_POSTS(userID));
+  const { loading, error, data } = useQuery(gql.GET_USER_POSTS(value));
   const [deletePost] = useMutation(gql.DELETE_POST, {
-    refetchQueries: [{ query: gql.GET_USER_POSTS(userID) }],
+    refetchQueries: [{ query: gql.GET_USER_POSTS(value) }],
   });
 
 
