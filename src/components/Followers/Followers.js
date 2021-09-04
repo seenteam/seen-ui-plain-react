@@ -1,14 +1,17 @@
 import { useQuery, useMutation } from "@apollo/client";
+import React, {useContext} from 'react'
 import FollowerDetails from './FollowerDetails/FollowerDetails'
 import './Followers.css'
 
 import * as gql from '../../queries/queries'
+import UserContext from "../UserProfile/UserContext";
 
-const Followers = ({id}) => {
+const Followers = () => {
+  const value = useContext(UserContext)
 
-  const { loading, error, data } = useQuery(gql.GET_USER_INFO(id))
+  const { loading, error, data } = useQuery(gql.GET_USER_INFO(value))
   const [createFollower] = useMutation(gql.CREATE_FOLLOWER, {
-    refetchQueries: [{ query: gql.GET_USER_INFO(id) }],
+    refetchQueries: [{ query: gql.GET_USER_INFO(value) }],
   });
 
   const check = () => {
@@ -25,12 +28,12 @@ const Followers = ({id}) => {
 
   const addFriend = (e) => {
     let idToAdd = 1
-    if (idToAdd === id || data.user.followers.find(follower => follower.friendId === idToAdd)) return e.target.innerText = 'Cant add!'
+    if (idToAdd === value || data.user.followers.find(follower => follower.friendId === idToAdd)) return e.target.innerText = 'Cant add!'
     e.target.setAttribute('disabled', true)
     check()
     createFollower({
       variables: {
-        'userId': id,
+        'userId': value,
         'friendId': idToAdd
       },
     })
@@ -39,7 +42,7 @@ const Followers = ({id}) => {
   return (
     <div>
     <h2>Fixed Followers</h2>
-      <p>Current user: ID{id}</p>
+      <p>Current user: ID{value}</p>
       {!!data && renderFollowers()}
       {<button onClick={e => addFriend(e)}>Add friend 1 (first last)</button>}
     </div>
