@@ -1,22 +1,41 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import FollowersList from './FollowersList/FollowersList'
 import Post from '../Post/Post.js'
+import UserContext from "../UserProfile/UserContext";
 import * as gql from '../../queries/queries'
 import './UserProfile.css'
 
 const UserProfile = ({user}) => {
-  const { loading, error, data } = useQuery(gql.GET_USER_INFO(user));
+  const value = useContext(UserContext)
+  const GetFollowingInfo = useQuery(gql.GET_FOLLOWING_INFO(value));
+  const GetUserInfo = useQuery(gql.GET_USER_INFO(user));
   const [profile, setProfile] = useState('')
   const [followersVisible, setFollowersVisible] = useState(false)
+
+  const [followerUser] = useMutation(gql.CREATE_FOLLOWER, {
+    refetchQueries: [{ query: gql.GET_FOLLOWING_INFO(value) }, { query: gql.GET_USER_INFO(user) }],
+  });
+
+  const [unFollowUser] = useMutation(gql.DELETE_FOLLOWER, {
+    refetchQueries: [{ query: gql.GET_FOLLOWING_INFO(value) }, { query: gql.GET_USER_INFO(user) }],
+  });
+
+  if (GetFollowingInfo.loading) {
+    console.log('Loading following data...')
+  }
+  else {
+    console.log('Current user following data', GetFollowingInfo.data)
+  }
+
   useEffect(() => {
     let mounted = true;
-    if (mounted && data) check()
+    if (mounted && GetUserInfo.data) check()
     return () => mounted = false;
   })
 
   const check = () => {
-    console.log(data)
+    console.log(GetUserInfo.data)
   }
 
   const renderPosts = (posts) => {
@@ -50,31 +69,64 @@ const UserProfile = ({user}) => {
     (!followersVisible) ? setFollowersVisible(true) : setFollowersVisible(false)
   }
 
+  const renderTest = () => {
+    return (
+      <div>{!!GetUserInfo.data && !!GetFollowingInfo.data && renderProfile()}</div>
+    )
+  }
+
+  const checkFollowing = () => {
+    let found = GetFollowingInfo.data.following.find(user => user.id === GetUserInfo.data.user.id)
+    console.log('Results', found)
+    if (found) {
+      return true
+    }
+    return false
+  }
+
+  const renderFollowBtn = () => {
+    return <button onClick={follow}>Follow</button>
+  }
+
+  const renderUnfollowBtn = () => {
+    return <button onClick={unfollow}>Unfollow</button>
+  }
+
+  const follow = () => {
+
+  }
+
+  const unfollow = () => {
+    // unFollowUser({
+    //   variables: {
+    //     'postId': postId
+    //   },
+  }
+
   const renderProfile = () => {
     return <div>
       <section className="profile-header">
         <div>
-        {!!loading && <h4>Loading...</h4>}
-        <h2>{data.user.firstName} {data.user.lastName}</h2>
-        <h3>Username: {data.user.userName}</h3>
+        <h2>{GetUserInfo.data.user.firstName} {GetUserInfo.data.user.lastName}</h2>
+        <h3>Username: {GetUserInfo.data.user.userName}</h3>
+        {!checkFollowing() ? renderFollowBtn() : renderUnfollowBtn()}
         </div>
         <div className="followers-info">
-          <h4 onClick={toggleList}>{`${data.user.followers.length} Followers (click)`}</h4>
-          <button>Follow</button>
-          {renderFollowers(data.user.followers)}
+          <h4 onClick={toggleList}>{`${GetUserInfo.data.user.followers.length} Followers (click)`}</h4>
+          {renderFollowers(GetUserInfo.data.user.followers)}
         </div>
       </section>
       <div className="user-profile-navigation">
         <button>Posts</button>
         <button>About</button>
       </div>
-      {renderPosts(data.user.posts)}
+      {renderPosts(GetUserInfo.data.user.posts)}
     </div>
   }
 
   return (
     <section>
-      {!!data && renderProfile()}
+      {renderTest()}
     </section>
   )
 
