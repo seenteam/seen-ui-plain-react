@@ -8,10 +8,19 @@ const NewPost = ({visible, setVisibility, data, setPosts, userID }) => {
 
   // const [fetched, setFetched] = useState('')
   const [postData, setPostData] = useState('')
+  const [answer, setAnswer] = useState('')
+  const [isDisabled, setDisabled] = useState(true);
+  const [isAnswered, setIsAnswered] = useState(false);
+  const maxLength = 420;
+  const [charsLeft, setCharsLeft] = useState(maxLength);
   // const [posts, setPosts] = useState([])
   const [createPost] = useMutation(gql.CREATE_POST, {
     refetchQueries: [{ query: gql.GET_USER_POSTS(userID) }],
   });
+
+  useEffect(() => {
+    setCharsLeft(maxLength - answer.length);
+    }, [answer]);
   // const check = (post) => {
   //   console.log('DATA BEING PASSED', data, 'NEW DATA', post)
   //   console.log('WHAT I WANT', [...fetched, post])
@@ -43,6 +52,9 @@ const NewPost = ({visible, setVisibility, data, setPosts, userID }) => {
     // setPosts([...data, newPost])
     setPostData('')
     // check(newPost)
+    setAnswer('')
+    setDisabled(true);
+    setIsAnswered(true); 
   }
 
   return (
@@ -57,10 +69,28 @@ const NewPost = ({visible, setVisibility, data, setPosts, userID }) => {
             type="text"
             placeholder="Up to 420 characters"
             value={postData}
-            onChange={e => setPostData(e.target.value)}
+            maxLength= {maxLength}
+            onChange={e => {
+
+              setAnswer(e.target.value);
+            if (e.target.value.length){
+                setDisabled(false);
+            } 
+            if (e.target.value.length === 0) {
+                setDisabled(true);
+            }
+              setPostData(e.target.value)
+            }}
             />
         </form>
-        <button onClick={submitForm}>Submit</button>
+        <button 
+          className='submit-btn'
+          disabled={isDisabled}
+          onClick={submitForm}> SUBMIT 
+        </button>
+        <div className='char-counter'>
+                chars left: {charsLeft}/{maxLength}
+        </div>
       </div>
       }
     </section>
