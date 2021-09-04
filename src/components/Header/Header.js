@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useQuery } from '@apollo/client'
 import './Header.css'
 import * as gql from '../../queries/queries'
+import UserContext from '../UserProfile/UserContext';
 
+const Header = ({setNewPost}) => {
+ const value = useContext(UserContext)
 
-const Header = ({setNewPost, id}) => {
-
- const { data, error } = useQuery(gql.GET_USER_NAME(id))
+ const { data, error } = useQuery(gql.GET_USER_NAME(value))
   useEffect(() => {
     setNewPost(false);
   }, [])
