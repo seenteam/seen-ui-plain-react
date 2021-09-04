@@ -184,6 +184,16 @@ mutation createFollower($userId: ID!, $friendId: ID!){
 }
 `
 
+export const DELETE_FOLLOWER = gql`
+mutation deleteFollower($connectionId: ID!){
+  deleteFollower(input: {connectionId: $connectionId}) {
+    message
+  }
+}
+`
+
+
+
 export const CREATE_POST = gql`
 mutation createPost($content: String!, $userId: ID!){
   createPost(input: {
