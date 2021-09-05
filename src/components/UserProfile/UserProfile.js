@@ -12,6 +12,7 @@ const UserProfile = ({user}) => {
   const value = useContext(UserContext)
   const GetFollowingInfo = useQuery(gql.GET_FOLLOWER_INFO(user));
   const GetVisitedUserInfo = useQuery(gql.GET_USER_INFO(user));
+  const [clicked, setClicked] = useState(false)
   const [profile, setProfile] = useState('')
   const [followersVisible, setFollowersVisible] = useState(false)
 
@@ -22,6 +23,10 @@ const UserProfile = ({user}) => {
   const [unFollowUser] = useMutation(gql.DELETE_FOLLOWER, {
     refetchQueries: [{ query: gql.GET_FOLLOWING_INFO(value) }, { query: gql.GET_FOLLOWER_INFO(user) }, { query: gql.GET_USER_INFO(user) }, { query: gql.GET_USER_INFO(value) }],
   });
+
+  useEffect(() => {
+    setClicked(false)
+  }, [GetVisitedUserInfo.data])
 
   if (GetFollowingInfo.loading) {
     return <Loading loading={GetFollowingInfo.loading} />
@@ -95,18 +100,19 @@ const UserProfile = ({user}) => {
   }
 
   const renderFollowBtn = () => {
-    return <button onClick={follow}>Follow</button>
+    return <button disabled={clicked} onClick={follow}>Follow</button>
   }
 
   const renderUnfollowBtn = () => {
-    return <button onClick={unfollow}>Unfollow</button>
+    return <button disabled={clicked} onClick={unfollow}>Unfollow</button>
   }
 
   const follow = () => {
-    console.log('variables', {
-      'userId': value,
-      'friendId': GetVisitedUserInfo.data.user.id
-    })
+    setClicked(true)
+    // console.log('variables', {
+    //   'userId': value,
+    //   'friendId': GetVisitedUserInfo.data.user.id
+    // })
     followUser({
       variables: {
         'userId': GetVisitedUserInfo.data.user.id,
@@ -116,6 +122,7 @@ const UserProfile = ({user}) => {
   }
 
   const unfollow = () => {
+    setClicked(true)
     unFollowUser({
       variables: {
         'userId': GetVisitedUserInfo.data.user.id,
