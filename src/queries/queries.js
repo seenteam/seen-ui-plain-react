@@ -51,7 +51,7 @@ query GetFollowerInfo {
 // Get Following
 export const GET_FOLLOWING_INFO = (id) => gql`
 query GetFollowingInfo {
-  following(id: ${id}) {
+  userFollowing(id: ${id}) {
     id
     userName
     firstName
@@ -170,14 +170,24 @@ mutation createFollower($userId: ID!, $friendId: ID!){
     userId: $userId
     friendId: $friendId
   }) {
-    follower {
+    followerInfo {
       id
-      createdAt
+      userName
+      firstName
+      lastName
+      email
+      phoneNumber
+      birthday
     }
     userInfo {
       id
       userName
-    }
+      firstName
+      lastName
+      email
+      phoneNumber
+      birthday
+		}
     errors
     followerId
   }
