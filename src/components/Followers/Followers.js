@@ -1,7 +1,6 @@
 import { useQuery, useMutation } from "@apollo/client";
 import React, {useContext, useState, useEffect} from 'react'
 import FollowerDetails from './FollowerDetails/FollowerDetails'
-import FollowingDetails from './FollowingDetails/FollowingDetails'
 import './Followers.css'
 
 import * as gql from '../../queries/queries'
