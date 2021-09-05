@@ -95,6 +95,17 @@ query GET_USER_POSTS {
 }
 `;
 
+export const GET_POST_LIKES = (id) =>  gql`
+query postLikes {
+  postLikes(id: ${id}){
+    id
+    userName
+    firstName
+    lastName
+  }
+}
+`
+
 
 //Probably not going to work, first attempt at queries
 export const GET_POSTS_FROM_FRIENDS = (id) => gql`
@@ -262,6 +273,8 @@ mutation deletePost($postId: ID!){
   }
 }
 `
+
+
 
 
 // export const CREATE_LIKE = gql`
