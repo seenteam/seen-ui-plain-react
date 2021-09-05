@@ -2,6 +2,7 @@ import { useQuery } from "@apollo/client";
 import { Link } from 'react-router-dom'
 import * as gql from '../../../queries/queries'
 import Loading from '../../Loading/Loading.js'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './FollowerDetails.css'
 
 const FollowerDetails = ({id, followersVisible}) => {
@@ -11,8 +12,8 @@ const FollowerDetails = ({id, followersVisible}) => {
   if (loading) return <Loading loading={loading} type="follower" />
 
   const renderDetails = () => {
-    return <article>
-      <h5>{data.user.firstName} {data.user.lastName}</h5>
+    return <article className="follow-details">
+      <p>{`${data.user.firstName} ${data.user.lastName}`}</p>
     </article>
   }
 
@@ -21,9 +22,14 @@ const FollowerDetails = ({id, followersVisible}) => {
   }
 
   return (
-    <div className="user-card">
-      {!!data && renderDetails()}
-      <Link to={`/users/${id}`}><button onClick={setVisible}>View Profile</button></Link>
+    <div className="profile-link">
+    <Link to={`/users/${id}`}>
+      <div className="user-card">
+        {!!data && renderDetails()}
+        <FontAwesomeIcon icon="chevron-right" />
+        
+      </div>
+    </Link>
     </div>
   )
 }
