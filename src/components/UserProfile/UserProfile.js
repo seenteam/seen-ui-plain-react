@@ -11,6 +11,7 @@ import './UserProfile.css'
 const UserProfile = ({user}) => {
   const value = useContext(UserContext)
   const GetFollowingInfo = useQuery(gql.GET_FOLLOWER_INFO(user));
+  const GetFluxFollowing = useQuery(gql.GET_USER_FLUX_FOLLOWING(value));
   const GetVisitedUserInfo = useQuery(gql.GET_USER_INFO(user));
   const [clicked, setClicked] = useState(false)
   const [profile, setProfile] = useState('')
@@ -23,6 +24,7 @@ const UserProfile = ({user}) => {
   const [unFollowUser] = useMutation(gql.DELETE_FOLLOWER, {
     refetchQueries: [{ query: gql.GET_FOLLOWING_INFO(value) }, { query: gql.GET_FOLLOWER_INFO(user) }, { query: gql.GET_USER_INFO(user) }, { query: gql.GET_USER_INFO(value) }],
   });
+
 
   useEffect(() => {
     setClicked(false)
@@ -40,6 +42,13 @@ const UserProfile = ({user}) => {
   }
   else {
     console.log('Current user following data', GetFollowingInfo.data)
+  }
+
+  if (GetFluxFollowing.loading) {
+    return <Loading loading={GetFluxFollowing.loading} />
+  }
+  else {
+    console.log('CURRENT USER FLUX -->>>> following data', GetFluxFollowing.data)
   }
   // useEffect(() => {
   //   let mounted = true;
