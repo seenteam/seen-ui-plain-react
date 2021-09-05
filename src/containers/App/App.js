@@ -11,12 +11,12 @@ import {Switch, Route} from 'react-router-dom'
 import Header from '../../components/Header/Header.js'
 import { library } from '@fortawesome/fontawesome-svg-core';
 // import { fab, fas, far } from '@fortawesome/free-brands-svg-icons'
-import { faHome, faSearch, faUserCircle as faUserCircleActive, faPlus} from '@fortawesome/free-solid-svg-icons';
+import { faAtom, faHome, faSearch, faUserCircle as faUserCircleActive, faPlus, faChevronRight} from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle } from '@fortawesome/free-regular-svg-icons'
 // import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
 import UserContext from '../../components/UserProfile/UserContext.js'
 import './App.css';
-library.add(faHome, faSearch, faUserCircle, faUserCircleActive, faPlus);
+library.add(faAtom, faHome, faSearch, faUserCircle, faUserCircleActive, faPlus, faChevronRight);
 
 const App = () => {
 
