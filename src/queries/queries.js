@@ -26,6 +26,17 @@ query GetUserInfo {
 }
 `;
 
+export const GET_USER_FLUX_FOLLOWING = (id) => gql`
+query userFluxFollowing {
+  userFluxFollowing(id: ${id}){
+  	id
+    userName
+    firstName
+    lastName
+	}
+}
+`
+
 export const GET_USER_NAME = (id) => gql`
 query GetUserInfo {
   user(id: ${id}) {
