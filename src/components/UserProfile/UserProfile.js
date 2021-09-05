@@ -11,7 +11,10 @@ import './UserProfile.css'
 const UserProfile = ({user}) => {
   const value = useContext(UserContext)
   const GetFollowingInfo = useQuery(gql.GET_FOLLOWER_INFO(user));
-  const GetFluxFollowing = useQuery(gql.GET_USER_FLUX_FOLLOWING(value));
+
+  const GetFluxFollowing = useQuery(gql.GET_USER_FLUX_FOLLOWING(user));
+  //ALSO ADD FLUX FOLLOWERS for value
+  const GetFluxFollowers = useQuery(gql.GET_USER_FLUX_FOLLOWERS(user))
   const GetVisitedUserInfo = useQuery(gql.GET_USER_INFO(user));
   const [clicked, setClicked] = useState(false)
   const [profile, setProfile] = useState('')
@@ -49,6 +52,13 @@ const UserProfile = ({user}) => {
   }
   else {
     console.log('CURRENT USER FLUX -->>>> following data', GetFluxFollowing.data)
+  }
+
+  if (GetFluxFollowers.loading) {
+    return <Loading loading={GetFluxFollowers.loading} />
+  }
+  else {
+    console.log('CURRENT USER FLUX FOLLOWERS ****', GetFluxFollowers.data)
   }
   // useEffect(() => {
   //   let mounted = true;
