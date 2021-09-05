@@ -3,6 +3,7 @@ import SearchBar from './SearchBar/SearchBar'
 import SearchResults from './SearchResults/SearchResults';
 import { useQuery } from '@apollo/client';
 import * as gql from '../../queries/queries'
+import Loading from '../Loading/Loading.js'
 import './SearchPage.css'
 
 const SearchPage = ({setNewPost}) => {
@@ -14,7 +15,7 @@ const SearchPage = ({setNewPost}) => {
 
     const { loading, error, data } = useQuery(gql.GET_ALL_USERS);
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <Loading loading={loading} />;
     if (error) return <p>Error :(</p>;
 
     const queryResults = () => {
@@ -34,13 +35,13 @@ const SearchPage = ({setNewPost}) => {
     return (
         <section className="search-page-container">
             <h1>Search the Seen</h1>
-            <SearchBar 
+            <SearchBar
                 query={query}
-                set={setQuery} 
+                set={setQuery}
             />
             <SearchResults results={!query ? null : queryResults()} />
         </section>
     )
 }
 
-export default SearchPage; 
+export default SearchPage;
