@@ -28,6 +28,11 @@
   justify-content: space-around;
 }
 
+/* 
+.profile-header * {
+  transition: .2s ease all;
+} */
+
 .posts-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
