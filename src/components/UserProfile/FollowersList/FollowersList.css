@@ -1,5 +1,6 @@
 .follow-list {
   position: absolute;
+  z-index: 0;
   transition: .2s ease all;
   top: 0;
   left: 0;
