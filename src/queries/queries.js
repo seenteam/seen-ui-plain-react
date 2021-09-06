@@ -106,6 +106,14 @@ query postLikes {
 }
 `
 
+export const GET_LIKED_POSTS = (id) => gql`
+query usersLikedPosts {
+ usersLikedPosts(id: ${id}){
+   id
+ }
+}
+`
+
 
 //Probably not going to work, first attempt at queries
 export const GET_POSTS_FROM_FRIENDS = (id) => gql`
