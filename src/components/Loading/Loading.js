@@ -1,6 +1,7 @@
 import PulseLoader from 'react-spinners/PulseLoader'
 import FadeLoader from 'react-spinners/FadeLoader'
 import { css } from "@emotion/react";
+import './Loading.css'
 
 const Loading = ({loading, type}) => {
 
@@ -10,9 +11,9 @@ const Loading = ({loading, type}) => {
     color: red;
   `;
 
-  return (!type)
-  ? <FadeLoader loading={loading} color="cyan"/>
-  : <PulseLoader color="cyan" loading={loading} size={10} css={override} />
+  return <section className="loading-container">
+    {!type ? <FadeLoader loading={loading} color="cyan" size={3}/> : <PulseLoader color="cyan" loading={loading} size={5} css={override} />}
+  </section>
 }
 
 export default Loading
