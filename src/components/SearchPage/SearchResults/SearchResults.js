@@ -1,17 +1,14 @@
 import './SearchResults.css'
+import FollowerDetails from '../../Followers/FollowerDetails/FollowerDetails.js'
 import {Link} from 'react-router-dom'
 
 const SearchResults = ({results}) => {
   let parsed;
   if (results) {
-    parsed = results.map(result => {
-    return <Link to={`/users/${result.id}`}>
-              <article className='user-container' key={result.id}> 
-                <h4>{result.userName}</h4> 
-                <p> {result.firstName} {result.lastName} </p>
-              </article>
-            </Link>})
-  }
+    parsed = results.map((result, index) => {
+    return <FollowerDetails key={index} id={result.id} />
+  })
+}
 
   return (
     <section className="results">
