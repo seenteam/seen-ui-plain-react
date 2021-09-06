@@ -78,7 +78,7 @@ const UserProfile = ({user}) => {
     return (
       <section className="user-posts-container">
         <div className="posts-grid">
-          {posts.map(post => <Post id={post.id} content={post.content} created={post.createdAt} currentUser={user} />)}
+          {posts.map(post => <Post id={post.id} content={post.content} created={post.createdAt} user={value} currentUser={user} />)}
         </div>
       </section>
     )
