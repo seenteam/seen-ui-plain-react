@@ -40,6 +40,7 @@ const SearchPage = ({setNewPost}) => {
                 set={setQuery}
             />
             <SearchResults results={!query ? null : queryResults()} />
+            <h2>Viral Users</h2>
         </section>
     )
 }
