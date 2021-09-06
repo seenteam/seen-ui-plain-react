@@ -13,7 +13,7 @@ import './UserProfile.css'
 const UserProfile = ({user}) => {
   const value = useContext(UserContext)
   const GetFollowingInfo = useQuery(gql.GET_FOLLOWER_INFO(user));
-
+  const UsersLikedPosts = useQuery(gql.GET_LIKED_POSTS(user));
   const GetFluxFollowing = useQuery(gql.GET_USER_FLUX_FOLLOWING(user));
   //ALSO ADD FLUX FOLLOWERS for value
   const GetFluxFollowers = useQuery(gql.GET_USER_FLUX_FOLLOWERS(user))
@@ -65,6 +65,16 @@ const UserProfile = ({user}) => {
   }
 
   const renderPosts = (posts) => {
+    return (
+      <section className="user-posts-container">
+        <div className="posts-grid">
+          {posts.map(post => <Post id={post.id} content={post.content} created={post.createdAt} user={user} currentUser={(user === value) ? value : null} />)}
+        </div>
+      </section>
+    )
+  }
+
+  const renderLikedPosts = (posts) => {
     return (
       <section className="user-posts-container">
         <div className="posts-grid">
@@ -131,11 +141,11 @@ const UserProfile = ({user}) => {
   }
 
   const renderFollowBtn = () => {
-    return <button disabled={clicked} onClick={follow}>Follow</button>
+    return (user !== value) ? <button disabled={clicked} onClick={follow}>Follow</button> : null
   }
 
   const renderUnfollowBtn = () => {
-    return <button disabled={clicked} onClick={unfollow}>Unfollow</button>
+    return (user !== value) ? <button disabled={clicked} onClick={unfollow}>Unfollow</button> : null
   }
 
   const follow = () => {
