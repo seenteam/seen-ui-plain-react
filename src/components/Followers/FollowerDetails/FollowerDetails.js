@@ -5,7 +5,7 @@ import Loading from '../../Loading/Loading.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './FollowerDetails.css'
 
-const FollowerDetails = ({id, followersVisible}) => {
+const FollowerDetails = ({id, followersVisible, type}) => {
   const { loading, error, data } = useQuery(gql.GET_USER_INFO(id))
 
   if (error) console.log(error, "ERROR!")
@@ -22,12 +22,12 @@ const FollowerDetails = ({id, followersVisible}) => {
   }
 
   return (
-    <div className="profile-link">
+    <div className={!type ? 'profile-link' : 'main-link'}>
     <Link to={`/users/${id}`}>
       <div className="user-card">
         {!!data && renderDetails()}
         <FontAwesomeIcon icon="chevron-right" />
-        
+
       </div>
     </Link>
     </div>
