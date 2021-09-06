@@ -27,13 +27,9 @@ const Post = ({id, content, created, user, currentUser }) => {
   if (GetPostLikes.loading) {
     return <Loading loading={GetPostLikes.loading} />
   }
-  else {
-    console.log('LIKES FOR POST', id, GetPostLikes.data)
-  }
 
   const checkLikes = () => {
-    // console.log('All post likes', GetPostLikes.data.postLikes, 'current id')
-    let found = GetPostLikes.data.postLikes.find(like => like.id === currentUser)
+    let found = GetPostLikes.data.postLikes.find(like => like.id === user)
     if (found) {
       return true
     }
@@ -41,17 +37,24 @@ const Post = ({id, content, created, user, currentUser }) => {
   }
 
   const like = () => {
+    console.log('current user', user, 'current post id', id)
     setClicked(true)
     likePost({
       variables: {
-        'userId': currentUser,
+        'userId': user,
         'postId': id
       },
     })
   }
 
   const unlike = () => {
-    return
+    setClicked(true)
+    unlikePost({
+      variables: {
+        'userId': user,
+        'postId': id
+      },
+    })
   }
 
   const renderLikeBtn = () => {
