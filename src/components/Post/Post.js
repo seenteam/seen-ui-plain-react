@@ -7,7 +7,7 @@ const dayjs = require('dayjs')
 const LocalizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(LocalizedFormat)
 
-const Post = ({id, content, created, currentUser }) => {
+const Post = ({id, content, created, user, currentUser }) => {
   const [clicked, setClicked] = useState(false)
 
   const GetPostLikes = useQuery(gql.GET_POST_LIKES(id))
@@ -62,6 +62,10 @@ const Post = ({id, content, created, currentUser }) => {
     return <button disabled={clicked} onClick={unlike}>Unlike</button>
   }
 
+  const check = () => {
+    console.log('POST ID', id, 'CURRENT USER', currentUser, 'equal', id === currentUser)
+  }
+
   return (
     <div className="post-container">
       <p><strong>{content}</strong></p>
@@ -69,8 +73,8 @@ const Post = ({id, content, created, currentUser }) => {
       <div className="likes-container">
         <p>{!!GetPostLikes.data && `${GetPostLikes.data.postLikes.length} Likes`}</p>
         <section>
-          {!!(id !== currentUser) && <section>
-
+          {!!(user !== currentUser) && <section>
+            {check()}
             {!checkLikes() ? renderLikeBtn() : renderUnLikeBtn()}
             </section>}
         </section>
