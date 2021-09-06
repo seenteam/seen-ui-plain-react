@@ -53,7 +53,7 @@ const UserPosts = () => {
      <section className="posts-container">
        <h2>Feed</h2>
         {!!data && [...data.user.posts].sort((a, b) => parseInt(b.id) - parseInt(a.id)).map((post, index) => <div key={index}>
-          <Post id={value} content={post.content} created={post.createdAt} currentUser={value}/>
+          <Post id={post.id} content={post.content} created={post.createdAt} currentUser={value} user={value} />
 
           <button
             disabled={clicked}
