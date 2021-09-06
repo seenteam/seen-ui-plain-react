@@ -1,7 +1,7 @@
 import FollowerDetails from '../../Followers/FollowerDetails/FollowerDetails'
 import './FollowersList.css'
 
-const FollowersList = ({ followers, visible, setVisible}) => {
+const FollowersList = ({ followers, visible, setVisible, type}) => {
 
   const toggleList = () => {
     (!visible) ? setVisible(true) : setVisible(false)
@@ -9,8 +9,16 @@ const FollowersList = ({ followers, visible, setVisible}) => {
 
   const renderList = () => {
     return (
-      <div>
+      <div className="list-container">
       {followers.map((follower, index) => <FollowerDetails key={index} id={follower.friendId} followersVisible={setVisible}/>)}
+      </div>
+    )
+  }
+
+  const renderFluxList = () => {
+    return (
+      <div className="list-container">
+      {followers.map((follower, index) => <FollowerDetails key={index} id={follower.id} followersVisible={setVisible}/>)}
       </div>
     )
   }
@@ -18,9 +26,9 @@ const FollowersList = ({ followers, visible, setVisible}) => {
   return (
     <section className={!visible ? "follow-list hidden" : "follow-list"}>
       {
-        !!visible && <div>
+        !!visible && <div style={{'height': '90%'}}>
         <button onClick={toggleList}>Close</button>
-        {renderList()}
+        {!type ? renderList() : renderFluxList()}
       </div>
       }
     </section>
