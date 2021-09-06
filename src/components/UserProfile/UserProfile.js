@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import FollowersList from './FollowersList/FollowersList'
+import FluxFollowersList from './FluxFollowersList/FluxFollowersList'
 import Post from '../Post/Post.js'
 import UserContext from "../UserProfile/UserContext";
 import Loading from '../Loading/Loading.js'
@@ -19,6 +20,7 @@ const UserProfile = ({user}) => {
   const [clicked, setClicked] = useState(false)
   const [profile, setProfile] = useState('')
   const [followersVisible, setFollowersVisible] = useState(false)
+  const [fluxFollowersVisible, setFluxFollowersVisible] = useState(false)
 
   const [followUser] = useMutation(gql.CREATE_FOLLOWER, {
     refetchQueries: [{ query: gql.GET_FOLLOWING_INFO(value) }, { query: gql.GET_FOLLOWER_INFO(user) }, { query: gql.GET_USER_INFO(user) }],
@@ -74,7 +76,7 @@ const UserProfile = ({user}) => {
     return (
       <section className="user-posts-container">
         <div className="posts-grid">
-          {posts.map(post => <Post content={post.content} created={post.createdAt} />)}
+          {posts.map(post => <Post id={post.id} content={post.content} created={post.createdAt} currentUser={user} />)}
         </div>
       </section>
     )
@@ -93,12 +95,33 @@ const UserProfile = ({user}) => {
     )
   }
 
+  const renderFluxFollowers = (followers) => {
+    return (
+      <section>
+        <div>
+          {!!fluxFollowersVisible && <div>
+            <button onClick={() => setFluxFollowersVisible(false)}>Close</button>
+            <FollowersList followers={followers} visible={fluxFollowersVisible} setVisible={setFluxFollowersVisible} type="flux" />
+          </div>}
+        </div>
+      </section>
+    )
+  }
+
   const revealFollowers = () => {
     setFollowersVisible(true)
   }
 
+  const revealFluxFollowers = () => {
+    setFluxFollowersVisible(true)
+  }
+
   const toggleList = () => {
     (!followersVisible) ? setFollowersVisible(true) : setFollowersVisible(false)
+  }
+
+  const toggleFluxList = () => {
+    (!fluxFollowersVisible) ? setFluxFollowersVisible(true) : setFluxFollowersVisible(false)
   }
 
   const renderTest = () => {
@@ -161,6 +184,10 @@ const UserProfile = ({user}) => {
         <div className="followers-info">
           <h4 onClick={toggleList}>{`${GetVisitedUserInfo.data.user.followers.length} Followers (click)`}</h4>
           {renderFollowers(GetVisitedUserInfo.data.user.followers)}
+        </div>
+        <div className="flux-followers-info">
+          <h4 onClick={toggleFluxList}>{`${GetFluxFollowers.data.usersFluxFollowers.length} Flux Followers (click)`}</h4>
+          {renderFluxFollowers(GetFluxFollowers.data.usersFluxFollowers)}
         </div>
       </section>
       <div className="user-profile-navigation">
