@@ -62,10 +62,6 @@ const Post = ({id, content, created, user, currentUser }) => {
     return <button disabled={clicked} onClick={unlike}>Unlike</button>
   }
 
-  const check = () => {
-    console.log('POST ID', id, 'CURRENT USER', currentUser, 'equal', id === currentUser)
-  }
-
   return (
     <div className="post-container">
       <p><strong>{content}</strong></p>
@@ -74,7 +70,6 @@ const Post = ({id, content, created, user, currentUser }) => {
         <p>{!!GetPostLikes.data && `${GetPostLikes.data.postLikes.length} Likes`}</p>
         <section>
           {!!(user !== currentUser) && <section>
-            {check()}
             {!checkLikes() ? renderLikeBtn() : renderUnLikeBtn()}
             </section>}
         </section>
