@@ -68,7 +68,7 @@ const UserProfile = ({user}) => {
     return (
       <section className="user-posts-container">
         <div className="posts-grid">
-          {posts.map(post => <Post id={post.id} content={post.content} created={post.createdAt} user={user} currentUser={(user === value) ? value : null} />)}
+          {[...posts].sort((a, b) => parseInt(b.id) - parseInt(a.id)).map(post => <Post id={post.id} content={post.content} created={post.createdAt} user={user} currentUser={(user === value) ? value : null} />)}
         </div>
       </section>
     )
