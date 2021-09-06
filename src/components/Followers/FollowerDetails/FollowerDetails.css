@@ -39,6 +39,22 @@
   z-index: -1;
 }
 
+.main-link::after {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 39px;
+  transform: translate(0px, -39.5px);
+  background: linear-gradient(90deg, rgba(237,166,146,1) 0%, rgba(255,201,163,1) 100%);
+  transition: all .2s linear;
+  z-index: -1;
+}
+
+.main-link:hover::after {
+  width: 50%;
+  color: white;
+}
+
 .profile-link:hover {
   color: white;
 }
