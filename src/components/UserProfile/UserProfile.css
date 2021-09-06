@@ -11,24 +11,60 @@
   top: 0;
 }
 
+.nav-inactive {
+  background: none;
+  color: black;
+}
+
+.nav-active {
+  background: gray;
+  color: white;
+}
+
+.liked-posts-nav, .profile-nav {
+  cursor: pointer;
+  transition: .2s all linear;
+  border: 1px solid gray;
+}
+
+
 /* .followers-info {
   display: flex;
   align-items: center;
 } */
 
-.followers-info h4 {
+/* .followers-info h4 {
   cursor: pointer;
   height: auto;
   width: auto;
+  margin: 0;
+} */
+
+.flux-followers-info, .followers-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  /* height: auto;
+  width: auto; */
+  margin: 0;
+}
+
+.flux-followers-info h4,
+.flux-followers-info p,
+.followers-info h4,
+.followers-info p  {
   margin: 0;
 }
 
 .profile-header {
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
-/* 
+/*
 .profile-header * {
   transition: .2s ease all;
 } */
