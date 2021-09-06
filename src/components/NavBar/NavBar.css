@@ -9,15 +9,19 @@ footer ul li {
   list-style: none;
 }
 
-footer ul li {
-  font-size: 40px;
-}
-
 footer ul li button {
   background: none;
   /* outline:   none; */
   border: none;
+}
+
+footer ul li, footer ul li button {
   font-size: 40px;
+  transition: .2s all linear;
+}
+
+footer ul li:hover, footer ul li button:hover {
+  color: white;
 }
 
 footer ul a {
