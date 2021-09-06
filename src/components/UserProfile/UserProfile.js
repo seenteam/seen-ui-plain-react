@@ -1,6 +1,8 @@
 import React, {useState, useEffect, useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import FollowersList from './FollowersList/FollowersList'
+import UserProfileHeader from './UserProfileHeader/UserProfileHeader'
+
 import Post from '../Post/Post.js'
 import UserContext from "../UserProfile/UserContext";
 import Loading from '../Loading/Loading.js'
@@ -17,6 +19,8 @@ const UserProfile = ({user}) => {
   const GetFluxFollowers = useQuery(gql.GET_USER_FLUX_FOLLOWERS(user))
   const GetVisitedUserInfo = useQuery(gql.GET_USER_INFO(user));
   const [clicked, setClicked] = useState(false)
+  const [postsClicked, setPostsClicked] = useState(true)
+  const [likedPostsClicked, setlikedPostsClicked] = useState(false)
   const [profile, setProfile] = useState('')
   const [followersVisible, setFollowersVisible] = useState(false)
   const [fluxFollowersVisible, setFluxFollowersVisible] = useState(false)
@@ -34,38 +38,27 @@ const UserProfile = ({user}) => {
     setClicked(false)
   }, [GetVisitedUserInfo.data])
 
-  if (GetFollowingInfo.loading) {
-    return <Loading loading={GetFollowingInfo.loading} />
+
+
+  const toggleNav = () => {
+     if (!postsClicked) {
+       setPostsClicked(true)
+       return setlikedPostsClicked(false)
+     }
+     setlikedPostsClicked(true)
+     return setPostsClicked(false)
   }
-  else {
-    console.log('Current user following data', GetFollowingInfo.data)
-  }
+
 
   if (GetVisitedUserInfo.loading) {
     return <Loading loading={GetFollowingInfo.loading} />
   }
-  else {
-    console.log('Current user following data', GetFollowingInfo.data)
-  }
-
   if (GetFluxFollowing.loading) {
     return <Loading loading={GetFluxFollowing.loading} />
   }
-  else {
-    console.log('CURRENT USER FLUX -->>>> following data', GetFluxFollowing.data)
-  }
-
   if (GetFluxFollowers.loading) {
     return <Loading loading={GetFluxFollowers.loading} />
   }
-  else {
-    console.log('CURRENT USER FLUX FOLLOWERS ****', GetFluxFollowers.data)
-  }
-  // useEffect(() => {
-  //   let mounted = true;
-  //   if (mounted && GetVisitedUserInfo.data) check()
-  //   return () => mounted = false;
-  // })
 
   const check = () => {
     console.log(GetVisitedUserInfo.data)
@@ -130,10 +123,7 @@ const UserProfile = ({user}) => {
   }
 
   const checkFollowing = () => {
-    console.log('Users following the visited profile', GetFollowingInfo.data.usersFollowers)
-    // console.log('Current user id', GetFollowingInfo.data.usersFollowers)
     let found = GetFollowingInfo.data.usersFollowers.find(user => user.id === value.toString())
-    console.log('Results', found)
     if (found) {
       return true
     }
@@ -150,10 +140,6 @@ const UserProfile = ({user}) => {
 
   const follow = () => {
     setClicked(true)
-    // console.log('variables', {
-    //   'userId': value,
-    //   'friendId': GetVisitedUserInfo.data.user.id
-    // })
     followUser({
       variables: {
         'userId': GetVisitedUserInfo.data.user.id,
@@ -174,24 +160,23 @@ const UserProfile = ({user}) => {
 
   const renderProfile = () => {
     return <div>
-      <section className="profile-header">
-        <div>
-        <h2>{GetVisitedUserInfo.data.user.firstName} {GetVisitedUserInfo.data.user.lastName}</h2>
-        <h3>Username: {GetVisitedUserInfo.data.user.userName}</h3>
-        {!checkFollowing() ? renderFollowBtn() : renderUnfollowBtn()}
-        </div>
-        <div className="followers-info">
-          <h4 onClick={toggleList}>{`${GetVisitedUserInfo.data.user.followers.length} Followers (click)`}</h4>
-          {renderFollowers(GetVisitedUserInfo.data.user.followers)}
-        </div>
-        <div className="flux-followers-info">
-          <h4 onClick={toggleFluxList}>{`${GetFluxFollowers.data.usersFluxFollowers.length} Flux Followers (click)`}</h4>
-          {renderFluxFollowers(GetFluxFollowers.data.usersFluxFollowers)}
-        </div>
-      </section>
+      <UserProfileHeader
+        fname={GetVisitedUserInfo.data.user.firstName}
+        lname={GetVisitedUserInfo.data.user.lastName}
+        uname={GetVisitedUserInfo.data.user.userName}
+        checkFollowing={checkFollowing}
+        renderFBtn={renderFollowBtn}
+        renderUBtn={renderUnfollowBtn}
+        fixedFollowers={GetVisitedUserInfo.data.user.followers}
+        fluxFollowers={GetFluxFollowers.data.usersFluxFollowers}
+        renderFixed={renderFollowers}
+        renderFlux={renderFluxFollowers}
+        toggleList={toggleList}
+        toggleFluxList={toggleFluxList}
+      />
       <div className="user-profile-navigation">
-        <button>Posts</button>
-        <button>About</button>
+        <button onClick={toggleNav} className={!postsClicked ? 'profile-nav nav-inactive' : 'profile-nav nav-active'}>Posts</button>
+        <button onClick={toggleNav} className={!likedPostsClicked ? 'liked-posts-nav nav-inactive' : 'liked-posts-nav nav-active'}>Liked Posts</button>
       </div>
       {renderPosts(GetVisitedUserInfo.data.user.posts)}
     </div>
