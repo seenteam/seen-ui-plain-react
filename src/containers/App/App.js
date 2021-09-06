@@ -45,11 +45,7 @@ const App = () => {
                   }}
                 />
               <Route exact path="/profile" render={() => {
-                  return <Profile
-                          user={!current ? null : current}
-                          posts={posts}
-                          setNewPost={setNewPost}
-                        />
+                  return <UserProfile user={userID} />
                 }}
               />
               <Route exact path="/search-page">
