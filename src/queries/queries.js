@@ -307,8 +307,8 @@ mutation createLike($userId: ID!, $postId: ID!){
 
 
 export const DELETE_LIKE = gql`
-mutation deleteLike($likeId: ID!){
-  deleteLike(input: {likeId: $likeId}) {
+mutation deleteLike($userId: ID!, $postId: ID!){
+  deleteLike(input: {userId: $userId, postId: $postId}) {
     message
   }
 }
