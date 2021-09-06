@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import FollowersList from './FollowersList/FollowersList'
-import FluxFollowersList from './FluxFollowersList/FluxFollowersList'
 import Post from '../Post/Post.js'
 import UserContext from "../UserProfile/UserContext";
 import Loading from '../Loading/Loading.js'
