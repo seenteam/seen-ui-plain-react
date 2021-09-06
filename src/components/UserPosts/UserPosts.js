@@ -18,6 +18,7 @@ const UserPosts = () => {
   const [query, setQuery] = useState(1)
   const [clicked, setClicked] = useState(false)
   const { loading, error, data } = useQuery(gql.GET_USER_POSTS(value));
+
   const [deletePost] = useMutation(gql.DELETE_POST, {
     refetchQueries: [{ query: gql.GET_USER_POSTS(value) }],
   });
@@ -52,7 +53,7 @@ const UserPosts = () => {
      <section className="posts-container">
        <h2>Feed</h2>
         {!!data && [...data.user.posts].sort((a, b) => parseInt(b.id) - parseInt(a.id)).map((post, index) => <div key={index}>
-          <Post content={post.content} created={post.createdAt} />
+          <Post id={value} content={post.content} created={post.createdAt} currentUser={value}/>
 
           <button
             disabled={clicked}
