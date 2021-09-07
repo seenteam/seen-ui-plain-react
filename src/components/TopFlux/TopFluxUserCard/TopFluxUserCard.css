@@ -1,0 +1,22 @@
+.top-flux-card {
+  background: salmon;
+  padding: 2%;
+  color: white;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.top-flux-card button {
+  background: none;
+  border: 1px solid white;
+  cursor: pointer;
+  transition: .2s all linear;
+  padding: 10px 6px;
+  color: white;
+  border-radius: 4px;
+}
+
+.top-flux-card button:hover {
+  background: white;
+  color: salmon;
+}
