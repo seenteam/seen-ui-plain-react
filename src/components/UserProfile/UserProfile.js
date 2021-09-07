@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext } from 'react'
+import { Link } from 'react-router-dom';
 import { useQuery, useMutation } from "@apollo/client";
 import FollowersList from './FollowersList/FollowersList'
 import UserProfileHeader from './UserProfileHeader/UserProfileHeader'
@@ -173,6 +174,13 @@ const UserProfile = ({user}) => {
     return (user !== value) ? <button disabled={clicked} onClick={unfollow}>Unfollow</button> : null
   }
 
+  const renderEditBtn = () => {
+    return (user === value) ? 
+      <Link to="/profile/edit">
+        <button disabled={clicked}> Edit Profile </button> </Link> : null
+      
+  }
+
   const follow = () => {
     setClicked(true)
     followUser({
@@ -202,6 +210,7 @@ const UserProfile = ({user}) => {
         checkFollowing={checkFollowing}
         renderFBtn={renderFollowBtn}
         renderUBtn={renderUnfollowBtn}
+        renderEditBtn={renderEditBtn}
         fixedFollowers={GetVisitedUserInfo.data.user.followers}
         fluxFollowers={GetFluxFollowers.data.usersFluxFollowers}
         renderFixed={renderFollowers}
