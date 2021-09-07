@@ -2,6 +2,7 @@ import { useMutation, useSubscription } from "@apollo/client";
 import * as gql from '../../../queries/queries';
 import React, {useContext} from "react";
 import UserContext from "../../UserProfile/UserContext";
+import './UpdateUserData.css'
 
 const UpdateUserData = () => {
     let userName, firstName, lastName, phoneNumber, email, birthday;
@@ -17,27 +18,33 @@ const UpdateUserData = () => {
     }
     
     return (
-        <section>
-            <form onSubmit={updatingUser}>
-                <label htmlFor="userName">Username: </label>
-                <input required ref={value => userName = value} id='userName'></input> <br/>
+        <section className='edit-user-form-area'>
+            <form onSubmit={updatingUser} >
+                <div>
+                    <label htmlFor="userName">Username: <input required ref={value => userName = value} id='userName'/></label>
+                </div>
+                
+                <div>
+                    <label htmlFor="firstName">First name: <input required ref={value => firstName = value} id='firstName'/></label>
+                </div>
+                
+                <div>
+                    <label htmlFor="lastName">Last name: <input required ref={value => lastName = value} id='lastName'/></label>
+                </div>
 
-                <label htmlFor="firstName">First name: </label>
-                <input required ref={value => firstName = value} id='firstName'></input> <br/>
+                <div>
+                    <label htmlFor="phoneNumber">Phone Number: <input required ref={value => phoneNumber = value} type="tel" id='phoneNumber' placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/></label>    
+                </div>
+                
+                <div>
+                    <label htmlFor="email">Email address: <input required ref={value => email = value} type="email" id='email'/></label>
+                </div>
 
-                <label htmlFor="lastName">Last name: </label>
-                <input required ref={value => lastName = value} id='lastName'></input> <br/>
+                <div>
+                    <label htmlFor="birthday">Birthdate: <input required ref={value => birthday = value} type="date" id='birthday'/></label>    
+                </div>
 
-                <label htmlFor="phoneNumber">Phone Number: </label>
-                <input required ref={value => phoneNumber = value} type="tel" id='phoneNumber' placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"></input> <br/>
-
-                <label htmlFor="email">Email address:</label>
-                <input required ref={value => email = value} type="email" id='email'></input> <br />
-
-                <label htmlFor="birthday">Birth date: </label>
-                <input required ref={value => birthday = value} type="date" id='birthday'></input> <br/>
-
-                <input type="submit" value="Update User" />
+                <input type="submit" value="Update User"/>
             </form>
         </section>
     )
