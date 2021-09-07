@@ -1,11 +1,12 @@
 import './UserProfileHeader.css'
 
-const UserProfileHeader = ({ fname, lname, uname, checkFollowing, renderFBtn, renderUBtn, fixedFollowers, fluxFollowers, renderFixed, renderFlux, toggleList, toggleFluxList}) => {
+const UserProfileHeader = ({ fname, lname, uname, checkFollowing, renderFBtn, renderUBtn, fixedFollowers, fluxFollowers, renderFixed, renderFlux, renderEditBtn, toggleList, toggleFluxList}) => {
   return (
     <section className="profile-header">
       <div className="user-title">
       <h2>{fname} {lname}</h2>
       <h3>@{uname}</h3>
+      {renderEditBtn()}
       {!checkFollowing() ? renderFBtn() : renderUBtn()}
       </div>
       <div className="followers-info" onClick={toggleList}>
