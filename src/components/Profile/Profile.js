@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from 'react';
-import UserContext from '../UserProfile/UserContext';
 import './Profile.css'
 import ProfileDetails from './ProfileDetails/ProfileDetails';
 import UpdateUserData from './UpdateUserData/UpdateUserData';
