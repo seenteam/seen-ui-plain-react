@@ -116,19 +116,15 @@ query usersLikedPosts {
 
 
 //Probably not going to work, first attempt at queries
-export const GET_POSTS_FROM_FRIENDS = (id) => gql`
-query GetPostsFromFriends {
-  userId(id: ${id}) {
-    fixedFollowers {
-      posts (limit: 10) {
-        content
-     }
+export const GET_TOP_FLUX = gql`
+query {
+  topFlux {
+    userId
+    user {
+      firstName
+      lastName
     }
-    fluxFollowers {
-      posts (limit: 10) {
-        content
-     }
-    }
+    count
   }
 }
 `;
