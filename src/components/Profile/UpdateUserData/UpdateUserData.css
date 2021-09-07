@@ -1,10 +1,35 @@
 input {
-    padding: 9px 0px 7px 9px;
+    display: block;
+    padding: 9px 20px 7px 9px;
+    margin: 5px;
     font-size: 12px;
     width: 16rem;
     height: 1.2rem;
     outline: none;
-    background: #fafafa;
-    border-radius: 3px;
+    border-radius: 5px;
     border: 1px solid #efefef;
-  }
+    border-bottom: 5px solid rgb(237,166,146,1);
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+input[type=submit] {
+    padding: 9px 20px 7px 9px;
+    margin: 5px;
+    font-size: 24px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #efefef;
+    border-bottom: none;
+    padding-bottom: 2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-user-form-area > input:focus {
+    border: 3px solid #555;
+}
