@@ -21,13 +21,13 @@ body {
   top: -49.5px;
   width: 6400px;
   height: 49.5px;
-  animation: wave 14s cubic-bezier( 0.36, 0.45, 0.63, 0.53) infinite;
+  animation: wave 28s cubic-bezier( 0.36, 0.45, 0.63, 0.53) infinite;
   transform: translate3d(0, 0, 0);
 }
 
 .wave:nth-of-type(2) {
   top: -34.5px;
-  animation: wave 14s cubic-bezier( 0.36, 0.45, 0.63, 0.53) -.250s infinite, swell 14s ease -2.5s infinite;
+  animation: wave 28s cubic-bezier( 0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 14s ease -1.25s infinite;
   opacity: 1;
 }
 
