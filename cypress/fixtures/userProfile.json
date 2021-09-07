@@ -1,0 +1,1 @@
+{"data":{"user":{"id":"2","userName":"testy","firstName":"Aplus","lastName":"AceAttorney","email":"japaneseLaw@gmail.com","phoneNumber":"888-888-8888","birthday":"1988-12-22T00:00:00Z","posts":[{"id":"9","content":"\"It works only in Japan.","createdAt":"2021-09-05T21:54:58Z","__typename":"Post"}],"followers":[],"__typename":"User"}}}
