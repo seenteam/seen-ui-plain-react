@@ -10,17 +10,28 @@ input {
     border: 1px solid #efefef;
     border-bottom: 5px solid rgb(237,166,146,1);
     box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    transition: all .2s linear;
+    border-bottom-width: 0;
+}
+
+
+input:focus {
+    border-bottom-width: 10px;
+}
+
+input[type=submit]:focus {
+    outline: 4px solid salmon;
 }
 
 input[type=submit] {
     padding: 9px 20px 7px 9px;
     margin: 5px;
     font-size: 24px;
-    outline: none;
     border-radius: 5px;
     border: 1px solid #efefef;
     border-bottom: none;
     padding-bottom: 2rem;
+    cursor: pointer;
 }
 
 form {
