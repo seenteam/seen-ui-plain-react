@@ -7,14 +7,14 @@ const dayjs = require('dayjs')
 const LocalizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(LocalizedFormat)
 
-const Post = ({id, content, created, user, currentUser }) => {
+const Post = ({id, content, created, user, currentUser, clickedDelete, removePost }) => {
   const [clicked, setClicked] = useState(false)
 
   const GetPostLikes = useQuery(gql.GET_POST_LIKES(id))
 
   useEffect(() => {
     setClicked(false)
-  }, [GetPostLikes.data])
+  }, [GetPostLikes.data, user])
 
   const [likePost] = useMutation(gql.CREATE_LIKE, {
     refetchQueries: [{ query: gql.GET_POST_LIKES(id) }],
@@ -22,6 +22,10 @@ const Post = ({id, content, created, user, currentUser }) => {
 
   const [unlikePost] = useMutation(gql.DELETE_LIKE, {
     refetchQueries: [{ query: gql.GET_POST_LIKES(id) }],
+  });
+
+  const [deletePost] = useMutation(gql.DELETE_POST, {
+    refetchQueries: [{ query: gql.GET_USER_POSTS(currentUser) }],
   });
 
   if (GetPostLikes.loading) {
@@ -65,6 +69,12 @@ const Post = ({id, content, created, user, currentUser }) => {
     return <button disabled={clicked} onClick={unlike}>Unlike</button>
   }
 
+  const renderDelete = () => {
+    return <button
+      disabled={clickedDelete}
+      onClick={() => removePost(id)}>Delete Post</button>
+  }
+
   return (
     <div className="post-container">
       <p><strong>{content}</strong></p>
@@ -72,6 +82,7 @@ const Post = ({id, content, created, user, currentUser }) => {
       <div className="likes-container">
         <p>{!!GetPostLikes.data && `${GetPostLikes.data.postLikes.length} Likes`}</p>
         <section>
+          {!!(user === currentUser) && renderDelete()}
           {!!(user !== currentUser) && <section>
             {!checkLikes() ? renderLikeBtn() : renderUnLikeBtn()}
             </section>}
