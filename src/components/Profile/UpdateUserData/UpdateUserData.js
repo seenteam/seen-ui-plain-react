@@ -20,29 +20,21 @@ const UpdateUserData = () => {
     return (
         <section className='edit-user-form-area'>
             <form onSubmit={updatingUser} >
-                <div>
+               
                     <label htmlFor="userName">Username: <input required ref={value => userName = value} id='userName'/></label>
-                </div>
+        
                 
-                <div>
+        
                     <label htmlFor="firstName">First name: <input required ref={value => firstName = value} id='firstName'/></label>
-                </div>
-                
-                <div>
+        
                     <label htmlFor="lastName">Last name: <input required ref={value => lastName = value} id='lastName'/></label>
-                </div>
-
-                <div>
+        
                     <label htmlFor="phoneNumber">Phone Number: <input required ref={value => phoneNumber = value} type="tel" id='phoneNumber' placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/></label>    
-                </div>
-                
-                <div>
+        
                     <label htmlFor="email">Email address: <input required ref={value => email = value} type="email" id='email'/></label>
-                </div>
-
-                <div>
+        
                     <label htmlFor="birthday">Birthdate: <input required ref={value => birthday = value} type="date" id='birthday'/></label>    
-                </div>
+    
 
                 <input type="submit" value="Update User"/>
             </form>
