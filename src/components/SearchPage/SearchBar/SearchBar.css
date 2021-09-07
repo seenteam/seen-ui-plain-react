@@ -1,11 +1,15 @@
-input {
-  border: none;
-  border-bottom: 1px solid black;
-  outline: none;
+.searchbar-container > input {
+  display: inline;
+  /* border: none; */
+  /* outline: none; */
   width: 60vw;
 }
 
 .searchbar-container {
   font-size: 12px;
   margin-bottom: 2%;
+}
+
+.search-icon {
+  display: inline;
 }
