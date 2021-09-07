@@ -38,7 +38,6 @@ const UpdateUserData = () => {
                 <input required ref={value => birthday = value} type="date" id='birthday'></input> <br/>
 
                 <input type="submit" value="Update User" />
-                {/* <button type='submit' onClick={updatingUser}> Update User</button> */}
             </form>
         </section>
     )
