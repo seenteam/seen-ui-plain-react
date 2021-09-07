@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import SearchBar from './SearchBar/SearchBar'
+import TopFlux from '../TopFlux/TopFlux.js'
 import SearchResults from './SearchResults/SearchResults';
 import { useQuery } from '@apollo/client';
 import * as gql from '../../queries/queries'
@@ -41,6 +42,7 @@ const SearchPage = ({setNewPost}) => {
             />
             <SearchResults results={!query ? null : queryResults()} />
             <h2>Viral Users</h2>
+            <TopFlux />
         </section>
     )
 }
