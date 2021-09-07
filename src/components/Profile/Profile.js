@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import './Profile.css'
 import ProfileDetails from './ProfileDetails/ProfileDetails';
 import UpdateUserData from './UpdateUserData/UpdateUserData';
@@ -13,10 +14,14 @@ const Profile = () => {
   }, [])
 
   return (
-    <div className="user-profile">
+    <section className="user-profile">
+      <Link to='/profile'>
+        <button> Return to profile! </button>
+      </Link>      
       <ProfileDetails />
       <UpdateUserData />
-    </div>
+
+    </section>
   )
 }
 
