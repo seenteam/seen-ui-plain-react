@@ -11,22 +11,26 @@ const ProfileDetails = () => {
    if (loading) return <p>Loading...</p>;
    if (error) return <p>Error :(</p>;
 
+  const birthday = data.user.birthday.split('T')[0].split('-')
+  const birthdate = birthday[1] + '-' + birthday[2] + '-' + birthday[0]
+  console.log({birthdate})
+
    return (
-    <section>
+    <section className="profile-details">
        <p>
-         Username : {data.user.userName}
+         Username: {data.user.userName}
        </p>
        <p>
-         name :  {data.user.firstName} {data.user.lastName}
+        Name:  {data.user.firstName} {data.user.lastName}
        </p>
        <p>
-        email: {data.user.email}
+        Email: {data.user.email}
        </p>
        <p>
-        Phone Number : {data.user.phoneNumber}
+        Phone Number: {data.user.phoneNumber}
        </p>
        <p>
-        Birthday: {data.user.birthday}
+        Birthday: {birthdate}
        </p>
      </section>
    );
