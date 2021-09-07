@@ -16,6 +16,7 @@ import { faUserCircle } from '@fortawesome/free-regular-svg-icons'
 // import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
 import UserContext from '../../components/UserProfile/UserContext.js'
 import './App.css';
+import UpdateUserData from '../../components/Profile/UpdateUserData/UpdateUserData.js'
 library.add(faAtom, faHome, faSearch, faUserCircle, faUserCircleActive, faPlus, faChevronRight);
 
 const App = () => {
@@ -48,6 +49,9 @@ const App = () => {
                   return <UserProfile user={userID} />
                 }}
               />
+              <Route exact path="/profile/edit" render={() => {
+                    return <Profile />
+              }}/>
               <Route exact path="/search-page">
                 <SearchPage
                   setNewPost={setNewPost}
