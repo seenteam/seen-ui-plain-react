@@ -24,6 +24,7 @@ const UserProfile = ({user}) => {
   const [profile, setProfile] = useState('')
   const [followersVisible, setFollowersVisible] = useState(false)
   const [fluxFollowersVisible, setFluxFollowersVisible] = useState(false)
+  const [clickedDelete, setClickedDelete] = useState(false)
 
   const [followUser] = useMutation(gql.CREATE_FOLLOWER, {
     refetchQueries: [{ query: gql.GET_FOLLOWING_INFO(value) }, { query: gql.GET_FOLLOWER_INFO(user) }, { query: gql.GET_USER_INFO(user) }],
@@ -33,9 +34,14 @@ const UserProfile = ({user}) => {
     refetchQueries: [{ query: gql.GET_FOLLOWING_INFO(value) }, { query: gql.GET_FOLLOWER_INFO(user) }, { query: gql.GET_USER_INFO(user) }, { query: gql.GET_USER_INFO(value) }],
   });
 
+  const [deletePost] = useMutation(gql.DELETE_POST, {
+    refetchQueries: [{ query: gql.GET_USER_POSTS(user) }],
+  });
+
 
   useEffect(() => {
     setClicked(false)
+    setClickedDelete(false)
   }, [GetVisitedUserInfo.data])
 
 
@@ -64,11 +70,30 @@ const UserProfile = ({user}) => {
     console.log(GetVisitedUserInfo.data)
   }
 
+  const removePost = (postId) => {
+    setClicked(true)
+    deletePost({
+      variables: {
+        'postId': postId
+      },
+    })
+  }
+
   const renderPosts = (posts) => {
     return (
       <section className="user-posts-container">
         <div className="posts-grid">
-          {[...posts].sort((a, b) => parseInt(b.id) - parseInt(a.id)).map(post => <Post id={post.id} content={post.content} created={post.createdAt} user={user} currentUser={(user === value) ? value : null} />)}
+          {[...posts].sort((a, b) => parseInt(b.id) - parseInt(a.id)).map(post => {
+            return <Post
+              id={post.id}
+              content={post.content}
+              created={post.createdAt}
+              user={user}
+              currentUser={(user === value) ? value : null}
+              clickedDelete={clicked}
+              removePost={removePost}
+              />
+          })}
         </div>
       </section>
     )
