@@ -1,0 +1,8 @@
+{
+  "data":
+    {"users":[
+      {"id":"1","userName":"Bill Ding","firstName":"Janella","lastName":"King","__typename":"User"},
+      {"id":"2","userName":"Nerdo","firstName":"Ultra","lastName":"Nerd","__typename":"User"},
+    ]
+  }
+}
