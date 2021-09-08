@@ -2,16 +2,18 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
+  background: rgba(250, 128, 114, 0.65);
 }
 
 footer ul li {
-  color: black;
+  color: white;
   list-style: none;
 }
 
 footer ul li button {
   background: none;
   /* outline:   none; */
+  color: white;
   border: none;
 }
 
@@ -21,7 +23,7 @@ footer ul li, footer ul li button {
 }
 
 footer ul li:hover, footer ul li button:hover {
-  color: white;
+  color: black;
 }
 
 footer ul a {
