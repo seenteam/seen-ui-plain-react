@@ -35,9 +35,13 @@ If a User is deemed viral and hold onto a large flux following for the day, thei
 
 ## In use
 
-![User Feed Demo](https://media.giphy.com/media/oxAtlR0bNHwKhScFcO/giphy.gif?cid=790b7611d3f2f752a3a52ed14a3dfc8bce031a8bbada0ee2&rid=giphy.gif&ct=g
-)
-
+![User Feed Demo](https://media.giphy.com/media/oxAtlR0bNHwKhScFcO/giphy.gif?cid=790b7611d3f2f752a3a52ed14a3dfc8bce031a8bbada0ee2&rid=giphy.gif&ct=g)
+![Like/Dislike Demo](https://media.giphy.com/media/kzioEhNutNQx8X21GL/giphy.gif?cid=790b7611c303bafb3b4a53d3f2a66e1d993361adafd93119&rid=giphy.gif&ct=g)
+![User Search Demo](https://media.giphy.com/media/TbYX0oHL375nbgz1tu/giphy.gif?cid=790b7611210823e9e66f1389958113ad92e62c0e71bb31a9&rid=giphy.gif&ct=g)
+![User Profile Demo](https://media.giphy.com/media/mEd7ARoWx4FdqoQjxt/giphy.gif?cid=790b761111818e598c377385688e462e7ddc65cb1be7269d&rid=giphy.gif&ct=g)
+![Create Post Demo](https://media.giphy.com/media/xOhP4jlppd78Cl9gLa/giphy.gif?cid=790b76113373b9f400afe61e4bf53ce49f12c883c98fdef8&rid=giphy.gif&ct=g)
+![Delete Post Demo](https://media.giphy.com/media/M1rJuMRTheGiOMobEm/giphy.gif?cid=790b761147fe148b237c237f089ea8a465df3674ddd161de&rid=giphy.gif&ct=g)
+![Follow Demo](https://media.giphy.com/media/gxrbrSdkFx4JsIG3jb/giphy.gif?cid=790b7611e9829cbe0e3d09ee8ce0d09d2d0ec4f30b19fd67&rid=giphy.gif&ct=g)
 
 ## Set Up
 
