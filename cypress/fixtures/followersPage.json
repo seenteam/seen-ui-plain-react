@@ -1,0 +1,42 @@
+{
+  "data":
+    "getPostFromFixedFollowing": [],
+    "getPostFromFluxFollowing": [
+      {
+        "userId": 2,
+        "createdAt": "2021-09-05T21:54:58Z",
+        "id": 20,
+        "likeCount": 1,
+        "content": "This is a test post",
+        "user": {
+          "firstName": "Ultra",
+          "lastName": "Nerd",
+          "userName": "i_love_Cypress"
+        }
+      },
+      {
+        "userId": 3,
+        "createdAt": "2021-09-05T21:54:58Z",
+        "id": 21,
+        "likeCount": 1,
+        "content": "Don't leave testing for last",
+        "user": {
+          "firstName": "Acai",
+          "lastName": "Blueberry",
+          "userName": "user2"
+        }
+      },
+      {
+        "userId": 4,
+        "createdAt": "2021-09-06T21:54:58Z",
+        "id": 22,
+        "likeCount": 31,
+        "content": "Time for sleep",
+        "user": {
+          "firstName": "Reginald",
+          "lastName": "Mayers",
+          "userName": "vitaminwater"
+        }
+      }
+    ]
+}
