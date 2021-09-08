@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './FollowerDetails.css'
 
 const FollowerDetails = ({id, followersVisible, type}) => {
-  const { loading, data } = useQuery(gql.GET_USER_INFO(id))
+  const { loading, data } = useQuery(gql.GET_USER_NAME(id))
 
   if (loading) return <Loading loading={loading} type="follower" />
 
