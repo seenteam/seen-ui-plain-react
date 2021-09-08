@@ -14,7 +14,11 @@
 
 ## Overview
 
-Seen is a social media platform that serves as an answer to "What if you started a social media platform with 10 followers, then woke up the next day with 1 million?" 
+Seen is a social media platform that serves as an answer to "What if you started a social media platform with 10 followers, then woke up the next day with 1 million?". Users have two tiers of followers that are distinct from one another - fixed/flux followers and following. Each day, flux followers are redistributed among the user base randomly; one user might get 80% of the user base as part of their flux followers, another 60%, and so on. 
+
+Many people who use social media want to know what it might be like to have a massive following - for some it's a matter of being able to display their creative talents to an audience that might take years of hard work, luck, and persistence to achieve with conventional social media platforms. Others might want to know what it's like to be Seen by so many people. 
+
+If a User is deemed viral and hold onto a large flux following for the day, their following has the opportunity to see this viral User's content then decide if they wish to keep up with them, in which case they choose to follow them and become a part of their fixed followers, which will never be redistributed or altered unless the user decides to unfollow. 
 
 
 ## Features
