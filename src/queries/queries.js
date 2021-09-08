@@ -49,7 +49,7 @@ query usersFluxFollowers {
 `
 
 export const GET_USER_NAME = (id) => gql`
-query GetUserInfo {
+query GetUserName {
   user(id: ${id}) {
     userName
     firstName

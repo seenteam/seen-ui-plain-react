@@ -6,7 +6,26 @@ describe("User Feed", () => {
         // }).as('boogie')
 
 
-
+        cy.intercept('POST', 'https://intense-ocean-61260.herokuapp.com/graphql', req => {
+          if (req.body.operationName === 'GetUserName') {
+            req.alias = 'userQuery';
+            req.reply({
+              body: {
+                data: {
+                  user: {
+                    id: '1',
+                    userName: 'user1',
+                    firstName: 'Ace',
+                    lastName: 'Attorney'
+                  }
+                }
+              },
+              headers: {
+                'access-control-allow-origin': '*',
+              }
+            })
+          }
+        });
 
         // Posts from Following
         cy.intercept('POST', 'https://intense-ocean-61260.herokuapp.com/graphql', req => {
@@ -71,8 +90,8 @@ describe("User Feed", () => {
               body: {
                 data: {
                   user: {
-                    id: 2,
-                    firstName: "Aplus",
+                    id: 1,
+                    firstName: "Ace",
                     lastName: "Attorney",
                     userName: "user1",
                     __typename: "User",
@@ -133,7 +152,28 @@ describe("User Feed", () => {
           }
         });
 
-
+        cy.intercept('POST', 'https://intense-ocean-61260.herokuapp.com/graphql', req => {
+          if (req.body.operationName === 'postLikes') {
+            req.alias = 'userQuery';
+            req.reply({
+              body: {
+                data: {
+                  postLikes: [
+                    {
+                      id: 1,
+                      userName: 'user1',
+                      firstName: 'Aplus',
+                      lastName: 'Attorney'
+                    },
+                  ]
+                }
+              },
+              headers: {
+                'access-control-allow-origin': '*',
+              }
+            })
+          }
+        });
 
         cy.visit('http://localhost:3000/');
 
@@ -143,5 +183,77 @@ describe("User Feed", () => {
     it('User should see Seen header upon visiting', () => {
       cy.contains('Seen')
     })
+
+
+    it('User should see posts from other users they are following', () => {
+      cy.get('.post-container').contains('Time for sleep')
+    })
+
+    it('User should be able to like post - when clicked, button should be disabled', () => {
+
+      cy.intercept('POST', 'https://intense-ocean-61260.herokuapp.com/graphql', req => {
+        if (req.body.operationName === 'createLike') {
+          req.alias = 'deleteLike';
+          req.reply({
+            body: {
+              data: {
+                like: {
+                  id: 3
+                },
+                user: {
+                  id: 1
+                },
+                post: {
+                  id: 20,
+                  content: "This is a test post"
+                }
+              }
+            },
+            headers: {
+              'access-control-allow-origin': '*',
+            }
+          })
+        }
+      });
+
+      cy.intercept('POST', 'https://intense-ocean-61260.herokuapp.com/graphql', req => {
+        if (req.body.operationName === 'deleteLike') {
+          req.alias = 'deleteLike';
+          req.reply({
+            body: {
+              data: {
+                message: "Like deleted!"
+              }
+            },
+            headers: {
+              'access-control-allow-origin': '*',
+            }
+          })
+        }
+      });
+
+      cy.intercept('POST', 'https://intense-ocean-61260.herokuapp.com/graphql', req => {
+        if (req.body.operationName === 'postLikes') {
+          req.alias = 'userQuery';
+          req.reply({
+            body: {
+              data: {
+                postLikes: []
+              }
+            },
+            headers: {
+              'access-control-allow-origin': '*',
+            }
+          })
+        }
+      });
+      cy.get('.post-container').get('.likes-container').get('section').get('section').get('button').first().click()
+      cy.get('.post-container').get('.likes-container').get('section').get('section').get('button').first().should('have.attr', 'disabled')
+    })
+
+
+        it('User should have their name displayed when visiting', () => {
+          cy.contains("Ace Attorney's Feed")
+        })
 
 })
