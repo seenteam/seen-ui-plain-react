@@ -5,6 +5,7 @@ import SearchPage from '../../components/SearchPage/SearchPage.js'
 import Profile from '../../components/Profile/Profile.js'
 import WavesLayer from '../../components/WavesLayer/WavesLayer.js'
 import Followers from '../../components/Followers/Followers.js'
+import Feed from '../../components/Feed/Feed.js'
 import UserPosts from '../../components/UserPosts/UserPosts'
 import UserProfile from '../../components/UserProfile/UserProfile'
 import {Switch, Route} from 'react-router-dom'
@@ -36,15 +37,15 @@ const App = () => {
           <Route exact path="/" >
             <section>
               <Header setNewPost={setNewPost}/>
-              <UserPosts/>
+              <Feed user={userID} />
             </section>
           </Route>
           <Route exact path="/profile" >
             <UserProfile user={userID} />
-          </Route>     
+          </Route>
           <Route exact path="/profile/edit" >
             <Profile />
-          </Route>      
+          </Route>
           <Route exact path="/search-page">
             <SearchPage setNewPost={setNewPost}/>
           </Route>
