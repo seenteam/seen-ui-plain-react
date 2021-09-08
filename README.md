@@ -35,6 +35,9 @@ If a User is deemed viral and hold onto a large flux following for the day, thei
 
 ## In use
 
+![User Feed Demo](https://media.giphy.com/media/oxAtlR0bNHwKhScFcO/giphy.gif?cid=790b7611d3f2f752a3a52ed14a3dfc8bce031a8bbada0ee2&rid=giphy.gif&ct=g
+)
+
 
 ## Set Up
 
