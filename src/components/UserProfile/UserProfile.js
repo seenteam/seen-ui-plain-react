@@ -14,7 +14,6 @@ import './UserProfile.css'
 const UserProfile = ({user}) => {
   const value = useContext(UserContext)
   const GetFollowingInfo = useQuery(gql.GET_FOLLOWER_INFO(user));
-  // const UsersLikedPosts = useQuery(gql.GET_LIKED_POSTS(user));
   const GetFluxFollowing = useQuery(gql.GET_USER_FLUX_FOLLOWING(user));
   const GetFluxFollowers = useQuery(gql.GET_USER_FLUX_FOLLOWERS(user))
   const GetVisitedUserInfo = useQuery(gql.GET_USER_INFO(user));
@@ -58,9 +57,9 @@ const UserProfile = ({user}) => {
   if (GetVisitedUserInfo.loading) {
     return <Loading loading={GetFollowingInfo.loading} />
   }
-  if (GetFluxFollowing.loading) {
-    return <Loading loading={GetFluxFollowing.loading} />
-  }
+  // if (GetFluxFollowing.loading) {
+  //   return <Loading loading={GetFluxFollowing.loading} />
+  // }
   if (GetFluxFollowers.loading) {
     return <Loading loading={GetFluxFollowers.loading} />
   }
