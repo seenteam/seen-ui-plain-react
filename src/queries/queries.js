@@ -131,13 +131,27 @@ query {
 export const GET_POSTS_FROM_FOLLOWING = (id) => gql`
   query {
    getPostFromFixedFollowing(id: ${id}){
+    userId
+    user {
+      firstName
+      lastName
+      userName
+    }
     id
     content
+    createdAt
     likeCount
    }
    getPostFromFluxFollowing(id: ${id}){
+     userId
+     user {
+       firstName
+       lastName
+       userName
+     }
      id
      content
+     createdAt
      likeCount
    }
   }
