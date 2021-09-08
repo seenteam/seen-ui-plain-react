@@ -1,6 +1,6 @@
 {
   "data":
-    "getPostFromFixedFollowing": [],
+    {"getPostFromFixedFollowing": [],
     "getPostFromFluxFollowing": [
       {
         "userId": 2,
@@ -38,5 +38,5 @@
           "userName": "vitaminwater"
         }
       }
-    ]
+    ]}
 }
