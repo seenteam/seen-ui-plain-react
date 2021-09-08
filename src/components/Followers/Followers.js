@@ -10,12 +10,12 @@ const Followers = () => {
   const GetFollowingInfo = useQuery(gql.GET_FOLLOWING_INFO(value))
   const GetFluxFollowing = useQuery(gql.GET_USER_FLUX_FOLLOWING(value))
   const GetFluxFollowers = useQuery(gql.GET_USER_FLUX_FOLLOWERS(value))
-  const { data } = useQuery(gql.GET_USER_INFO(value))
+  const { data } = useQuery(gql.GET_FOLLOWER_INFO(value))
 
   const renderFollowers = () => {
-    if (data) return data.user.followers.map((follower, index) => {
+    if (data) return data.usersFollowers.map((follower, index) => {
       return <div key={index}>
-        <FollowerDetails id={follower.friendId} />
+        <FollowerDetails id={follower.id} />
       </div>
     })
   }
