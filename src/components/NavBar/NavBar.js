@@ -15,11 +15,11 @@ const NavBar = ({newPost, setNewPost}) => {
   return (
     <footer>
       <ul>
-        <Link exact to="/"><li><FontAwesomeIcon icon="home" /></li></Link>
-        <Link exact to="/search-page"><li><FontAwesomeIcon icon="search" /></li></Link>
+        <Link to="/"><li><FontAwesomeIcon icon="home" /></li></Link>
+        <Link to="/search-page"><li><FontAwesomeIcon icon="search" /></li></Link>
         <li className={(!newPost) ? 'new-post' : 'yellow'}><button onClick={togglePost} onKeyPress={handleKeypress}><FontAwesomeIcon icon="plus" /></button></li>
-        <Link exact to="/followers"><li><FontAwesomeIcon icon="atom" /></li></Link>
-        <Link exact to="/profile"><li><FontAwesomeIcon icon={['far', 'user-circle']} /></li></Link>
+        <Link to="/followers"><li><FontAwesomeIcon icon="atom" /></li></Link>
+        <Link to="/profile"><li><FontAwesomeIcon icon={['far', 'user-circle']} /></li></Link>
       </ul>
     </footer>
   )

@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { useQuery, useMutation } from "@apollo/client";
 import FollowersList from './FollowersList/FollowersList'
 import UserProfileHeader from './UserProfileHeader/UserProfileHeader'
@@ -14,15 +14,13 @@ import './UserProfile.css'
 const UserProfile = ({user}) => {
   const value = useContext(UserContext)
   const GetFollowingInfo = useQuery(gql.GET_FOLLOWER_INFO(user));
-  const UsersLikedPosts = useQuery(gql.GET_LIKED_POSTS(user));
+  // const UsersLikedPosts = useQuery(gql.GET_LIKED_POSTS(user));
   const GetFluxFollowing = useQuery(gql.GET_USER_FLUX_FOLLOWING(user));
-  //ALSO ADD FLUX FOLLOWERS for value
   const GetFluxFollowers = useQuery(gql.GET_USER_FLUX_FOLLOWERS(user))
   const GetVisitedUserInfo = useQuery(gql.GET_USER_INFO(user));
   const [clicked, setClicked] = useState(false)
   const [postsClicked, setPostsClicked] = useState(true)
   const [likedPostsClicked, setlikedPostsClicked] = useState(false)
-  const [profile, setProfile] = useState('')
   const [followersVisible, setFollowersVisible] = useState(false)
   const [fluxFollowersVisible, setFluxFollowersVisible] = useState(false)
   const [clickedDelete, setClickedDelete] = useState(false)
@@ -45,7 +43,7 @@ const UserProfile = ({user}) => {
     setClickedDelete(false)
   }, [GetVisitedUserInfo.data])
 
-
+  if (GetVisitedUserInfo.error) return <Redirect to="/" />
 
   const toggleNav = () => {
      if (!postsClicked) {
@@ -97,15 +95,15 @@ const UserProfile = ({user}) => {
     )
   }
 
-  const renderLikedPosts = (posts) => {
-    return (
-      <section className="user-posts-container">
-        <div className="posts-grid">
-          {posts.map(post => <Post id={post.id} content={post.content} created={post.createdAt} user={value} currentUser={user} />)}
-        </div>
-      </section>
-    )
-  }
+  // const renderLikedPosts = (posts) => {
+  //   return (
+  //     <section className="user-posts-container">
+  //       <div className="posts-grid">
+  //         {posts.map(post => <Post id={post.id} content={post.content} created={post.createdAt} user={value} currentUser={user} />)}
+  //       </div>
+  //     </section>
+  //   )
+  // }
 
   const renderFollowers = (followers) => {
     return (

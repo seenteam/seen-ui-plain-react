@@ -6,9 +6,8 @@ import Profile from '../../components/Profile/Profile.js'
 import WavesLayer from '../../components/WavesLayer/WavesLayer.js'
 import Followers from '../../components/Followers/Followers.js'
 import Feed from '../../components/Feed/Feed.js'
-import UserPosts from '../../components/UserPosts/UserPosts'
 import UserProfile from '../../components/UserProfile/UserProfile'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import Header from '../../components/Header/Header.js'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faAtom, faHome, faSearch, faUserCircle as faUserCircleActive, faPlus, faChevronRight} from '@fortawesome/free-solid-svg-icons';
@@ -23,11 +22,7 @@ const App = () => {
     let ids = [1, 2, 3, 4, 5]
     return Math.floor(Math.random() * ids.length) + 1
   }
-
-  const [userbase, setUsers] = useState([])
-  const [current, setCurrent] = useState('')
   const [newPost, setNewPost] = useState(false)
-  const [posts, setPosts] = useState([])
   const [userID, setUserID] = useState(getRandomUser())
 
   return (
@@ -56,12 +51,14 @@ const App = () => {
               const { id } = match.params
               return <UserProfile user={id} />
           }}/>
+        <Route render={() => {
+            return <Redirect to="/" />
+          }} />
         </Switch>
         <WavesLayer />
         <NewPost
           visible={newPost}
           setVisibility={setNewPost}
-          setPosts={setPosts}
         />
         <NavBar
           newPost={newPost}

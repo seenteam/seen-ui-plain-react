@@ -12,8 +12,7 @@ const TopFlux = () => {
 
   const renderTop = () => {
     if (topFlux.data) {
-      console.log('SHOULD HAVE DATA HERE', topFlux.data)
-      return topFlux.data.topFlux.map(user => <TopFluxUserCard data={user} />)
+      return topFlux.data.topFlux.map((user, index) => <TopFluxUserCard key={index} data={user} />)
     }
   }
 
