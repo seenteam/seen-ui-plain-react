@@ -36,16 +36,12 @@ textarea {
   background: white;
   color: black;
   border: 1px solid white;
-  /* padding: 10px; */
   cursor: pointer;
 }
 
 .submit-btn {
   opacity: 1;
-  /* width: 70px;
-  height: 30px; */
   place-self: flex-end;
-  /* margin: 10px 0px 10px 0px; */
   transition: 1s;
 }
 
