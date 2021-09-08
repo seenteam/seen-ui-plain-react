@@ -11,8 +11,7 @@ const NewPost = ({visible, setVisibility, data, setPosts }) => {
   const [postData, setPostData] = useState('')
   const [answer, setAnswer] = useState('')
   const [isDisabled, setDisabled] = useState(true);
-  const [isAnswered, setIsAnswered] = useState(false);
-  const maxLength = 420;
+  const maxLength = 70;
   const [charsLeft, setCharsLeft] = useState(maxLength);
   const [createPost] = useMutation(gql.CREATE_POST, {
     refetchQueries: [{ query: gql.GET_USER_POSTS(value) }],
@@ -26,10 +25,6 @@ const NewPost = ({visible, setVisibility, data, setPosts }) => {
     e.preventDefault()
     if (!postData) return
     setVisibility(false)
-    let newPost = {
-      content: postData,
-      userId: value
-    }
     createPost({
       variables: {
         content: postData,
@@ -39,7 +34,6 @@ const NewPost = ({visible, setVisibility, data, setPosts }) => {
     setPostData('')
     setAnswer('')
     setDisabled(true);
-    setIsAnswered(true);
   }
 
   return (
@@ -51,7 +45,7 @@ const NewPost = ({visible, setVisibility, data, setPosts }) => {
         <form onSubmit={submitForm}>
           <textarea
             type="text"
-            placeholder="Up to 420 characters"
+            placeholder="Up to 70 characters"
             value={postData}
             maxLength= {maxLength}
             onChange={e => {
