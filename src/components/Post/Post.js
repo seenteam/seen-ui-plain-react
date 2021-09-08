@@ -33,7 +33,7 @@ const Post = ({id, content, created, user, currentUser, clickedDelete, removePos
   }
 
   const checkLikes = () => {
-    let found = GetPostLikes.data.postLikes.find(like => like.id === user)
+    let found = GetPostLikes.data.postLikes.find(like => like.id === user.toString())
     if (found) {
       return true
     }
