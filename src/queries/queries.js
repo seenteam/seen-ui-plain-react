@@ -116,7 +116,7 @@ query usersLikedPosts {
 
 
 export const GET_TOP_FLUX = gql`
-query {
+query GetTopFlux {
   topFlux {
     userId
     user {
@@ -159,7 +159,7 @@ export const GET_POSTS_FROM_FOLLOWING = (id) => gql`
 
 //TESTed this query it works!
 export const GET_ALL_USERS = gql`
-query {
+query GetAllUsers {
   users {
     id
     userName
