@@ -1,5 +1,6 @@
 .posts-container {
-  height: 75vh;
+  max-height: 75vh;
+  height: auto;
   overflow-y: scroll;
   border-bottom: 4px solid gray;
   z-index: 5;
