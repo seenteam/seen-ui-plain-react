@@ -12,7 +12,7 @@ const Loading = ({loading, type}) => {
   `;
 
   return <section className="loading-container">
-    {!type ? <FadeLoader loading={loading} color="cyan" size={3}/> : <PulseLoader color="cyan" loading={loading} size={5} css={override} />}
+    {!type ? <FadeLoader loading={loading} color="salmon" size={3}/> : <PulseLoader color="salmon" loading={loading} size={5} css={override} />}
   </section>
 }
 
