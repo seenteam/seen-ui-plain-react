@@ -40,7 +40,7 @@ describe("Edit User Profile Page Spec", () => {
         
     })
 
-    it.only('Should allow the user to type in the form!', () => {
+    it('Should allow the user to type in the form!', () => {
         cy.intercept('POST', 'https://intense-ocean-61260.herokuapp.com/graphql', (req) => {
             aliasMutation(req, req.body.operationName)
             req.reply({ fixture: 'userProfileUpdate.json'});
@@ -56,5 +56,14 @@ describe("Edit User Profile Page Spec", () => {
         cy.get('[type="submit"]').click()
         cy.wait('@gqlupdateUserMutation');
     })
+
+    it('Should allow the user to return to the user-profile when the return to profile button is clicked!', () => {
+        cy.intercept('POST', 'https://intense-ocean-61260.herokuapp.com/graphql', (req) => {
+            aliasMutation(req, req.body.operationName)
+            req.reply({ fixture: 'userProfileUpdate.json'});
+          })
+        
+    })
+
 })
 
