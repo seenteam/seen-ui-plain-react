@@ -4,10 +4,8 @@ import './Profile.css'
 import ProfileDetails from './ProfileDetails/ProfileDetails';
 import UpdateUserData from './UpdateUserData/UpdateUserData';
 
-// Query Posts from DB that correspond to current User
-
 const Profile = () => {
-  
+
   useEffect(() => {
     let mounted = true;
     return () => mounted = false;
@@ -17,10 +15,9 @@ const Profile = () => {
     <section className="user-profile">
       <Link to='/profile'>
         <button> Return to profile! </button>
-      </Link>      
+      </Link>
       <ProfileDetails />
       <UpdateUserData />
-
     </section>
   )
 }
