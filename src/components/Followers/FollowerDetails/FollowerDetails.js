@@ -8,7 +8,6 @@ import './FollowerDetails.css'
 const FollowerDetails = ({id, followersVisible, type}) => {
   const { loading, error, data } = useQuery(gql.GET_USER_INFO(id))
 
-  if (error) console.log(error, "ERROR!")
   if (loading) return <Loading loading={loading} type="follower" />
 
   const renderDetails = () => {
