@@ -129,7 +129,7 @@ query {
 `;
 
 export const GET_POSTS_FROM_FOLLOWING = (id) => gql`
-  query {
+  query GetPostsFromFollowing {
    getPostFromFixedFollowing(id: ${id}){
     userId
     user {
