@@ -22,7 +22,7 @@ describe("Edit User Profile Page Spec", () => {
     })
 
     it('Should allow the user to type in the form!', () => {
-
+        
     })
 
     it('Should not allow the user to submit a form with incomplete fields in the form!', () => {
