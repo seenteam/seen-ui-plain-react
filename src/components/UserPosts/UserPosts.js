@@ -7,10 +7,6 @@ import './UserPosts.css'
 import UserContext from '../UserProfile/UserContext.js';
 import Loading from '../Loading/Loading.js'
 
-// const dayjs = require('dayjs')
-// const LocalizedFormat = require('dayjs/plugin/localizedFormat')
-// dayjs.extend(LocalizedFormat)
-
 const UserPosts = () => {
 
   const value = useContext(UserContext);
@@ -29,10 +25,6 @@ const UserPosts = () => {
 
   if (loading) return <Loading loading={loading} />;
   if (error) return <p>Error :(</p>;
-  //
-  const check = (data) => {
-    console.log(data)
-  }
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -57,7 +49,7 @@ const UserPosts = () => {
             id={post.id}
             content={post.content}
             created={post.createdAt}
-            currentUser={value} 
+            currentUser={value}
             user={value}
             clickedDelete={clicked}
             removePost={removePost}
