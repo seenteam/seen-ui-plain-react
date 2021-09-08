@@ -42,7 +42,6 @@ const Post = ({id, content, created, user, currentUser, clickedDelete, removePos
   }
 
   const like = () => {
-    console.log('current user', user, 'current post id', id)
     setClicked(true)
     likePost({
       variables: {
@@ -79,7 +78,6 @@ const Post = ({id, content, created, user, currentUser, clickedDelete, removePos
   return (
     <div className="post-container">
       <p><strong>{content}</strong></p>
-      {console.log("CREATED AT", created)}
       <p>Posted {dayjs(created).format('LLL')}</p>
       {!!feedUser && <div>
         <Link to={`/users/${feedUser}`}>@{feedUName.userName}</Link>
