@@ -1,5 +1,4 @@
-import { useQuery, useMutation } from "@apollo/client";
-import Loading from '../Loading/Loading.js'
+import { useQuery } from "@apollo/client";
 import Post from '../Post/Post.js'
 import * as gql from '../../queries/queries'
 import './Feed.css'
