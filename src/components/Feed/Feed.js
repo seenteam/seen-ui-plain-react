@@ -15,12 +15,16 @@ const Feed = ({ user }) => {
     if (UserPosts.data && GetPostsFromFollowing.data) {
       let relevantPosts = [...UserPosts.data.user.posts, ...GetPostsFromFollowing.data.getPostFromFixedFollowing, ...GetPostsFromFollowing.data.getPostFromFluxFollowing]
       let uniquePosts = [...new Set(relevantPosts)]
-      let limited = uniquePosts.sort((a, b) => a.createdAt > b.createdAt ? 1 : -1).slice(0, 40)
+      let limited = uniquePosts.sort((a, b) => a.createdAt > b.createdAt ? -1 : 1).slice(0, 35)
+      console.log(limited)
       return limited.map(post => <Post
         id={post.id}
         content={post.content}
         created={post.createdAt}
         user={user}
+        currentUser={post.userId}
+        feedUser={post.userId}
+        feedUName={post.user}
         />)
     }
   }
