@@ -12,9 +12,21 @@ describe("Edit User Profile Page Spec", () => {
         cy.wait('@gqlGetUserInfoQuery');
     })
 
-    it('Should contain the string "Aplus"',  () => {
-        cy.contains('Aplus')
+    it("Should contain the test user Aplus AceAttorney's info ",  () => {
+        cy.contains('testy').should('be.visible')
+        cy.contains('Aplus').should('be.visible')
+        cy.contains('AceAttorney').should('be.visible')
+        cy.contains('japaneseLaw').should('be.visible')
+        cy.contains('888-888-8888').should('be.visible')
+        cy.contains('12-22-1988').should('be.visible')
     })
 
+    it('Should allow the user to type in the form!', () => {
+
+    })
+
+    it('Should not allow the user to submit a form with incomplete fields in the form!', () => {
+        
+    })
 })
 
