@@ -24,7 +24,14 @@ If a User is deemed viral and hold onto a large flux following for the day, thei
 ## Features
 
 - UI that accesses data from [our backend repo](https://github.com/seenteam/seen-be) to generate a social media experience that allows users to make posts, like and dislike posts, follow and unfollow users
-- Every 24 hours, flux followers are distributed across the user base randomly so that each day there are new viral users that 
+- Every 24 hours, flux followers are distributed across the user base randomly so that each day there are new viral users that can experience a large audience
+- Users are greeted by their Feed, which consists of posts from them, their fixed/flux following (who the user follows), and are ordered chronologically by most recent post
+- Users can search for other users in database and visit their profile
+- Users can see who the viral users are for the day
+- Users can view their fixed/flux followers and following and visit each users profile from there
+- User can make a new post that gets added to their feed, other users' (provided they are following) and their user profile
+- User profile shows a User's fixed/flux followers and posts, along with their name and username
+- A logged in user is able to edit their profile details
 
 ## In use
 
