@@ -57,9 +57,7 @@ const UserProfile = ({user}) => {
   if (GetVisitedUserInfo.loading) {
     return <Loading loading={GetFollowingInfo.loading} />
   }
-  // if (GetFluxFollowing.loading) {
-  //   return <Loading loading={GetFluxFollowing.loading} />
-  // }
+
   if (GetFluxFollowers.loading) {
     return <Loading loading={GetFluxFollowers.loading} />
   }
@@ -146,7 +144,7 @@ const UserProfile = ({user}) => {
     (!fluxFollowersVisible) ? setFluxFollowersVisible(true) : setFluxFollowersVisible(false)
   }
 
-  const renderTest = () => {
+  const renderUserProfile = () => {
     return (
       <div>{!!GetVisitedUserInfo.data && !!GetFollowingInfo.data && renderProfile()}</div>
     )
@@ -222,7 +220,7 @@ const UserProfile = ({user}) => {
 
   return (
     <section>
-      {renderTest()}
+      {renderUserProfile()}
     </section>
   )
 
