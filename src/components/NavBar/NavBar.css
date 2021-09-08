@@ -12,7 +12,6 @@ footer ul li {
 
 footer ul li button {
   background: none;
-  /* outline:   none; */
   color: white;
   border: none;
 }
@@ -39,10 +38,6 @@ footer ul {
   padding: 0;
   justify-content: space-around;
 }
-
-/* .add {
-  cursor: pointer;
-} */
 
 .new-post button, .yellow button {
   cursor: pointer;
