@@ -1,0 +1,25 @@
+header {
+  background: salmon;
+  padding: 20px 0;
+}
+
+header h1 {
+  margin: 1% 0;
+  color: white;
+  font-size: 1.7em;
+  text-align: center;
+}
+
+header h2 {
+  font-size: 1em;
+  margin: 0;
+  color: white;
+  text-align: center;
+}
+
+
+h1 img {
+  margin: 5px 5px 0 5px;
+  width: 20px;
+  height: 20px;
+}
