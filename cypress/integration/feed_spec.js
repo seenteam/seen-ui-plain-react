@@ -193,7 +193,7 @@ describe("User Feed", () => {
 
       cy.intercept('POST', 'https://intense-ocean-61260.herokuapp.com/graphql', req => {
         if (req.body.operationName === 'createLike') {
-          req.alias = 'deleteLike';
+          req.alias = 'createLike';
           req.reply({
             body: {
               data: {
@@ -252,8 +252,12 @@ describe("User Feed", () => {
     })
 
 
-        it('User should have their name displayed when visiting', () => {
-          cy.contains("Ace Attorney's Feed")
-        })
+    it('User should have their name displayed when visiting', () => {
+      cy.contains("Ace Attorney's Feed")
+    })
 
+    it('User be able to visit another Users profile after clicking username on their post', () => {
+      cy.get('.post-container').first().get('a').first().click()
+      cy.url().should('eq', 'http://localhost:3000/users/4')
+    })
 })
