@@ -2,13 +2,10 @@ import { useQuery, useMutation } from "@apollo/client";
 import React, {useContext, useState, useEffect} from 'react'
 import FollowerDetails from './FollowerDetails/FollowerDetails'
 import './Followers.css'
-
 import * as gql from '../../queries/queries'
 import UserContext from "../UserProfile/UserContext";
 
 const Followers = () => {
-
-
   const value = useContext(UserContext)
   const GetFollowingInfo = useQuery(gql.GET_FOLLOWING_INFO(value))
   const GetFluxFollowing = useQuery(gql.GET_USER_FLUX_FOLLOWING(value))
@@ -46,7 +43,6 @@ const Followers = () => {
   }
 
   const renderFollowing = () => {
-    // console.log(GetFollowingInfo.data.usersFollowers)
     return GetFollowingInfo.data.userFollowing.map((follower, index) => {
       return <div key={index}>
         <FollowerDetails id={follower.id} />
@@ -63,7 +59,6 @@ const Followers = () => {
   }
 
   const renderFluxFollowing = () => {
-    // console.log(GetFollowingInfo.data.usersFollowers)
     return GetFluxFollowing.data.userFluxFollowing.map((follower, index) => {
       return <div key={index}>
         <FollowerDetails id={follower.id} />
