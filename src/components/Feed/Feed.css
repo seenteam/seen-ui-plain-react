@@ -17,7 +17,8 @@ main {
 }
 
 .feed-container {
-  max-height: 100vh;
+  position: relative;
+  max-height: 75vh;
   height: auto;
   overflow-y: scroll;
 }
