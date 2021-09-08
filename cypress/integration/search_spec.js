@@ -107,8 +107,19 @@ describe("Search Page", () => {
       cy.get('.user-card').should('contain', 'Person Testerson')
     })
 
+    it('User can visit a searched users profile', () => {
+      cy.get('input').type('Person')
+      cy.get('.user-card').get('a').first().click()
+      cy.url().should('eq', 'http://localhost:3000/users/2')
+    })
+
     it('should display top flux followers for the day', () => {
       cy.get('.top-flux-card').first().should('contain', 'Viral One')
       cy.get('.top-flux-card').first().should('contain', '80 Flux Followers')
+    })
+
+    it('User can navigate to a flux followers profile', () => {
+      cy.get('.top-flux-card').first().get('a').first().click()
+      cy.url().should('eq', 'http://localhost:3000/users/5')
     })
 })
