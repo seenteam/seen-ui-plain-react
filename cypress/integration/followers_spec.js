@@ -25,7 +25,7 @@ describe("Followers Page", () => {
             req.reply({
               body: {
                   "data":
-                    {"usersFollowers":[
+                    {"userFollowing":[
                       {"id":"2","userName":"searchedUser","firstName":"Person","lastName":"Testerson","__typename":"User"},
                     ]
                   }
@@ -44,7 +44,7 @@ describe("Followers Page", () => {
             req.reply({
               body: {
                   "data":
-                    {"usersFollowers":[
+                    {"userFluxFollowing":[
                       {"id":"2","userName":"searchedUser","firstName":"Person","lastName":"Testerson","__typename":"User"},
                     ]
                   }
@@ -62,7 +62,7 @@ describe("Followers Page", () => {
             req.reply({
               body: {
                   "data":
-                    {"usersFollowers":[]
+                    {"usersFluxFollowers":[]
                   }
               },
               headers: {
@@ -74,5 +74,19 @@ describe("Followers Page", () => {
         cy.visit('http://localhost:3000/followers');
       });
 
-    
+      it('should display tiers of followers, fixed and flux', () => {
+        cy.contains('Fixed')
+        cy.contains('Flux')
+        cy.contains('Followers')
+        cy.contains('Following')
+      })
+
+      it('User should have followers present in test', () => {
+        cy.contains('Domo Arigatou')
+      })
+
+      it('User should be able to navigate to a user that follows them/they are following', () => {
+        cy.get('.user-card').first().click()
+        cy.url().should('eq', 'http://localhost:3000/users/2')
+      })
 })
