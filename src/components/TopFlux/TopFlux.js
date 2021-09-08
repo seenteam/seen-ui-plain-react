@@ -1,4 +1,4 @@
-import { useQuery, useMutation } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import Loading from '../Loading/Loading.js'
 import TopFluxUserCard from './TopFluxUserCard/TopFluxUserCard'
 import * as gql from '../../queries/queries'

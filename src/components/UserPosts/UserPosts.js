@@ -1,6 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react'
 import { useQuery, useMutation } from "@apollo/client";
-import Followers from '../Followers/Followers.js'
 import Post from '../Post/Post.js'
 import * as gql from '../../queries/queries';
 import './UserPosts.css'
@@ -11,7 +10,6 @@ const UserPosts = () => {
 
   const value = useContext(UserContext);
 
-  const [query, setQuery] = useState(1)
   const [clicked, setClicked] = useState(false)
   const { loading, error, data } = useQuery(gql.GET_USER_POSTS(value));
 
@@ -26,11 +24,6 @@ const UserPosts = () => {
   if (loading) return <Loading loading={loading} />;
   if (error) return <p>Error :(</p>;
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    setQuery(e.target.value || 1)
-    return query
-  }
 
   const removePost = (postId) => {
     setClicked(true)

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import SearchBar from './SearchBar/SearchBar'
 import TopFlux from '../TopFlux/TopFlux.js'
 import SearchResults from './SearchResults/SearchResults';
@@ -7,12 +7,9 @@ import * as gql from '../../queries/queries'
 import Loading from '../Loading/Loading.js'
 import './SearchPage.css'
 
-const SearchPage = ({setNewPost}) => {
+const SearchPage = () => {
 
     const [query, setQuery] = useState('')
-    useEffect(() => {
-        setNewPost(false);
-      }, [])
 
     const { loading, error, data } = useQuery(gql.GET_ALL_USERS);
 
