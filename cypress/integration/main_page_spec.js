@@ -9,13 +9,4 @@ describe("Main page spec", () => {
 
     })
 
-
-
-
-
-
-
-
-
-
 })
