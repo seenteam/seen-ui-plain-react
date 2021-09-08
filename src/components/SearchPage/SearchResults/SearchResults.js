@@ -1,6 +1,5 @@
 import './SearchResults.css'
 import FollowerDetails from '../../Followers/FollowerDetails/FollowerDetails.js'
-import {Link} from 'react-router-dom'
 
 const SearchResults = ({results}) => {
   let parsed;

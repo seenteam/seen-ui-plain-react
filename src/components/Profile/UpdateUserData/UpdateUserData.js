@@ -1,4 +1,4 @@
-import { useMutation, useSubscription } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import * as gql from '../../../queries/queries';
 import React, {useContext} from "react";
 import UserContext from "../../UserProfile/UserContext";
