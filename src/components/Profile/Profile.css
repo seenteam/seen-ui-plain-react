@@ -7,15 +7,43 @@
     position: relative;
 }
 
+.user-profile {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 400px;
+    padding-top: 15%;
+    position: relative;
+}
+
 .user-profile > a > button {
     position: absolute;
     top: 40px;
     left: 40px;
-    
+
     padding: 9px 8px;
     outline: none;
     border-radius: 5px;
     border: 1px solid #efefef;
     border-bottom: none;
     cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+  .user-profile {
+
+    flex-direction: column;
+    height: 80vh;
+    overflow-y: scroll;
+  }
+
+  .user-profile > a > button {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+  }
+
+  .profile-details {
+    margin-top: 30vh;
+  }
 }
