@@ -2,17 +2,7 @@ describe("User Post Spec", () => {
 
     beforeEach(() => {
         //1
-        /*
-            req.reply({
-                  body: {
-                    "data":{"usersFluxFollowers":[]}
-            } , headers: {
-                'access-control-allow-origin': '*',
-              }
-            })
-          }
-        */
-
+       
         cy.intercept('POST', 'https://intense-ocean-61260.herokuapp.com/graphql', (req) => {
             req.reply({ body: {"data": {
                 "users": [
@@ -101,7 +91,6 @@ describe("User Post Spec", () => {
         cy.contains("70").should('have.text', 'chars left: 70/70')
         cy.get('textarea').type('VNM5ZkJsmyEYm5yyeva68oAbwmLY58fDpBA96xgYlDN0hnB3qV6N9dmvB08Rnf7rn3KT5r')
         cy.get('.char-counter').should('have.text', 'chars left: 0/70')
-
     })
 
     it('Should be able to see the submit button', () => {
