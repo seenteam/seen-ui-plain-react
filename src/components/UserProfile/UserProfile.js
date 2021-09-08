@@ -67,10 +67,6 @@ const UserProfile = ({user}) => {
     return <Loading loading={GetFluxFollowers.loading} />
   }
 
-  const check = () => {
-    console.log(GetVisitedUserInfo.data)
-  }
-
   const removePost = (postId) => {
     setClicked(true)
     deletePost({
@@ -86,6 +82,7 @@ const UserProfile = ({user}) => {
         <div className="posts-grid">
           {[...posts].sort((a, b) => parseInt(b.id) - parseInt(a.id)).map(post => {
             return <Post
+              key={post.id}
               id={post.id}
               content={post.content}
               created={post.createdAt}
@@ -175,10 +172,10 @@ const UserProfile = ({user}) => {
   }
 
   const renderEditBtn = () => {
-    return (user === value) ? 
+    return (user === value) ?
       <Link to="/profile/edit">
         <button disabled={clicked}> Edit Profile </button> </Link> : null
-      
+
   }
 
   const follow = () => {
