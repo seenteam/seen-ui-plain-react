@@ -21,7 +21,7 @@ describe("Edit User Profile Page Spec", () => {
         cy.contains('12-22-1988').should('be.visible')
     })
     
-    it.only('Should not allow the user to submit a form with incomplete fields in the form!', () => {
+    it('Should not allow the user to submit a form with incomplete fields in the form!', () => {
 
         cy.get('input:invalid').should('have.length', 6)
 
@@ -40,18 +40,21 @@ describe("Edit User Profile Page Spec", () => {
         
     })
 
-    it('Should allow the user to type in the form!', () => {
-        //cy.intercept --> whatever the input value would be
+    it.only('Should allow the user to type in the form!', () => {
+        cy.intercept('POST', 'https://intense-ocean-61260.herokuapp.com/graphql', (req) => {
+            aliasMutation(req, req.body.operationName)
+            req.reply({ fixture: 'userProfileUpdate.json'});
+          })
+        
+        cy.get('#userName').type('wallE').should('contain.value', 'wallE')
+        cy.get('#firstName').type('Domo').should('contain.value', 'Domo')
+        cy.get('#lastName').type('Arigatou').should('contain.value', 'Arigatou')
+        cy.get('#phoneNumber').type('000-000-0000').should('contain.value', '000-000-0000')
+        cy.get('#email').type('co@co.com').should('contain.value', 'co@co.com')
+        cy.get('#birthday').type('2001-01-01').should('contain.value', '2001-01-01');
 
-
-        cy.get('#userName').type('testy2').should('contain.value', 'testy2')
-        cy.get('#firstName').type('Aplus2').should('contain.value', 'Aplus2')
-        cy.get('#lastName').type('AceAttorney2').should('contain.value', 'AceAttorney2')
-        cy.get('#phoneNumber').type('999-999-9999').should('contain.value', '999-999-9999')
-        cy.get('#email').type('nihonLaw@gmail.com').should('contain.value', 'nihonLaw@gmail.com')
-        cy.get('#birthday').type('1999-12-31').should('contain.value', '1999-12-31');
-
-        // cy.get('[type="submit"]').click()
+        cy.get('[type="submit"]').click()
+        cy.wait('@gqlupdateUserMutation');
     })
 })
 
