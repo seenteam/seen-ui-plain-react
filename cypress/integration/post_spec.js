@@ -1,8 +1,7 @@
 describe("User Post Spec", () => {
 
     beforeEach(() => {
-    
-
+            cy.visit('http://localhost:3000/');
     })
 
     
