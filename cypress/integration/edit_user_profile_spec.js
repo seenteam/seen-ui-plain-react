@@ -20,13 +20,38 @@ describe("Edit User Profile Page Spec", () => {
         cy.contains('888-888-8888').should('be.visible')
         cy.contains('12-22-1988').should('be.visible')
     })
+    
+    it.only('Should not allow the user to submit a form with incomplete fields in the form!', () => {
 
-    it('Should allow the user to type in the form!', () => {
+        cy.get('input:invalid').should('have.length', 6)
+
+        cy.get('#userName').type('testy3')
+        cy.get('input:invalid').should('have.length', 5)
+
+        cy.get('#firstName').type('Aplus3')
+        cy.get('input:invalid').should('have.length', 4)
+
+        cy.get('#lastName').type('AceAttorney3')
+        cy.get('input:invalid').should('have.length', 3)
+
+        cy.get('input:valid').should('have.length', 4)
+
+        cy.get('[type="submit"]').click()
         
     })
 
-    it('Should not allow the user to submit a form with incomplete fields in the form!', () => {
-        
+    it('Should allow the user to type in the form!', () => {
+        //cy.intercept --> whatever the input value would be
+
+
+        cy.get('#userName').type('testy2').should('contain.value', 'testy2')
+        cy.get('#firstName').type('Aplus2').should('contain.value', 'Aplus2')
+        cy.get('#lastName').type('AceAttorney2').should('contain.value', 'AceAttorney2')
+        cy.get('#phoneNumber').type('999-999-9999').should('contain.value', '999-999-9999')
+        cy.get('#email').type('nihonLaw@gmail.com').should('contain.value', 'nihonLaw@gmail.com')
+        cy.get('#birthday').type('1999-12-31').should('contain.value', '1999-12-31');
+
+        // cy.get('[type="submit"]').click()
     })
 })
 
