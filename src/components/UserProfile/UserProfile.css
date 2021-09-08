@@ -77,7 +77,8 @@
 }
 
 .user-posts-container {
-    max-height: 600px;
+  max-height: 100vh;
+  height: auto;
     overflow-y: scroll;
 }
 
