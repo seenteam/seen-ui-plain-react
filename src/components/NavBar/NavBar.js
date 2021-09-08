@@ -3,9 +3,6 @@ import {
   faPlusCircle
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { library } from '@fortawesome/fontawesome-svg-core';
-// import { fab } from '@fortawesome/free-brands-svg-icons'
-// import { faBuromobelexperte } from '@fortawesome/free-solid-svg-icons'
 import './NavBar.css'
 
 const NavBar = ({newPost, setNewPost}) => {
