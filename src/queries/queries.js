@@ -115,7 +115,6 @@ query usersLikedPosts {
 `
 
 
-//Probably not going to work, first attempt at queries
 export const GET_TOP_FLUX = gql`
 query {
   topFlux {
@@ -129,6 +128,20 @@ query {
 }
 `;
 
+export const GET_POSTS_FROM_FOLLOWING = (id) => gql`
+  query {
+   getPostFromFixedFollowing(id: ${id}){
+    id
+    content
+    likeCount
+   }
+   getPostFromFluxFollowing(id: ${id}){
+     id
+     content
+     likeCount
+   }
+  }
+`
 
 //TESTed this query it works!
 export const GET_ALL_USERS = gql`
