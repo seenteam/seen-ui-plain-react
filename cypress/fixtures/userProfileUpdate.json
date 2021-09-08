@@ -1,0 +1,1 @@
+{"data":{"updateUser":{"user":{"id":"2","userName":"wallE","firstName":"Domo","lastName":"Arigatou","phoneNumber":"000-000-0000","email":"co@co.com","birthday":"2001-01-01T00:00:00Z","__typename":"User"},"__typename":"UpdateUserPayload"}}}
