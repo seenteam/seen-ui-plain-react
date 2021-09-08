@@ -86,7 +86,7 @@ describe("Edit User Profile Page Spec", () => {
         cy.wait('@gqlupdateUserMutation');
     })
 
-    it.only('Should allow the user to return to the user-profile when the return to profile button is clicked!', () => {
+    it('Should allow the user to return to the user-profile when the return to profile button is clicked!', () => {
         
         cy.intercept('POST', 'https://intense-ocean-61260.herokuapp.com/graphql', req => {
           if (req.body.operationName === 'GetUserInfo') {
