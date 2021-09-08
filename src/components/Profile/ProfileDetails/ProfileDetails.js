@@ -13,7 +13,6 @@ const ProfileDetails = () => {
 
   const birthday = data.user.birthday.split('T')[0].split('-')
   const birthdate = birthday[1] + '-' + birthday[2] + '-' + birthday[0]
-  console.log({birthdate})
 
    return (
     <section className="profile-details">
@@ -37,4 +36,3 @@ const ProfileDetails = () => {
  };
 
 export default ProfileDetails;
-  
