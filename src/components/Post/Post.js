@@ -25,10 +25,6 @@ const Post = ({id, content, created, user, currentUser, clickedDelete, removePos
     refetchQueries: [{ query: gql.GET_POST_LIKES(id) }],
   });
 
-  const [deletePost] = useMutation(gql.DELETE_POST, {
-    refetchQueries: [{ query: gql.GET_USER_POSTS(currentUser) }],
-  });
-
   if (GetPostLikes.loading) {
     return <Loading loading={GetPostLikes.loading} />
   }
