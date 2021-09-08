@@ -5,7 +5,7 @@ import * as gql from '../../queries/queries';
 import './NewPost.css'
 import UserContext from '../UserProfile/UserContext';
 
-const NewPost = ({visible, setVisibility, data, setPosts }) => {
+const NewPost = ({visible, setVisibility, data }) => {
 
   const value = useContext(UserContext);
   const [postData, setPostData] = useState('')
