@@ -19,8 +19,7 @@ library.add(faAtom, faHome, faSearch, faUserCircle, faUserCircleActive, faPlus, 
 const App = () => {
 
   const getRandomUser = () => {
-    let ids = [1, 2, 3, 4, 5]
-    return Math.floor(Math.random() * ids.length) + 1
+    return Math.floor(Math.random() * (50 - 1) + 1);
   }
   const [newPost, setNewPost] = useState(false)
   const [userID, setUserID] = useState(getRandomUser())
