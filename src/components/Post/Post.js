@@ -1,5 +1,6 @@
 import './Post.css'
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useQuery, useMutation } from "@apollo/client";
 import Loading from '../Loading/Loading.js'
 import * as gql from '../../queries/queries'
@@ -7,7 +8,7 @@ const dayjs = require('dayjs')
 const LocalizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(LocalizedFormat)
 
-const Post = ({id, content, created, user, currentUser, clickedDelete, removePost }) => {
+const Post = ({id, content, created, user, currentUser, clickedDelete, removePost, feedUser, feedFName, feedLName, feedUName }) => {
   const [clicked, setClicked] = useState(false)
 
   const GetPostLikes = useQuery(gql.GET_POST_LIKES(id))
@@ -78,7 +79,11 @@ const Post = ({id, content, created, user, currentUser, clickedDelete, removePos
   return (
     <div className="post-container">
       <p><strong>{content}</strong></p>
+      {console.log("CREATED AT", created)}
       <p>Posted {dayjs(created).format('LLL')}</p>
+      {!!feedUser && <div>
+        <Link to={`/users/${feedUser}`}>@{feedUName.userName}</Link>
+      </div>}
       <div className="likes-container">
         <p>{!!GetPostLikes.data && `${GetPostLikes.data.postLikes.length} Likes`}</p>
         <section>
