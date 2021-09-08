@@ -1,11 +1,3 @@
-/* .followers-list {
-  position: absolute;
-  z-index: 10;
-  background: lightgray;
-  width: 30%;
-  top: 0;
-} */
-
 .inactive {
   display: none;
   top: 0;
@@ -27,27 +19,12 @@
   border: 1px solid gray;
 }
 
-
-/* .followers-info {
-  display: flex;
-  align-items: center;
-} */
-
-/* .followers-info h4 {
-  cursor: pointer;
-  height: auto;
-  width: auto;
-  margin: 0;
-} */
-
 .flux-followers-info, .followers-info {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   cursor: pointer;
-  /* height: auto;
-  width: auto; */
   margin: 0;
 }
 
@@ -64,22 +41,16 @@
   align-items: center;
 }
 
-/*
-.profile-header * {
-  transition: .2s ease all;
-} */
-
 .posts-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
   grid-gap: .5em;
 }
 
 .user-posts-container {
-  max-height: 100vh;
+  max-height: 65vh;
   height: auto;
-    overflow-y: scroll;
+  overflow-y: scroll;
 }
 
 .user-profile-navigation {
