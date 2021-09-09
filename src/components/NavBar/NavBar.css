@@ -46,3 +46,10 @@ footer ul {
 .yellow button {
   color: yellow;
 }
+
+
+@media screen and (max-width: 500px) {
+  footer ul li, footer ul li button {
+    font-size: 30px;
+  }
+}

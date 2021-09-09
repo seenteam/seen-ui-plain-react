@@ -5,7 +5,7 @@ body {
 
 .ocean {
   height: 2%;
-  width:100%;
+  width:100vw;
   position:absolute;
   bottom:0;
   left:0;
@@ -45,5 +45,15 @@ body {
   }
   50% {
     transform: translate3d(0,5px,0);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .ocean {
+    overflow-x: hidden;
+  }
+
+  .wave {
+    height: 100px;
   }
 }
