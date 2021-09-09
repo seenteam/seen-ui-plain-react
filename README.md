@@ -82,6 +82,7 @@ Run `npm start`
   <img src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"/>
   <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="Github" />
   <img src="https://img.shields.io/badge/Context%20API-%20-blue" alt="context-api" />
+  <img src="https://img.shields.io/badge/CIRCLECI-%23161616.svg?style=for-the-badge&logo=circleci&logoColor=white" alt="Circle CI" />
 </p>
 <p align="left">
   <img src="https://img.shields.io/badge/-React-cyan" alt="React" />
