@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client";
-import React, { useContext } from 'react'
-import FollowerDetails from './FollowerDetails/FollowerDetails'
+import React, { useState, useContext } from 'react'
+import FollowersModal from './FollowersModal/FollowersModal.js'
+import Countdown from './Countdown/Countdown.js'
 import './Followers.css'
 import * as gql from '../../queries/queries'
 import UserContext from "../UserProfile/UserContext";
@@ -11,55 +12,45 @@ const Followers = () => {
   const GetFluxFollowing = useQuery(gql.GET_USER_FLUX_FOLLOWING(value))
   const GetFluxFollowers = useQuery(gql.GET_USER_FLUX_FOLLOWERS(value))
   const { data } = useQuery(gql.GET_FOLLOWER_INFO(value))
+  const [clicked, setClicked] = useState(false);
+  const [users, setCurrentUsers] = useState([]);
 
-  const renderFollowers = () => {
-    if (data) return data.usersFollowers.map((follower, index) => {
-      return <div key={index}>
-        <FollowerDetails id={follower.id} />
-      </div>
-    })
+  const toggleModal = (usersData) => {
+    setClicked(clicked => !clicked)
+    setCurrentUsers(usersData)
   }
 
-  const renderFollowing = () => {
-    return GetFollowingInfo.data.userFollowing.map((follower, index) => {
-      return <div key={index}>
-        <FollowerDetails id={follower.id} />
-      </div>
-    })
+  const handleBgClick = () => {
+    if (clicked) setClicked(false)
   }
 
-  const renderFluxFollowers = () => {
-    if (GetFluxFollowers.data) return GetFluxFollowers.data.usersFluxFollowers.map((follower, index) => {
-      return <div key={index}>
-        <FollowerDetails id={follower.friendId} />
-      </div>
-    })
+  const renderBetterFollowers = () => {
+    return (
+      <section className="new-followers-container" onClick={handleBgClick}>
+        <div className="follow-box">
+          <h2>Fixed</h2>
+          <button onClick={() => toggleModal((!!data && data.usersFollowers))}><h3>{!!data && data.usersFollowers.length} Followers</h3></button>
+          <button onClick={() => toggleModal((!!GetFollowingInfo.data && GetFollowingInfo.data.userFollowing))}><h3>{!!GetFollowingInfo.data && GetFollowingInfo.data.userFollowing.length} Following</h3></button>
+        </div>
+        <div className="spacer"></div>
+        <div className="follow-box">
+          <h2>Flux</h2>
+          <button onClick={() => toggleModal((!!GetFluxFollowers.data && GetFluxFollowers.data.usersFluxFollowers))}><h3>{!!GetFluxFollowers.data && GetFluxFollowers.data.usersFluxFollowers.length} Followers</h3></button>
+          <button onClick={() => toggleModal((!!GetFluxFollowing.data && GetFluxFollowing.data.userFluxFollowing))}><h3>{!!GetFluxFollowing.data && GetFluxFollowing.data.userFluxFollowing.length} Following</h3></button>
+        </div>
+      </section>
+    )
   }
 
-  const renderFluxFollowing = () => {
-    return GetFluxFollowing.data.userFluxFollowing.map((follower, index) => {
-      return <div key={index}>
-        <FollowerDetails id={follower.id} />
-      </div>
-    })
+  const renderModal = () => {
+    return <FollowersModal data={users} clicked={clicked} setClicked={setClicked} setUsers={setCurrentUsers} />
   }
 
   return (
     <section className="followers-containers">
-      <div>
-        <h2>Fixed</h2>
-        <h3>Followers</h3>
-        {!!data && renderFollowers()}
-        <h3>Following</h3>
-        {!!GetFollowingInfo.data && renderFollowing()}
-      </div>
-      <div>
-        <h2>Flux</h2>
-        <h3>Followers</h3>
-        {!!GetFluxFollowers.data && renderFluxFollowers()}
-        <h3>Following</h3>
-        {!!GetFluxFollowing.data && renderFluxFollowing()}
-      </div>
+      {renderBetterFollowers()}
+      <Countdown />
+      {!!clicked && !!users.length && renderModal()}
     </section>
   )
 }

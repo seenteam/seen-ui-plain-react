@@ -1,11 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,700;1,500&display=swap');
 
 
 .followers-containers {
   position: relative;
-  max-height: 80vh;
+  max-height: 90vh;
   overflow-y: scroll;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
+}
+
+.new-followers-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  margin: 6% 0;
+}
+
+h2 {
+  text-align: center;
+}
+
+.follow-box {
+  display: grid;
+  place-items: center;
+}
+
+.follow-box button h3 {
+  text-align: center;
+  padding: 15% 0;
+}
+
+.follow-box button {
+  background: salmon;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  margin-bottom: 20%;
+  cursor: pointer;
+  transition: .2s all ease;
+}
+
+.follow-box button:hover {
+  transform: translateY(-10px);
+}
+
+.spacer {
+  border-right: 1px solid salmon;
 }
 
 .followers-containers h2, .followers-containers h3 {
