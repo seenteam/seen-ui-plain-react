@@ -10,11 +10,11 @@ import UserProfile from '../../components/UserProfile/UserProfile'
 import {Switch, Route, Redirect} from 'react-router-dom'
 import Header from '../../components/Header/Header.js'
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faAtom, faHome, faSearch, faUserCircle as faUserCircleActive, faPlus, faChevronRight} from '@fortawesome/free-solid-svg-icons';
+import { faAtom, faHome, faSearch, faUserCircle as faUserCircleActive, faPlus, faChevronRight, faTimes} from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle } from '@fortawesome/free-regular-svg-icons'
 import UserContext from '../../components/UserProfile/UserContext.js'
 import './App.css';
-library.add(faAtom, faHome, faSearch, faUserCircle, faUserCircleActive, faPlus, faChevronRight);
+library.add(faAtom, faHome, faSearch, faUserCircle, faUserCircleActive, faPlus, faChevronRight, faTimes);
 
 const App = () => {
 
