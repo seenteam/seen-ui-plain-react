@@ -80,13 +80,13 @@ describe("Followers Page", () => {
         cy.contains('Followers')
         cy.contains('Following')
       })
-
-      it('User should have followers present in test', () => {
-        cy.contains('Domo Arigatou')
-      })
-
-      it('User should be able to navigate to a user that follows them/they are following', () => {
-        cy.get('.user-card').first().click()
-        cy.url().should('eq', 'http://localhost:3000/users/2')
-      })
+      //
+      // it('User should have followers present in test', () => {
+      //   cy.contains('Domo Arigatou')
+      // })
+      //
+      // it('User should be able to navigate to a user that follows them/they are following', () => {
+      //   cy.get('.user-card').first().click()
+      //   cy.url().should('eq', 'http://localhost:3000/users/2')
+      // })
 })
