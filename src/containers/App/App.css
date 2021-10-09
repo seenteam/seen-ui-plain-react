@@ -1,5 +1,7 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;700&display=swap'); */
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,700;1,500&display=swap');
+
 html, body {
   height: 100%;
   overflow: hidden;
@@ -9,4 +11,9 @@ html, body {
 main {
   display: grid;
   place-items: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+a {
+color: black;
 }
